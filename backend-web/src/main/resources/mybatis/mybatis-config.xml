@@ -44,7 +44,7 @@
 	</typeAliases>
 
 	<plugins>
-		<plugin interceptor="com.devi.test.jdbc.plugin.DynamicPlugin"/>
+		<plugin interceptor="com.devi.test.dds.jdbc.plugin.DynamicPlugin"/>
 		<plugin interceptor="com.devi.test.pagination.PagePlugin">
 			<property name="dialectClass" value="com.devi.test.dialect.MysqlDialect"/>
 		</plugin>
