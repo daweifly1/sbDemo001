@@ -1,7 +1,7 @@
-package com.devi.test.jdbc.manager;
+package com.devi.test.dds.jdbc.manager;
 
-import com.devi.test.jdbc.dataSource.DynamicDataSourceHolder;
-import com.devi.test.jdbc.enums.DynamicDataSourceGlobal;
+import com.devi.test.dds.jdbc.dataSource.DynamicDataSourceHolder;
+import com.devi.test.dds.jdbc.enums.DynamicDataSourceGlobal;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 
@@ -14,6 +14,8 @@ import javax.sql.DataSource;
  * version V1.0.0
  */
 public class DynamicDataSourceTransactionManager extends DataSourceTransactionManager {
+    public DynamicDataSourceTransactionManager() {
+    }
 
     public DynamicDataSourceTransactionManager(DataSource dataSource){
         super.setDataSource(dataSource);

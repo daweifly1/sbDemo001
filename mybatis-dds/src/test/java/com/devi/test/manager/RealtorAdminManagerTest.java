@@ -1,7 +1,8 @@
 package com.devi.test.manager;
 
-import com.devi.test.domain.RealtorAdmin;
+import com.devi.test.dds.domain.RealtorAdmin;
 import com.devi.test.JunitBaseTest;
+import com.devi.test.dds.manager.RealtorAdminManager;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

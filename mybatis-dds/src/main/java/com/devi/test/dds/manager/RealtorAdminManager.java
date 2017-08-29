@@ -1,7 +1,7 @@
-package com.devi.test.manager;
+package com.devi.test.dds.manager;
 
-import com.devi.test.dao.RealtorAdminMapper;
-import com.devi.test.domain.RealtorAdmin;
+import com.devi.test.dds.dao.RealtorAdminMapper;
+import com.devi.test.dds.domain.RealtorAdmin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @date 2016/11/4 13:58
  * version V1.0.0
  */
-@Service
+//@Service
 public class RealtorAdminManager {
 
     @Autowired

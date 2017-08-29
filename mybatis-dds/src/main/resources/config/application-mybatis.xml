@@ -121,7 +121,7 @@
     </bean>
 
     <!-- 代理数据源 用来实现读写分离(也可实现数据库集群)  -->
-    <bean id="dataSource" class="com.devi.test.jdbc.dataSource.DynamicDataSource">
+    <bean id="dataSource" class="com.devi.test.dds.jdbc.dataSource.DynamicDataSource">
         <property name="slavesDataSource">
             <list>
                 <ref bean="slaveDataSource"/>
@@ -138,7 +138,7 @@
     </bean>
 
     <bean id="transactionManager"
-          class="com.devi.test.jdbc.manager.DynamicDataSourceTransactionManager">
+          class="com.devi.test.dds.jdbc.manager.DynamicDataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 

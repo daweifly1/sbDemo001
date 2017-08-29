@@ -1,7 +1,7 @@
 package com.devi.test.conf;
 
-import com.devi.test.jdbc.dataSource.DynamicDataSource;
-import com.devi.test.jdbc.manager.DynamicDataSourceTransactionManager;
+import com.devi.test.dds.jdbc.dataSource.DynamicDataSource;
+import com.devi.test.dds.jdbc.manager.DynamicDataSourceTransactionManager;
 import org.apache.ibatis.mapping.DatabaseIdProvider;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;

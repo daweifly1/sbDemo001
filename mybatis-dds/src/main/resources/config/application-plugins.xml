@@ -50,7 +50,7 @@
     <!--</mappers>-->
 
     <plugins>
-        <plugin interceptor="com.devi.test.jdbc.plugin.DynamicPlugin"/>
+        <plugin interceptor="com.devi.test.dds.jdbc.plugin.DynamicPlugin"/>
     </plugins>
 
 

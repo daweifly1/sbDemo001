@@ -1,7 +1,7 @@
-package com.devi.test.jdbc.strategy;
+package com.devi.test.dds.jdbc.strategy;
 
 
-import com.devi.test.jdbc.enums.DynamicDataSourceGlobal;
+import com.devi.test.dds.jdbc.enums.DynamicDataSourceGlobal;
 
 import javax.sql.DataSource;
 import java.util.List;

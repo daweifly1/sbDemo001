@@ -1,9 +1,9 @@
-package com.devi.test.jdbc.dataSource;
+package com.devi.test.dds.jdbc.dataSource;
 
 
-import com.devi.test.jdbc.strategy.RoundRobinStrategy;
-import com.devi.test.jdbc.strategy.Strategy;
-import com.devi.test.jdbc.enums.DynamicDataSourceGlobal;
+import com.devi.test.dds.jdbc.enums.DynamicDataSourceGlobal;
+import com.devi.test.dds.jdbc.strategy.RoundRobinStrategy;
+import com.devi.test.dds.jdbc.strategy.Strategy;
 import org.springframework.beans.BeanUtils;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 

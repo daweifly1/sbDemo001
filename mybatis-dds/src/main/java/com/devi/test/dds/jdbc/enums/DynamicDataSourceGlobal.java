@@ -1,4 +1,4 @@
-package com.devi.test.jdbc.enums;
+package com.devi.test.dds.jdbc.enums;
 
 /**
  * @Description: 动态读写数据源类型

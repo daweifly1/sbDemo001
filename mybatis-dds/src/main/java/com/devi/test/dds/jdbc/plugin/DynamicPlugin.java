@@ -1,7 +1,7 @@
-package com.devi.test.jdbc.plugin;
+package com.devi.test.dds.jdbc.plugin;
 
-import com.devi.test.jdbc.dataSource.DynamicDataSourceHolder;
-import com.devi.test.jdbc.enums.DynamicDataSourceGlobal;
+import com.devi.test.dds.jdbc.dataSource.DynamicDataSourceHolder;
+import com.devi.test.dds.jdbc.enums.DynamicDataSourceGlobal;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.executor.keygen.SelectKeyGenerator;
 import org.apache.ibatis.mapping.BoundSql;

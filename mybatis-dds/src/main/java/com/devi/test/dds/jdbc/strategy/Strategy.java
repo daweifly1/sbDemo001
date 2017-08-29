@@ -1,4 +1,4 @@
-package com.devi.test.jdbc.strategy;
+package com.devi.test.dds.jdbc.strategy;
 import javax.sql.DataSource;
 
 /**

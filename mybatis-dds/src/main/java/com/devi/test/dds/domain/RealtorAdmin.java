@@ -1,4 +1,4 @@
-package com.devi.test.domain;
+package com.devi.test.dds.domain;
 
 import java.util.Date;
 

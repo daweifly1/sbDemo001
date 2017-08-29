@@ -1,6 +1,6 @@
-package com.devi.test.dao;
+package com.devi.test.dds.dao;
 
-import com.devi.test.domain.RealtorAdmin;
+import com.devi.test.dds.domain.RealtorAdmin;
 import org.springframework.stereotype.Repository;
 
 @Repository

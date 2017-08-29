@@ -1,7 +1,7 @@
-package com.devi.test.jdbc.dataSource;
+package com.devi.test.dds.jdbc.dataSource;
 
 
-import com.devi.test.jdbc.enums.DynamicDataSourceGlobal;
+import com.devi.test.dds.jdbc.enums.DynamicDataSourceGlobal;
 
 /**
  * @Description: 动态数据源持有
