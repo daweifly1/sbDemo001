@@ -36,8 +36,9 @@ public class UserService {
         return user.getId();
     }
 
-    @Cacheable(value = {"A_USER", "test2"}, key = "T(com.devi.test.constant.CacheKeyUtil).USER_ID+#id", cacheManager = "localCacheManager")
+    @Cacheable(value = {"default"}, key = "T(com.devi.test.constant.CacheKeyUtil).USER_ID+#id", cacheManager = "cacheManager")
     public User getUserById(Integer id) {
+        System.out.println("==========");
         return userMapper.selectByPrimaryKey(id);
     }
 

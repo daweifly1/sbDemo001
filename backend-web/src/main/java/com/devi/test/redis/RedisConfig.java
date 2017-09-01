@@ -91,11 +91,11 @@ public class RedisConfig extends CachingConfigurerSupport {
     }
 
 
-    @Bean(name = "localCacheManager")
-    public CacheManager localCacheManager() {
-        SimpleCacheManager cacheManager = new SimpleCacheManager();
-        cacheManager.setCaches(Arrays.asList(new ConcurrentMapCache("default")));
-        return cacheManager;
-    }
+//    @Bean(name = "localCacheManager")
+//    public CacheManager localCacheManager() {
+//        SimpleCacheManager cacheManager = new SimpleCacheManager();
+//        cacheManager.setCaches(Arrays.asList(new ConcurrentMapCache("default")));
+//        return cacheManager;
+//    }
 
 }
