@@ -1,13 +1,11 @@
 package com.devi.test.swagger2;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.request.async.DeferredResult;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
@@ -18,7 +16,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 /**
  * @Package SwaggerConfig
  * @Copyright: Copyright (c) 2016
- *
  * @date 2017/5/19 10:45
  * version V1.0.0
  */
@@ -55,7 +52,7 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
     }
 
     private ApiInfo apiInfo() {
-        Contact contact = new Contact("jon","http://","316476844.com");
+        Contact contact = new Contact("jon", "http://", "316476844.com");
         return new ApiInfoBuilder()
                 .title("Spring Data")
                 .description("Spring Data 学习记录")

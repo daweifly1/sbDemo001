@@ -3,30 +3,27 @@ package com.devi.test.redis;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.concurrent.ConcurrentMapCache;
 import org.springframework.cache.interceptor.KeyGenerator;
+import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 /**
  * @Package RedisConfig
  * @Description: RedisConfig
  * @Copyright: Copyright (c) 2016
- *
  * @date 2017/5/18 13:58
  * version V1.0.0
  */
@@ -51,6 +48,7 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     /**
      * RedisTemplate配置
+     *
      * @return
      */
     @Bean
@@ -74,6 +72,7 @@ public class RedisConfig extends CachingConfigurerSupport {
      * 管理缓存
      * 设置缓存对象的序列化方式,不设置会报错
      * 另外对于json序列化,对象要提供默认空构造器
+     *
      * @param redisTemplate
      * @return
      */
@@ -90,4 +89,13 @@ public class RedisConfig extends CachingConfigurerSupport {
         cacheManager.setDefaultExpiration(300);//秒
         return cacheManager;
     }
+
+
+    @Bean(name = "localCacheManager")
+    public CacheManager localCacheManager() {
+        SimpleCacheManager cacheManager = new SimpleCacheManager();
+        cacheManager.setCaches(Arrays.asList(new ConcurrentMapCache("default")));
+        return cacheManager;
+    }
+
 }
