@@ -3,10 +3,14 @@ package com.devi.test.redis;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.cache.CacheBuilder;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCache;
+import org.springframework.cache.guava.GuavaCache;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +22,9 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.lang.reflect.Method;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Package RedisConfig
@@ -30,6 +36,13 @@ import java.util.Arrays;
 @Configuration
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
+
+    public static final String GUAVA_KEY = "guavaCache";  //cache key
+    @Value("${cache.guavaCache.maxSize}")
+    private long guavaCacheMaxSize;
+    @Value("${cache.guavaCache.duration}")
+    private long guavaCacheDuration;
+
     @Bean
     public KeyGenerator keyGenerator() {
         return new KeyGenerator() {
@@ -56,7 +69,7 @@ public class RedisConfig extends CachingConfigurerSupport {
         RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<Object, Object>();
         redisTemplate.setConnectionFactory(factory);
         // 开启事务支持
-        redisTemplate.setEnableTransactionSupport(true);
+        redisTemplate.setEnableTransactionSupport(false);
         // 使用String格式序列化缓存键
         StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
         redisTemplate.setKeySerializer(stringRedisSerializer);
@@ -84,18 +97,43 @@ public class RedisConfig extends CachingConfigurerSupport {
         om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         jackson2JsonRedisSerializer.setObjectMapper(om);
         redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
-
         RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
         cacheManager.setDefaultExpiration(300);//秒
+
         return cacheManager;
     }
 
 
-//    @Bean(name = "localCacheManager")
-//    public CacheManager localCacheManager() {
-//        SimpleCacheManager cacheManager = new SimpleCacheManager();
-//        cacheManager.setCaches(Arrays.asList(new ConcurrentMapCache("default")));
-//        return cacheManager;
-//    }
+    @Bean(name = "localCacheManager")
+    public CacheManager localCacheManager() {
+        SimpleCacheManager simpleCacheManager = new SimpleCacheManager();
+        List<Cache> caches = new ArrayList<>();
+        caches.add(new ConcurrentMapCache("localCache"));
+        caches.add(buildGuavaCache());
+        simpleCacheManager.setCaches(caches);
+        return simpleCacheManager;
+    }
 
+
+//    @Bean
+//    public CacheManager compositeCacheManager() {
+//        CompositeCacheManager compositeCacheManager=new CompositeCacheManager();
+//        compositeCacheManager.setFallbackToNoOpCache(true);
+//        List<CacheManager> cacheManagerList=new ArrayList<>();
+//        cacheManagerList.add(localCacheManager());
+//        cacheManagerList.add(cacheManager(redisTemplate()));
+//
+//        return simpleCacheManager;
+//    }
+//
+
+
+    private GuavaCache buildGuavaCache() {
+        return new GuavaCache(GUAVA_KEY,
+                CacheBuilder.newBuilder()
+                        .recordStats()
+                        .maximumSize(guavaCacheMaxSize)
+                        .expireAfterWrite(guavaCacheDuration, TimeUnit.SECONDS)
+                        .build());
+    }
 }

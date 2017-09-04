@@ -1,7 +1,7 @@
 package com.devi.test.mapper;
 
-import com.devi.test.pagination.Page;
 import com.devi.test.domain.User;
+import com.devi.test.pagination.Page;
 
 import java.util.List;
 

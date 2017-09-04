@@ -3,20 +3,18 @@ package com.devi.test.service;
 import com.devi.test.domain.User;
 import com.devi.test.mapper.UserMapper;
 import com.devi.test.pagination.Page;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @Package UserService
- * @Description: UserService
- * @Copyright: Copyright (c) 2016
- * @date 2017/5/12 15:30
- * version V1.0.0
- */
 @Service
 public class UserService {
+    private Logger logger = LoggerFactory.getLogger(UserService.class);
+
     @Autowired
     private UserMapper userMapper;
 
@@ -36,10 +34,18 @@ public class UserService {
         return user.getId();
     }
 
-    @Cacheable(value = {"default"}, key = "T(com.devi.test.constant.CacheKeyUtil).USER_ID+#id", cacheManager = "cacheManager")
+    @Cacheable(value = {"redisCacheManager"}, key = "T(com.devi.test.constant.CacheKeyUtil).USER_ID+#id", cacheManager = "redisCacheManager")
     public User getUserById(Integer id) {
-        System.out.println("==========");
+        logger.info(Thread.currentThread().getName() + "getUserById 重新取值");
         return userMapper.selectByPrimaryKey(id);
+    }
+
+
+    @CachePut(value = {"redisCacheManager"}, key = "T(com.devi.test.constant.CacheKeyUtil).USER_ID+#user.id", cacheManager = "redisCacheManager")
+    public User updateUserById(User user) {
+        logger.info(Thread.currentThread().getName() + " updateUserById:" + user);
+        userMapper.updateByPrimaryKey(user);
+        return user;
     }
 
 
