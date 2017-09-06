@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
 
@@ -19,18 +20,52 @@ public class RedisTest extends SpringbootexampleApplicationTests {
     private Logger logger = LoggerFactory.getLogger(RedisTest.class);
 
     @Test
-    public void setVal() {
-//        RedisUtils.set("springboottest111111", "中国式", 10000L);
-//        User user = new User();
-//        user.setName("测试");
-//        user.setPhone("123444444444");
-//        RedisUtils.set("springboottest", user, 10000L);
+    public void testEvictRedisCache() {
+        userService.evictUserRedis2();
+    }
+
+    @Test
+    public void testRedisCache() {
+//        User u = userService.getUserByIdRedis(1);
+//        logger.info("1====================init  val:" + userService.updateUserByIdRedis(u));
+
+        logger.info("getUserByIdRedis2====================init  val:" + userService.getUserByIdRedis2(1));
+        logger.info("getUserByIdRedis2====================init  val:" + userService.getUserByIdRedis2(2));
+        logger.info("getUserByIdRedis2====================init  val:" + userService.getUserByIdRedis2(1));
+        logger.info("getUserByIdRedis2====================init  val:" + userService.getUserByIdRedis2(2));
+
+//        //query key
+//        logger.info("1====================init  val:" + userService.getUserByIdRedis(1));
+//
+//        logger.info("1   ====================init  val:" + userService.getUserByIdRedis2(1));
+//
+//        userService.evictUserRedis();
+//        logger.info("2====================init  val:" + userService.getUserByIdRedis2(1));
+//
+//
+//        logger.info("3====================init  val:" + userService.getUserByIdRedis2(1));
+//
+//        userService.evictUserRedis();
+//        logger.info("4====================init  val:" + userService.getUserByIdRedis2(1));
+
+//        userService.evictUserRedis();
+//        Object o = RedisUtils.get("USER_ID_1");
+//        logger.info("o val:" + o);
+//
+//        User u = userService.getUserByIdRedis(1);
+//        logger.info("2 val:" + u);
+//        u.setName(UUID.randomUUID().toString());
+//        userService.updateUserByIdRedis(u);
+//        logger.info("3 val:" + userService.getUserByIdRedis(1));
+//
+//        o = RedisUtils.get("USER_ID_1");
+//        logger.info("o val:" + o);
     }
 
     @Test
     public void getVal() throws InterruptedException {
         logger.info("init  val:" + userService.getUserById(1));
-        int CONCURRENT_NUM = 100;
+        int CONCURRENT_NUM = 10000;
         CyclicBarrier barrier = new CyclicBarrier(CONCURRENT_NUM);
         CountDownLatch latch = new CountDownLatch(CONCURRENT_NUM);
         for (int i = 0; i < CONCURRENT_NUM; i++) {
@@ -61,14 +96,14 @@ public class RedisTest extends SpringbootexampleApplicationTests {
         public void run() {
             try {
                 barrier.await();
-                long t = (long) (Math.random() * 4000);
+                long t = (long) (Math.random() * 40000);
                 Thread.sleep(t);//每个client随机睡眠，为了充分测试refresh和load
                 User u = userService.getUserById(1);
                 logger.info(Thread.currentThread().getName() + ",val:" + u);
-//                if (t % 13101 == 0) {
-//                    u.setName(UUID.randomUUID().toString());
-//                    userService.updateUserById(u);
-//                }
+                if (t % 13101 == 0) {
+                    u.setName(UUID.randomUUID().toString());
+                    userService.updateUserById(u);
+                }
                 latch.countDown();
             } catch (Exception e) {
                 e.printStackTrace();

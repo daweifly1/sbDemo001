@@ -172,10 +172,10 @@
 
     <!--myibatis log configure-->
     <!-- project default level -->
-    <logger name="com.devi.test" level="debug"/>
+    <logger name="com.devi.test" level="info"/>
 
     <!--log4jdbc -->
-    <logger name="jdbc.sqltiming" level="debug"/>
+    <logger name="jdbc.sqltiming" level="info"/>
     <logger name="com.ibatis" level="debug"/>
     <logger name="com.ibatis.common.jdbc.SimpleDataSource" level="debug"/>
     <logger name="com.ibatis.common.jdbc.ScriptRunner" level="debug"/>
@@ -185,7 +185,7 @@
     <logger name="java.sql.PreparedStatement" level="debug"/>
     <logger name="java.sql.ResultSet" level="debug"/>
 
-    <logger name="org.springframework" level="DEBUG"/>
+    <logger name="org.springframework" level="INFO"/>
 
     <!-- 生产环境下，将此级别配置为适合的级别，以免日志文件太多或影响程序性能 -->
     <root level="INFO">
