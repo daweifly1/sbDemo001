@@ -29,10 +29,10 @@ public class RedisTest extends SpringbootexampleApplicationTests {
 //        User u = userService.getUserByIdRedis(1);
 //        logger.info("1====================init  val:" + userService.updateUserByIdRedis(u));
 
-        logger.info("getUserByIdRedis2====================init  val:" + userService.getUserByIdRedis2(1));
-        logger.info("getUserByIdRedis2====================init  val:" + userService.getUserByIdRedis2(2));
-        logger.info("getUserByIdRedis2====================init  val:" + userService.getUserByIdRedis2(1));
-        logger.info("getUserByIdRedis2====================init  val:" + userService.getUserByIdRedis2(2));
+        logger.info("getUserByIdRedis2====================init  val:" + userService.getUserByIdRedis2(8));
+//        logger.info("getUserByIdRedis2====================init  val:" + userService.getUserByIdRedis2(2));
+//        logger.info("getUserByIdRedis2====================init  val:" + userService.getUserByIdRedis2(1));
+//        logger.info("getUserByIdRedis2====================init  val:" + userService.getUserByIdRedis2(2));
 
 //        //query key
 //        logger.info("1====================init  val:" + userService.getUserByIdRedis(1));

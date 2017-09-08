@@ -56,10 +56,10 @@ public class UserService {
         return userMapper.selectByPrimaryKey(id);
     }
 
-    @Cacheable(value = {"ELEMENT_COMMON2"}, key = "T(com.devi.test.constant.CacheKeyUtil).USER_ID+#id", cacheManager = "redisCacheManager")
+    @Cacheable(value = {"ELEMENT_COMMON2", "ELEMENT_COMMON"}, key = "T(com.devi.test.constant.CacheKeyUtil).USER_ID+#id", cacheManager = "redisCacheManager")
     public User getUserByIdRedis2(Integer id) {
         logger.info(Thread.currentThread().getName() + "getUserByIdRedis 重新取值");
-        return userMapper.selectByPrimaryKey(id);
+        return null;//userMapper.selectByPrimaryKey(id);
     }
 
 

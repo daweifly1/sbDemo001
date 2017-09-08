@@ -16,9 +16,11 @@ import org.springframework.data.redis.cache.RedisCachePrefix;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 /**
  * Created by hzchendawei on 2017/9/6.
@@ -97,13 +99,13 @@ public class CacheConfig extends CachingConfigurerSupport {
     @Bean
     @Primary
     public CacheManager redisCacheManager(RedisTemplate redisTemplate) {
-        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
+        JdkSerializationRedisSerializer jackson2JsonRedisSerializer = new JdkSerializationRedisSerializer();
         ObjectMapper om = new ObjectMapper();
         om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
-        jackson2JsonRedisSerializer.setObjectMapper(om);
+//        jackson2JsonRedisSerializer.setObjectMapper(om);
         redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
-        RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
+        RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate, Arrays.asList("ELEMENT_COMMON2", "ELEMENT_COMMON"), true);
         cacheManager.setCachePrefix(new RedisCachePrefix() {
             @Override
             public byte[] prefix(String cacheName) {
