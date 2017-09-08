@@ -1,5 +1,6 @@
 package com.devi.test.service;
 
+import com.devi.cache.interceptor.GuavaLocalCache;
 import com.devi.test.domain.User;
 import com.devi.test.mapper.UserMapper;
 import com.devi.test.pagination.Page;
@@ -80,7 +81,7 @@ public class UserService {
         logger.info(Thread.currentThread().getName() + " evictUsers:");
     }
 
-
+    @GuavaLocalCache
     public Page<User> queryPage(Integer pageNumber, Integer pageSize) {
         Page<User> page = new Page<>(pageNumber, pageSize);
         userMapper.queryPage(page);

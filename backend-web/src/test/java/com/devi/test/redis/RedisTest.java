@@ -19,6 +19,16 @@ public class RedisTest extends SpringbootexampleApplicationTests {
 
     private Logger logger = LoggerFactory.getLogger(RedisTest.class);
 
+
+    @Test
+    public void testGuavaLocalCache() {
+        userService.queryPage(1,2);
+        userService.queryPage(1,2);
+        userService.queryPage(1,2);
+
+    }
+
+
     @Test
     public void testEvictRedisCache() {
         userService.evictUserRedis2();

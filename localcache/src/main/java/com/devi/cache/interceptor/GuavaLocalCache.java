@@ -18,9 +18,9 @@ public @interface GuavaLocalCache {
     int maxSize() default 1000;
 
     //过期时间（秒）
-    int expireTime() default 60;
+    int expireTime() default 600;
 
-    int refreshTime() default 30;
+    int refreshTime() default 300;
 
     String group() default "default";
 

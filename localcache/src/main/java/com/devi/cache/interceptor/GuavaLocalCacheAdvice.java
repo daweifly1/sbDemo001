@@ -3,6 +3,7 @@ package com.devi.cache.interceptor;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import com.google.common.util.concurrent.ListenableFuture;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
@@ -55,6 +56,11 @@ public class GuavaLocalCacheAdvice {
                             throwable.printStackTrace();
                         }
                         return null;
+                    }
+
+                    @Override
+                    public ListenableFuture<Object> reload(String key, Object oldValue) throws Exception {
+                        return super.reload(key, oldValue);
                     }
                 });
         return cache;
