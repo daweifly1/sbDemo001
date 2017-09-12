@@ -1,4 +1,4 @@
-package com.devi.test.cache;
+package com.devi.cache.interceptor;
 
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;

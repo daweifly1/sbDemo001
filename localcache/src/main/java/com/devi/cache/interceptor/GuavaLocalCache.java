@@ -1,4 +1,4 @@
-package com.devi.test.cache;
+package com.devi.cache.interceptor;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

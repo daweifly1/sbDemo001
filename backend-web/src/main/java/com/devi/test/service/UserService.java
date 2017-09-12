@@ -1,6 +1,6 @@
 package com.devi.test.service;
 
-import com.devi.test.cache.GuavaLocalCache;
+import com.devi.cache.interceptor.GuavaLocalCache;
 import com.devi.test.domain.User;
 import com.devi.test.mapper.UserMapper;
 import com.devi.test.pagination.Page;
@@ -107,9 +107,8 @@ public class UserService {
     @GuavaLocalCache
     public Integer queryTestLocalCache(Integer pageNumber) {
         logger.info(Thread.currentThread().getName() + "========================== queryTestLocalCache.");
-        long t = (long) (Math.random() * 40000);
         try {
-            Thread.sleep(t);
+            Thread.sleep(1000);
             m++;
         } catch (InterruptedException e) {
             e.printStackTrace();

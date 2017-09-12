@@ -20,7 +20,9 @@ public class RedisTest extends SpringbootexampleApplicationTests {
 
     @Test
     public void testGuavaLocalCache() throws InterruptedException {
-        int CONCURRENT_NUM = 100;
+        Integer m = userService.queryTestLocalCache(1);
+        logger.info(Thread.currentThread().getName() + "    ====,{}", m);
+        int CONCURRENT_NUM = 1000;
         CyclicBarrier barrier = new CyclicBarrier(CONCURRENT_NUM);
         CountDownLatch latch = new CountDownLatch(CONCURRENT_NUM);
         for (int i = 0; i < CONCURRENT_NUM; i++) {
@@ -34,7 +36,7 @@ public class RedisTest extends SpringbootexampleApplicationTests {
         Thread.sleep(5100L);
         logger.info("\n超过expire时间未读之后...");
 
-        Integer m = userService.queryTestLocalCache(1);
+        m = userService.queryTestLocalCache(1);
         logger.info(Thread.currentThread().getName() + "    ====,{}", m);
     }
 
