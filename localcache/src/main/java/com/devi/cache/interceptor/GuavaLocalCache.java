@@ -1,4 +1,4 @@
-package com.devi.cache.interceptor;
+package com.devi.test.cache;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -18,9 +18,9 @@ public @interface GuavaLocalCache {
     int maxSize() default 1000;
 
     //过期时间（秒）
-    int expireTime() default 600;
+    int expireTime() default 20;
 
-    int refreshTime() default 300;
+    int refreshTime() default 5;
 
     String group() default "default";
 

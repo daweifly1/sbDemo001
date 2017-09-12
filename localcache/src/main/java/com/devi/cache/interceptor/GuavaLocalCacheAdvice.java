@@ -1,4 +1,4 @@
-package com.devi.cache.interceptor;
+package com.devi.test.cache;
 
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
@@ -13,8 +13,8 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
@@ -25,9 +25,9 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class GuavaLocalCacheAdvice {
 
-    Map<String, LoadingCache<String, Object>> cacheMap = new HashMap<>();
+    Map<String, LoadingCache<String, Object>> cacheMap = new ConcurrentHashMap<>();
 
-    @Pointcut("@annotation(com.devi.cache.interceptor.GuavaLocalCache)")
+    @Pointcut("@annotation(com.devi.test.cache.GuavaLocalCache)")
     public void guavaLocalCache() {
     }
 
@@ -63,6 +63,7 @@ public class GuavaLocalCacheAdvice {
                         return super.reload(key, oldValue);
                     }
                 });
+        cacheMap.put(group, cache);
         return cache;
     }
 

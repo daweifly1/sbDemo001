@@ -1,6 +1,6 @@
 package com.devi.test.service;
 
-import com.devi.cache.interceptor.GuavaLocalCache;
+import com.devi.test.cache.GuavaLocalCache;
 import com.devi.test.domain.User;
 import com.devi.test.mapper.UserMapper;
 import com.devi.test.pagination.Page;
@@ -20,6 +20,8 @@ public class UserService {
     @Autowired
     private UserMapper userMapper;
 
+    int m = 1;
+
     @Transactional
     public Integer saveDouble(User user) {
         userMapper.insert(user);
@@ -36,7 +38,7 @@ public class UserService {
         return user.getId();
     }
 
-    @Cacheable(value = {"ELEMENT_COMMON"}, key = "T(com.devi.test.constant.CacheKeyUtil).USER_ID+#id", cacheManager = "guavaCacheManager")
+    @Cacheable(value = {"ELEMENT_COMMON"}, key = "T(com.devi.test.constant.CacheKeyUtil).USER_ID+#id", cacheManager = "redisCacheManager")
     public User getUserById(Integer id) {
         logger.info(Thread.currentThread().getName() + "getUserById 重新取值");
         return userMapper.selectByPrimaryKey(id);
@@ -85,6 +87,35 @@ public class UserService {
     public Page<User> queryPage(Integer pageNumber, Integer pageSize) {
         Page<User> page = new Page<>(pageNumber, pageSize);
         userMapper.queryPage(page);
+        logger.info(Thread.currentThread().getName() + "========================== queryPage.");
+        long t = (long) (Math.random() * 40000);
+        try {
+            Thread.sleep(t);
+            if (m == 1) {
+                m++;
+            } else {
+                page = new Page<>(1, 1);
+                userMapper.queryPage(page);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return page;
     }
+
+
+    @GuavaLocalCache
+    public Integer queryTestLocalCache(Integer pageNumber) {
+        logger.info(Thread.currentThread().getName() + "========================== queryTestLocalCache.");
+        long t = (long) (Math.random() * 40000);
+        try {
+            Thread.sleep(t);
+            m++;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return m;
+    }
+
+
 }

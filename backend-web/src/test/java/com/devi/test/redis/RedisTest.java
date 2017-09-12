@@ -1,14 +1,12 @@
 package com.devi.test.redis;
 
 import com.devi.test.SpringbootexampleApplicationTests;
-import com.devi.test.domain.User;
 import com.devi.test.service.UserService;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.CyclicBarrier;
 
@@ -21,11 +19,23 @@ public class RedisTest extends SpringbootexampleApplicationTests {
 
 
     @Test
-    public void testGuavaLocalCache() {
-        userService.queryPage(1,2);
-        userService.queryPage(1,2);
-        userService.queryPage(1,2);
+    public void testGuavaLocalCache() throws InterruptedException {
+        int CONCURRENT_NUM = 100;
+        CyclicBarrier barrier = new CyclicBarrier(CONCURRENT_NUM);
+        CountDownLatch latch = new CountDownLatch(CONCURRENT_NUM);
+        for (int i = 0; i < CONCURRENT_NUM; i++) {
+            final ClientRunnable runnable = new ClientRunnable(barrier, latch);
+            Thread thread = new Thread(runnable, "client-" + i);
+            thread.start();
+        }
 
+        //测试一段时间不访问后是否执行expire而不是refresh
+        latch.await();
+        Thread.sleep(5100L);
+        logger.info("\n超过expire时间未读之后...");
+
+        Integer m = userService.queryTestLocalCache(1);
+        logger.info(Thread.currentThread().getName() + "    ====,{}", m);
     }
 
 
@@ -106,14 +116,16 @@ public class RedisTest extends SpringbootexampleApplicationTests {
         public void run() {
             try {
                 barrier.await();
-                long t = (long) (Math.random() * 40000);
+                long t = (long) (3000);
                 Thread.sleep(t);//每个client随机睡眠，为了充分测试refresh和load
-                User u = userService.getUserById(1);
-                logger.info(Thread.currentThread().getName() + ",val:" + u);
-                if (t % 13101 == 0) {
-                    u.setName(UUID.randomUUID().toString());
-                    userService.updateUserById(u);
-                }
+//                User u = userService.getUserById(1);
+//                logger.info(Thread.currentThread().getName() + ",val:" + u);
+//                if (t % 13101 == 0) {
+//                    u.setName(UUID.randomUUID().toString());
+//                    userService.updateUserById(u);
+//                }
+                Integer m = userService.queryTestLocalCache(1);
+                logger.info(Thread.currentThread().getName() + "    m===={}", m);
                 latch.countDown();
             } catch (Exception e) {
                 e.printStackTrace();
