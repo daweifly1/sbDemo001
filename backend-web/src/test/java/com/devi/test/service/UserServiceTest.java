@@ -19,12 +19,15 @@ public class UserServiceTest extends SpringbootexampleApplicationTests {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserService2 userService2;
+
     @Test
     public void testSaveDouble(){
         User user = new User();
-        user.setHead("测试121212");
-        user.setName("hello world");
-        userService.saveDouble(user);
+        user.setHead("testSaveDouble");
+        user.setName("testSaveDouble");
+        userService2.saveDouble(user);
 
         System.out.println(user);
     }

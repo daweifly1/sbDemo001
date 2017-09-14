@@ -17,12 +17,11 @@ public class RedisTest extends SpringbootexampleApplicationTests {
 
     private Logger logger = LoggerFactory.getLogger(RedisTest.class);
 
-
     @Test
     public void testGuavaLocalCache() throws InterruptedException {
         Integer m = userService.queryTestLocalCache(1);
         logger.info(Thread.currentThread().getName() + "    ====,{}", m);
-        int CONCURRENT_NUM = 1000;
+        int CONCURRENT_NUM = 100;
         CyclicBarrier barrier = new CyclicBarrier(CONCURRENT_NUM);
         CountDownLatch latch = new CountDownLatch(CONCURRENT_NUM);
         for (int i = 0; i < CONCURRENT_NUM; i++) {
@@ -118,7 +117,7 @@ public class RedisTest extends SpringbootexampleApplicationTests {
         public void run() {
             try {
                 barrier.await();
-                long t = (long) (3000);
+                long t = (long) (Math.random() * 40000);
                 Thread.sleep(t);//每个client随机睡眠，为了充分测试refresh和load
 //                User u = userService.getUserById(1);
 //                logger.info(Thread.currentThread().getName() + ",val:" + u);

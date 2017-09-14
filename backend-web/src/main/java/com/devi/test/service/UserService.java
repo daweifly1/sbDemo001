@@ -11,6 +11,8 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -22,19 +24,13 @@ public class UserService {
 
     int m = 1;
 
-    @Transactional
-    public Integer saveDouble(User user) {
-        userMapper.insert(user);
-        user.setId(null);
-        userMapper.insert(user);
 
-        return user.getId();
-    }
-
-
+    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.DEFAULT)
     public Integer save(User user) {
         userMapper.insert(user);
-
+        if (1 == 1) {
+            throw new RuntimeException();
+        }
         return user.getId();
     }
 
