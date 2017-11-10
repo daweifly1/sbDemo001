@@ -100,7 +100,7 @@ public class UserService {
     }
 
 
-    @GuavaLocalCache
+    @GuavaLocalCache(keyExt = "#pageNumber")
     public Integer queryTestLocalCache(Integer pageNumber) {
         logger.info(Thread.currentThread().getName() + "========================== queryTestLocalCache.");
         try {
