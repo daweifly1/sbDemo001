@@ -21,7 +21,7 @@ public class RedisTest extends SpringbootexampleApplicationTests {
     public void testGuavaLocalCache() throws InterruptedException {
         Integer m = userService.queryTestLocalCache(1);
         logger.info(Thread.currentThread().getName() + "    ====,{}", m);
-        int CONCURRENT_NUM = 100;
+        int CONCURRENT_NUM = 1000;
         CyclicBarrier barrier = new CyclicBarrier(CONCURRENT_NUM);
         CountDownLatch latch = new CountDownLatch(CONCURRENT_NUM);
         for (int i = 0; i < CONCURRENT_NUM; i++) {

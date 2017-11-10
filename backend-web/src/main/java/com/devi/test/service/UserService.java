@@ -109,6 +109,9 @@ public class UserService {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        if (m == 4) {
+            return null;
+        }
         return m;
     }
 

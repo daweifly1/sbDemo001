@@ -34,6 +34,8 @@ public class GuavaLocalCacheAdvice {
 
     private ExpressionParser parser = new SpelExpressionParser();
 
+    private Object nullObject = new Object();
+
     Map<String, LoadingCache<String, Object>> cacheMap = new ConcurrentHashMap<>();
 
     @Pointcut("@annotation(com.devi.cache.interceptor.GuavaLocalCache)")
@@ -47,15 +49,20 @@ public class GuavaLocalCacheAdvice {
             Method method = getMethod(pjp);
             final String key = parseKey(localCache.preFix(), localCache.keyExt(), method, pjp.getArgs());
 
-            LoadingCache<String, Object> cache = getCacheFromCacheMap(localCache.group(), localCache, pjp);
-            return cache.get(key);
+            LoadingCache<String, Object> cache = getCacheFromCacheMap(localCache, pjp);
+            Object o = cache.get(key);
+            if (o == nullObject) {
+                return null;
+            }
+            return o;
         } catch (Exception e) {
             logger.warn("cacheExcute error .", e);
         }
         return null;
     }
 
-    private LoadingCache<String, Object> getCacheFromCacheMap(String group, GuavaLocalCache localCache, final ProceedingJoinPoint pjp) {
+    private LoadingCache<String, Object> getCacheFromCacheMap(final GuavaLocalCache localCache, final ProceedingJoinPoint pjp) {
+        String group = localCache.group();
         LoadingCache<String, Object> cache = cacheMap.get(group);
         if (null != cache) {
             return cache;
@@ -68,9 +75,13 @@ public class GuavaLocalCacheAdvice {
                     @Override
                     public Object load(String key) {
                         try {
-                            return pjp.proceed();
+                            Object o = pjp.proceed();
+                            if (localCache.nullAble() && null == o) {
+                                return nullObject;
+                            }
+                            return o;
                         } catch (Throwable throwable) {
-                            throwable.printStackTrace();
+                            logger.warn("getCacheFromCacheMap error .{}", throwable.getMessage());
                         }
                         return null;
                     }
