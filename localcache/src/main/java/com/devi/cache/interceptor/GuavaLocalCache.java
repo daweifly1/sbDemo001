@@ -25,4 +25,11 @@ public @interface GuavaLocalCache {
     String group() default "default";
 
     String preFix() default "guava";
+
+    /**
+     * 缓存key具体参数，支持SPEL表达式； 完整缓存key为  key +  keyExt
+     *
+     * @return
+     */
+    String keyExt() default "";
 }
