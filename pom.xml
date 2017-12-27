@@ -19,6 +19,8 @@
         <module>mybatis-dds</module>
         <module>backend-web</module>
         <module>localcache</module>
+        <module>mqServer</module>
+        <module>mqClient</module>
     </modules>
 
     <properties>
@@ -114,6 +116,24 @@
                     </exclusion>
                 </exclusions>
             </dependency>-->
+
+            <!-- rabbitmq客户端 -->
+            <dependency>
+                <groupId>com.rabbitmq</groupId>
+                <artifactId>amqp-client</artifactId>
+                <version>3.0.4</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>
