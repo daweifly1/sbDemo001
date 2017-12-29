@@ -16,21 +16,35 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class UserService {
-    private Logger logger = LoggerFactory.getLogger(UserService.class);
+public class UserService2 {
+    private Logger logger = LoggerFactory.getLogger(UserService2.class);
 
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private UserService userService;
+
+
     int m = 1;
 
-
-    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.DEFAULT)
-    public Integer save(User user) {
+    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT)
+    @Cacheable(value = {"ELEMENT_COMMON"}, key = "T(com.devi.test.constant.CacheKeyUtil).USER_ID+#id", cacheManager = "redisCacheManager")
+    public Integer saveDouble(User user) {
         userMapper.insert(user);
+//        user.setId(null);
+//        user.setName("UserService");
+//        userService.save(user);
         if (1 == 1) {
             throw new RuntimeException();
         }
+        return user.getId();
+    }
+
+
+    public Integer save(User user) {
+        userMapper.insert(user);
+
         return user.getId();
     }
 
@@ -100,7 +114,7 @@ public class UserService {
     }
 
 
-    @GuavaLocalCache(keyExt = "#pageNumber")
+    @GuavaLocalCache
     public Integer queryTestLocalCache(Integer pageNumber) {
         logger.info(Thread.currentThread().getName() + "========================== queryTestLocalCache.");
         try {
@@ -108,9 +122,6 @@ public class UserService {
             m++;
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-        if (m == 4) {
-            return null;
         }
         return m;
     }
