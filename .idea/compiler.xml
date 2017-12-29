@@ -7,12 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="backend-web" />
+        <module name="localcache" />
         <module name="mybatis-dds" />
         <module name="mybatis-pageplugin" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="backend-web" target="1.7" />
+      <module name="localcache" target="1.7" />
       <module name="mybatis-dds" target="1.7" />
       <module name="mybatis-pageplugin" target="1.7" />
       <module name="sbDemo001" target="1.7" />
