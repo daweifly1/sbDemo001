@@ -16,7 +16,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="localcache" />
     <orderEntry type="library" name="Maven: com.alibaba:druid:1.0.25" level="project" />
     <orderEntry type="module-library">
       <library name="Maven: com.alibaba:jconsole:1.8.0">
