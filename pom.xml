@@ -21,6 +21,7 @@
         <module>localcache</module>
         <module>mqServer</module>
         <module>mqClient</module>
+        <module>akka-test</module>
     </modules>
 
     <properties>

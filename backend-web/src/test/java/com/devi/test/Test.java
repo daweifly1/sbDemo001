@@ -2,7 +2,9 @@ package com.devi.test;
 
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -97,8 +99,15 @@ public class Test {
     public static void main(String[] args) {
 //        test1()
 
-        String ss="2";
-        System.out.println(ss.equals(2+""));
+        String ss = "2";
+        System.out.println(ss.equals(2 + ""));
+        Map<Long, Boolean> m = new HashMap<>();
+        Long id=999L;
+        m.put(id, true);
+        System.out.println(Boolean.TRUE == m.get(id));
+
+
+
 
     }
 

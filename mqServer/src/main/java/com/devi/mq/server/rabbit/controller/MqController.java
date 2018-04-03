@@ -36,4 +36,17 @@ public class MqController {
         }
         return resultDO;
     }
+
+    @RequestMapping(value = "/sendTopic", method = RequestMethod.GET)
+    public Map<String, Object> send(@RequestParam("content") String content, String p) {
+        Map<String, Object> resultDO = new HashMap<>();
+        try {
+            producer.sendTopicMessage(content, p);
+            resultDO.put("success", true);
+        } catch (Exception e) {
+            resultDO.put("success", false);
+            resultDO.put("message", e.getMessage());
+        }
+        return resultDO;
+    }
 }

@@ -9,13 +9,18 @@ import java.io.InputStreamReader;
  * Created by hzchendawei on 2017/9/13.
  */
 public class YunyinyueDownload {
-
+    String str = new String("good");
+    String str1 = "good";
+    String str2 = "good";
 
     public static void main(String[] args) {
 //        test1()
 
-        String ss = "2";
-        System.out.println(ss.equals(2 + ""));
+
+        YunyinyueDownload example = new YunyinyueDownload();
+        System.out.println(example.str == example.str1);//输出为false
+        System.out.println(example.str2 == example.str1);//输出为true
+
 
     }
 
