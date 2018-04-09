@@ -20,6 +20,8 @@ public class MapperBean {
 
     private List<ModelProperties> propertiesList;
 
+    @Data
+    @ToString
     public static class ModelProperties {
         private String column;
 
@@ -27,28 +29,10 @@ public class MapperBean {
 
         private String jdbcType;
 
-        public String getColumn() {
-            return column;
-        }
+        private String comment;
 
-        public void setColumn(String column) {
-            this.column = column;
-        }
+        private Integer length;
 
-        public String getProperty() {
-            return property;
-        }
-
-        public void setProperty(String property) {
-            this.property = property;
-        }
-
-        public String getJdbcType() {
-            return jdbcType;
-        }
-
-        public void setJdbcType(String jdbcType) {
-            this.jdbcType = jdbcType;
-        }
+        private boolean nullAble;
     }
 }

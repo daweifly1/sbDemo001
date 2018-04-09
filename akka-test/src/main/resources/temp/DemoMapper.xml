@@ -30,7 +30,7 @@
         <set>
             <#list propertiesList as p><#if p.column== "id"><#else>
             <if test="${p.property} != null">
-                p.column =${r'#{'}  ${p.property},jdbcType=${p.jdbcType}},
+                p.column =${r'#{'}${p.property},jdbcType=${p.jdbcType}},
             </if>
             </#if></#list>
         </set>
@@ -43,8 +43,13 @@
         `id` bigint(20) NOT NULL COMMENT '主键',
 <#list propertiesList as p>
 <#if p.column== "id">
+
+<#elseif  p.column== "db_create_author">
+<#elseif  p.column== "db_create_time">
+<#elseif  p.column== "db_update_author">
+<#elseif  p.column== "db_update_time">
 <#else>
-        `${p.column}`  <#if p.jdbcType=="VARCHAR" > varchar(256) <#elseif p.jdbcType=="INTEGER"> int(10) <#elseif p.jdbcType=="BIGINT">bigint(20) <#elseif p.jdbcType=="TIMESTAMP">  timestamp   </#if>  NOT NULL COMMENT '备注',
+        `${p.column}`  <#if p.jdbcType=="VARCHAR" > varchar(${p.length}) <#elseif p.jdbcType=="INTEGER"> int(10) <#elseif p.jdbcType=="BIGINT">bigint(20) <#elseif p.jdbcType=="TIMESTAMP">  timestamp   </#if> <#if p.nullAble>NULL <#else> NOT NULL</#if> COMMENT '${p.comment}',
         </#if>
         </#list>
         `db_create_author` varchar(64) DEFAULT NULL COMMENT '操作人',

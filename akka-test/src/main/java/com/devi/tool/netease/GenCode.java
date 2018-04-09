@@ -72,13 +72,21 @@ public class GenCode {
         mapperBean.setNamespace(mapperPackagePrefix + "." + clazz.getSimpleName() + "Mapper");
         mapperBean.setType(cn);
         mapperBean.setBeanName(clazz.getSimpleName());
-        mapperBean.setTableName("element" + genColum(clazz.getSimpleName()));
+        mapperBean.setTableName("matter" + genColum(clazz.getSimpleName()));
         List<MapperBean.ModelProperties> list = new ArrayList<>();
         for (Field f : fields) {
             //打印每个属性的类型名字
             System.out.println(f.getType().getName() + ":" + f.getName());
 
             MapperBean.ModelProperties p = new MapperBean.ModelProperties();
+
+            // 获取类上的注解
+            CollumComment annotation = f.getAnnotation(CollumComment.class);
+            // 输出注解上的属性
+            String comment = annotation.value();
+            p.setComment(comment);
+            p.setLength(annotation.length());
+            p.setNullAble(annotation.nullAble());
             p.setColumn(genColum(f.getName()));
             p.setProperty(f.getName());
             if (f.getType().getName().contains("String")) {
@@ -103,6 +111,8 @@ public class GenCode {
         }
         parseHtmlFile(temDir + "temp", "DemoMapper.xml", out + "/" + clazz.getSimpleName() + "Mapper.xml", BeanMapUtil.beanToMap(mapperBean));
         parseHtmlFile(temDir + "temp", "DemoMapper.java", out + "/" + clazz.getSimpleName() + "Mapper.java", BeanMapUtil.beanToMap(mapperBean));
+
+        parseHtmlFile(temDir + "temp", "Model.java", out + "/" + clazz.getSimpleName() + ".java", BeanMapUtil.beanToMap(mapperBean));
     }
 
     private static String genColum(String str) {
