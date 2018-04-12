@@ -41,7 +41,7 @@ public class EnjoyThings {
     @CollumComment(value = "达人推荐", length = 255)
     private String talentRecommend;
 
-    @CollumComment(value = "达人推荐图片", length = 2000)
+    @CollumComment(value = "达人推荐图片，json", length = 2000)
     private String talentRecommendImg;
 
 //    @CollumComment(value = "达人昵称")
@@ -60,10 +60,10 @@ public class EnjoyThings {
     private Integer status;
 
     @CollumComment(value = "类型 0新增 1导入,2社区初始")
-    private Integer type;
+    private Integer sourceType;
 
-    @CollumComment(value = "角标", length = 32)
-    private String cornerMark;
+//    @CollumComment(value = "角标", length = 32)
+//    private String cornerMark;
 
     @CollumComment(value = "创建人", length = 64)
     private String dbCreateAuthor;

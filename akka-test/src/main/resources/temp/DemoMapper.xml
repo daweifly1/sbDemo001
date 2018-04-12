@@ -25,12 +25,25 @@
     )
     </insert>
 
+    <insert id="batchInsertEdit" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
+        insert into `${tableName}` (
+        id<#list propertiesList as p><#if p.column== "id"><#else>,${p.column}</#if></#list>
+        )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">(
+        seq<#list propertiesList as p><#if p.column== "id"><#else>,${r'#{item.'}${p.property},jdbcType=${p.jdbcType}${r'}'}</#if></#list>
+        )
+        </foreach>
+    </insert>
+
+
+
     <update id="updateByPrimaryKeySelective" parameterType="com.netease.kaola.generic.element.model.babyplan.BabyArticle">
         update `${tableName}`
         <set>
             <#list propertiesList as p><#if p.column== "id"><#else>
             <if test="${p.property} != null">
-                p.column =${r'#{'}${p.property},jdbcType=${p.jdbcType}},
+                ${p.column} =${r'#{'}${p.property},jdbcType=${p.jdbcType}},
             </if>
             </#if></#list>
         </set>
