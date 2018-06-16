@@ -1,29 +1,20 @@
 package com.devi.tool;
 
+import java.util.regex.Pattern;
+
 /**
  * Created by hzchendawei on 2018/3/15.
  */
 public class PropTest {
 
+    private static final Pattern KAOLA_HOST_PATTERN = Pattern.compile("^https??://[^/]*?\\.kaola\\.com(\\.hk)??([/?]|$)(.*)?"); // 防止出现类似http(s)://www.baidu.com/www.kaola.com的钓鱼网站
+
+    private static final Pattern NETEASE_HOST_PATTERN = Pattern.compile("^https??://[^/]*?\\.netease\\.com/.*");
     public static void main(String[] args) {
-        String prop = "solo.maxTotal=\n" +
-                "solo.maxIdle=10\n" +
-                "solo.minIdle=5\n" +
-                "solo.maxWaitMillis=500\n" +
-                "solo.clientName=element\n" +
-                "solo.timeout=500\n" +
-                "solo.connectionTimeout=500\n" +
-                "solo.clusterKey=kaola_element_compose_level1";
-
-        String[] ss = prop.split("\n");
-        for (String s : ss) {
-            if (s.contains("=")) {
-                String s1 = s.substring(0, s.indexOf("="));
-                String s2 = s1 + "=${" + s1 + "}";
-                System.out.println(s2);
-            }
+        String target="http://rd.da.netease.com/redirect?t=58e051c7b7433c80&p=e17a6cd0&proId=1024&target=https%3A%2F%2Fwww.kaola.com%2Factivity%2Fdetail%2F30953.shtml%3Ftag%3Dea467f1dcce6ada85b1ae151610748b5";
+        if (NETEASE_HOST_PATTERN.matcher(target).find() || KAOLA_HOST_PATTERN.matcher(target).find()) {
+            System.out.println("ddd");
         }
-
 
     }
 }

@@ -43,6 +43,10 @@ public class GenCode {
             }
         }
 
+
+
+
+
 //        MapperBean mapperBean = new MapperBean();
 //        mapperBean.setNamespace(mapperPackagePrefix + ".TestModel");
 //        mapperBean.setType("ddddddddddddd");
@@ -72,7 +76,7 @@ public class GenCode {
         mapperBean.setNamespace(mapperPackagePrefix + "." + clazz.getSimpleName() + "Mapper");
         mapperBean.setType(cn);
         mapperBean.setBeanName(clazz.getSimpleName());
-        mapperBean.setTableName("matter" + genColum(clazz.getSimpleName()));
+        mapperBean.setTableName("mt" + genColum(clazz.getSimpleName()));
         List<MapperBean.ModelProperties> list = new ArrayList<>();
         for (Field f : fields) {
             //打印每个属性的类型名字

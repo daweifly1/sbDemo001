@@ -10,7 +10,7 @@ import java.util.Date;
  * Created by hzchendawei on 2018/4/3.
  */
 @Data
-public class CornerMark {
+public class EnjoyThingsCornerMark {
     @CollumComment(value = "主键")
     private Long id;
 
