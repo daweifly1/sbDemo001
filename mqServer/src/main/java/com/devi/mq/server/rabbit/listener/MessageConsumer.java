@@ -13,7 +13,7 @@ public class MessageConsumer implements MessageListener {
 
     @Override
     public void onMessage(Message message) {
-        log.info("receive message:{}", message);
+        log.info("SSSS  receive message:{}", message);
     }
 
 }

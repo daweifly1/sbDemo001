@@ -49,4 +49,17 @@ public class MqController {
         }
         return resultDO;
     }
+
+    @RequestMapping(value = "/sendFanout", method = RequestMethod.GET)
+    public Map<String, Object> sendFanout(@RequestParam("content") String content) {
+        Map<String, Object> resultDO = new HashMap<>();
+        try {
+            producer.sendFanoutMessage(content);
+            resultDO.put("success", true);
+        } catch (Exception e) {
+            resultDO.put("success", false);
+            resultDO.put("message", e.getMessage());
+        }
+        return resultDO;
+    }
 }

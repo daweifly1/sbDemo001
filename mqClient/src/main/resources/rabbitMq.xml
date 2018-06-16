@@ -6,34 +6,85 @@
      http://www.springframework.org/schema/beans
      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
      http://www.springframework.org/schema/rabbit
-     http://www.springframework.org/schema/rabbit/spring-rabbit-1.0.xsd">
-    <!--配置connection-factory，指定连接rabbit server参数 -->
-    <rabbit:connection-factory id="connectionFactory"
-                               username="guest" password="guest" host="127.0.0.1" port="5672"/>
+     http://www.springframework.org/schema/rabbit/spring-rabbit-1.2.xsd">
 
-    <!--定义rabbit template用于数据的接收和发送 -->
-    <rabbit:template id="amqpTemplate" connection-factory="connectionFactory"
-                     exchange="exchangeTest"/>
-
-    <!--通过指定下面的admin信息，当前producer中的exchange和queue会在rabbitmq服务器上自动生成 -->
-    <rabbit:admin connection-factory="connectionFactory"/>
-
-    <!--定义queue -->
-    <rabbit:queue name="queueTest" durable="true" auto-delete="false" exclusive="false"/>
-
-    <!-- 定义direct exchange，绑定queueTest -->
-    <rabbit:direct-exchange name="exchangeTest" durable="true" auto-delete="false">
-        <rabbit:bindings>
-            <rabbit:binding queue="queueTest" key="queueTestKey"></rabbit:binding>
-        </rabbit:bindings>
-    </rabbit:direct-exchange>
 
     <!-- 消息接收者 -->
     <bean id="messageReceiver" class="com.devi.mq.server.rabbit.listener.MessageConsumer"></bean>
 
+    <!--配置connection-factory，指定连接rabbit server参数 -->
+    <rabbit:connection-factory id="connectionFactory" username="guest" password="guest" host="127.0.0.1" port="5672"/>
+
+
+    <!--通过指定下面的admin信息，当前producer中的exchange和queue会在rabbitmq服务器上自动生成 -->
+    <rabbit:admin id="connectAdmin" connection-factory="connectionFactory"/>
+
+    <!--定义queue -->
+    <!--<rabbit:queue name="queueTest" durable="true" auto-delete="false" exclusive="false" declared-by="connectAdmin" />-->
+    <rabbit:queue name="test123queue" durable="true" auto-delete="false" exclusive="false" declared-by="connectAdmin"/>
+    <!-- 定义direct exchange，绑定queueTest -->
+    <rabbit:direct-exchange name="exchangeTest" durable="true" auto-delete="false" declared-by="connectAdmin">
+        <rabbit:bindings>
+            <!--<rabbit:binding queue="queueTest" key="queueTestKey"></rabbit:binding>-->
+            <rabbit:binding queue="test123queue" key="queueTestKey"></rabbit:binding>
+
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+
     <!-- queue litener  观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象-->
     <rabbit:listener-container connection-factory="connectionFactory">
-        <rabbit:listener queues="queueTest" ref="messageReceiver"/>
+        <rabbit:listener queues="test123queue" ref="messageReceiver"/>
     </rabbit:listener-container>
 
+
+    <!-- 分隔线######################################################################################################################################### -->
+    <rabbit:connection-factory id="fanoutConnectionFactory" username="guest" password="guest" host="127.0.0.1"
+                               port="5672"/>
+    <!--通过指定下面的admin信息，当前producer中的exchange和queue会在rabbitmq服务器上自动生成 -->
+    <rabbit:admin id="fanoutAdmin" connection-factory="fanoutConnectionFactory"/>
+
+    <rabbit:queue name="fanoutQueue" durable="true" auto-delete="false" exclusive="false" declared-by="fanoutAdmin"/>
+    <rabbit:queue name="fanoutQueue2" durable="true" auto-delete="false" exclusive="false" declared-by="fanoutAdmin"/>
+    <!-- topic主题 -->
+    <rabbit:fanout-exchange name="fanoutExchangeTest" xmlns="http://www.springframework.org/schema/rabbit"
+                            durable="true" declared-by="fanoutAdmin">
+        <bindings>
+            <binding queue="fanoutQueue2"/>
+        </bindings>
+    </rabbit:fanout-exchange>
+
+    <!-- 消息接收者 -->
+    <bean id="fanoutMessageReceiver" class="com.devi.mq.server.rabbit.listener.MessageConsumer"></bean>
+
+    <!-- queue litener  观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象-->
+    <rabbit:listener-container connection-factory="fanoutConnectionFactory">
+        <rabbit:listener queues="fanoutQueue2" ref="fanoutMessageReceiver"/>
+    </rabbit:listener-container>
+
+
+    <!-- 分隔线######################################################################################################################################### -->
+    <!--配置connection-factory，指定连接rabbit server参数 -->
+    <rabbit:connection-factory id="topicConnectionFactory" username="guest" password="guest" host="127.0.0.1"
+                               port="5672"/>
+
+    <!--通过指定下面的admin信息，当前producer中的exchange和queue会在rabbitmq服务器上自动生成 -->
+    <rabbit:admin id="connectAdmin2" connection-factory="topicConnectionFactory"/>
+
+    <!-- autoDelete:是否自动删除 durable:持久化  -->
+    <rabbit:queue name="topicQueue" durable="true" auto-delete="false" exclusive="false" declared-by="connectAdmin"/>
+    <!-- topic主题 -->
+    <rabbit:topic-exchange name="topicExchangeTest" xmlns="http://www.springframework.org/schema/rabbit" durable="true"
+                           declared-by="connectAdmin2">
+        <bindings>
+            <binding queue="topicQueue" pattern="#.test123"/>
+        </bindings>
+    </rabbit:topic-exchange>
+
+    <!-- 消息接收者 -->
+    <bean id="topicMessageReceiver" class="com.devi.mq.server.rabbit.listener.MessageConsumer"></bean>
+
+    <!-- queue litener  观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象-->
+    <rabbit:listener-container connection-factory="topicConnectionFactory">
+        <rabbit:listener queues="topicQueue" ref="topicMessageReceiver"/>
+    </rabbit:listener-container>
 </beans>
