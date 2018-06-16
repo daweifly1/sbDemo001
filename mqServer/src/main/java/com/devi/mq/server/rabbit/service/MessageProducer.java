@@ -21,6 +21,11 @@ public class MessageProducer {
     @Resource(name = "fanoutTemplate")
     private AmqpTemplate fanoutTemplate;
 
+    @Resource(name = "msgTemplate")
+    private AmqpTemplate msgTemplate;
+
+
+
     public void sendMessage(Object message) {
         log.info("to send message:{}", message);
         amqpTemplate.convertAndSend("queueTestKey", message);
@@ -34,5 +39,10 @@ public class MessageProducer {
     public void sendFanoutMessage(Object message) {
         log.info("to send message:{}", message);
         fanoutTemplate.convertAndSend("queueTestKey", message);
+    }
+
+    public void sendMsg(Object message,String p) {
+        log.info("to send message:{}", message);
+        msgTemplate.convertAndSend(p, message);
     }
 }

@@ -62,4 +62,18 @@ public class MqController {
         }
         return resultDO;
     }
+
+
+    @RequestMapping(value = "/sendMsg", method = RequestMethod.GET)
+    public Map<String, Object> sendMsg(@RequestParam("content") String content) {
+        Map<String, Object> resultDO = new HashMap<>();
+        try {
+            producer.sendMsg(content, "chendawei");
+            resultDO.put("success", true);
+        } catch (Exception e) {
+            resultDO.put("success", false);
+            resultDO.put("message", e.getMessage());
+        }
+        return resultDO;
+    }
 }

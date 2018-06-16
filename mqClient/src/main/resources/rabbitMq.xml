@@ -27,14 +27,17 @@
         <rabbit:bindings>
             <!--<rabbit:binding queue="queueTest" key="queueTestKey"></rabbit:binding>-->
             <rabbit:binding queue="test123queue" key="queueTestKey"></rabbit:binding>
-
         </rabbit:bindings>
     </rabbit:direct-exchange>
 
     <!-- queue litener  观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象-->
     <rabbit:listener-container connection-factory="connectionFactory">
         <rabbit:listener queues="test123queue" ref="messageReceiver"/>
+        <rabbit:listener queues="enjoy" ref="messageReceiver"/>
     </rabbit:listener-container>
+
+    <rabbit:queue name="enjoy" durable="true" auto-delete="false" exclusive="false" declared-by="connectAdmin"/>
+
 
 
     <!-- 分隔线######################################################################################################################################### -->

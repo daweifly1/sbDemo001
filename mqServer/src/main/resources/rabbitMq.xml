@@ -94,4 +94,10 @@
     <rabbit:listener-container connection-factory="topicConnectionFactory">
         <rabbit:listener queues="topicQueue" ref="messageReceiver"/>
     </rabbit:listener-container>
+
+
+    <!-- 分隔线######################################################################################################################################### -->
+    <!--发布需要通知(需要在平台创建exchange queue )-->
+    <rabbit:template id="msgTemplate" connection-factory="connectionFactory"  exchange="exchange.direct.enjoyThingsMsg" routing-key="chendawei"/>
+
 </beans>
