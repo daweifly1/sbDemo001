@@ -44,9 +44,6 @@ public class GenCode {
         }
 
 
-
-
-
 //        MapperBean mapperBean = new MapperBean();
 //        mapperBean.setNamespace(mapperPackagePrefix + ".TestModel");
 //        mapperBean.setType("ddddddddddddd");
@@ -98,6 +95,8 @@ public class GenCode {
             } else if (f.getType().getName().contains("Integer")) {
                 p.setJdbcType("INTEGER");
             } else if (f.getType().getName().contains("Date")) {
+                p.setJdbcType("TIMESTAMP");
+            } else if (f.getType().getName().contains("Timestamp")) {
                 p.setJdbcType("TIMESTAMP");
             } else if (f.getType().getName().contains("Long")) {
                 p.setJdbcType("BIGINT");
