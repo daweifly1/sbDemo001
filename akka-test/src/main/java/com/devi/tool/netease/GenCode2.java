@@ -1,7 +1,9 @@
 package com.devi.tool.netease;
 
 import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -15,17 +17,22 @@ public class GenCode2 {
 
 
     public static void main(String[] args) throws Exception {
-        List<String> classNames = PackageUtil.getClassName(modelPath, false);
+//        List<String> classNames = PackageUtil.getClassName(modelPath, false);
+//
+//        if (null != classNames && classNames.size() > 0) {
+//            for (String cn : classNames) {
+////                genCopy(cn, "vo", "data");
+//
+//                genMock(cn, "model");
+//            }
+//        }
 
-        if (null != classNames && classNames.size() > 0) {
-            for (String cn : classNames) {
-//                genCopy(cn, "vo", "data");
-
-                genMock(cn, "model");
-            }
-        }
-
+        Map a=getMap();
+        System.out.println(a);
     }
+
+
+
 
     private static void genCopy(String cn, String o, String t) throws ClassNotFoundException {
         //根据类名获得其对应的Class对象 写上你想要的类名就是了 注意是全名 如果有包的话要加上 比如java.Lang.String
@@ -101,5 +108,18 @@ public class GenCode2 {
         Random random = new Random();
         StringBuffer sb = new StringBuffer();
         return random.nextInt(length) + 1000L;
+    }
+
+    public static Map getMap() {
+        Map map=null;
+        try {
+            map=new HashMap();
+            map.put("s","s");
+            return map;
+        }finally {
+            map=new HashMap();
+            map.put("s","s2");
+        }
+
     }
 }
