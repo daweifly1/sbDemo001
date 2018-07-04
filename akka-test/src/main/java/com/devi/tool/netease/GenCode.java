@@ -83,6 +83,9 @@ public class GenCode {
 
             // 获取类上的注解
             CollumComment annotation = f.getAnnotation(CollumComment.class);
+            if (annotation == null) {
+                continue;
+            }
             // 输出注解上的属性
             String comment = annotation.value();
             p.setComment(comment);
