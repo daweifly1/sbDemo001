@@ -1,7 +1,10 @@
 package com.devi;
 
+import com.devi.tool.util.DESCoder;
+
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,19 +13,48 @@ import java.util.regex.Pattern;
  */
 public class CommonTest {
 
+    private static final String key = "f3wEtRrV6q0=";
+
+    private static final String sepator = "_______";
+
     public static void main(String[] args) {
-//        String ss = "httpxs://chendawei.top/dd.jpg";
-//        boolean r = checkImgUrlValid(ss);
-//        System.out.println(r);
 
-//        String test = "hahahhehe sendCode\":\"12367890123rsdfsdfsdfdsahahhehe sendCode\":\"12367890123rsdfsdfsdfds";
-//        test = regMatch(test, "sendCode\":\"([\\d]{8})([\\d]{3})");
-//        System.out.println(test);
+        System.out.println(getEncyTeamId(10019L));
+
+        String teamId = "10019_______i4lR%2F6%2B0B6Y%3D";
+        Long realTeamId = 0L;
+        try {
+            realTeamId = Long.valueOf(teamId.split(sepator)[0]);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        if (!isEffectTeamId(realTeamId, teamId.split(sepator)[1])) {
+            System.out.println("非法teamId参数");
+        } else {
+            System.out.println("ok");
+        }
 
 
-        String s = "...ddd!!!.??";
+    }
 
-        System.out.println(removeLastSymbol(s));
+    private static boolean isEffectTeamId(Long teamId, String encyTeamId) {
+        return (teamId + sepator + encyTeamId).equals(getEncyTeamId(teamId));
+    }
+
+    /**
+     * 获取加密的团id信息
+     *
+     * @param teamId 团id
+     */
+    private static String getEncyTeamId(Long teamId) {
+        try {
+            byte[] inputData = DESCoder.encrypt(String.valueOf(teamId).getBytes(), key);
+            String value = DESCoder.encryptBASE64(inputData).replaceAll("\r|\n", "");
+            value = URLEncoder.encode(value, "utf-8");
+            return teamId + sepator + value;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     private static String removeLastSymbol(String s) {
