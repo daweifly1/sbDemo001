@@ -115,10 +115,11 @@ public class GenCode {
         if (!outF.exists()) {
             outF.mkdir();
         }
-        parseHtmlFile(temDir + "temp", "DemoMapper.xml", out + "/" + clazz.getSimpleName() + "Mapper.xml", BeanMapUtil.beanToMap(mapperBean));
+        parseHtmlFile(temDir + "temp", "DemoMapper.ftl", out + "/" + clazz.getSimpleName() + "Mapper.xml", BeanMapUtil.beanToMap(mapperBean));
         parseHtmlFile(temDir + "temp", "DemoMapper.java", out + "/" + clazz.getSimpleName() + "Mapper.java", BeanMapUtil.beanToMap(mapperBean));
 
         parseHtmlFile(temDir + "temp", "Model.java", out + "/" + clazz.getSimpleName() + ".java", BeanMapUtil.beanToMap(mapperBean));
+        parseHtmlFile(temDir + "temp", "ModelForm.java", out + "/" + clazz.getSimpleName() + "Form.java", BeanMapUtil.beanToMap(mapperBean));
     }
 
     private static String genColum(String str) {

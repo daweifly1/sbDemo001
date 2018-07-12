@@ -1,10 +1,12 @@
 package com.devi;
 
 import com.devi.tool.util.DESCoder;
+import org.joda.time.DateTime;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
+import java.sql.Timestamp;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,21 +21,25 @@ public class CommonTest {
 
     public static void main(String[] args) {
 
-        System.out.println(getEncyTeamId(10019L));
+//        System.out.println(getEncyTeamId(9045L));
+//
+//        String teamId = "9045_______clBZy%2FnsToA%3D";
+//        Long realTeamId = 0L;
+//        try {
+//            realTeamId = Long.valueOf(teamId.split(sepator)[0]);
+//        } catch (NumberFormatException e) {
+//            e.printStackTrace();
+//        }
+//        if (!isEffectTeamId(realTeamId, teamId.split(sepator)[1])) {
+//            System.out.println("非法teamId参数");
+//        } else {
+//            System.out.println("ok");
+//        }
 
-        String teamId = "10019_______i4lR%2F6%2B0B6Y%3D";
-        Long realTeamId = 0L;
-        try {
-            realTeamId = Long.valueOf(teamId.split(sepator)[0]);
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
-        if (!isEffectTeamId(realTeamId, teamId.split(sepator)[1])) {
-            System.out.println("非法teamId参数");
-        } else {
-            System.out.println("ok");
-        }
+        DateTime t=new DateTime("2018-07-01 00:00:00");
 
+        DateTime dateTime = t.withHourOfDay(12).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0);
+        System.out.println( new Timestamp(dateTime.getMillis()).toString());
 
     }
 
