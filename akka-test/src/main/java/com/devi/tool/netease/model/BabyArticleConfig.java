@@ -16,6 +16,10 @@ public class BabyArticleConfig implements Serializable {
     private Long articleId;
 
 
+    //状态，0保存 1发布，2编辑
+    @CollumComment(value = "状态，0保存 1发布，2编辑")
+    private Integer status;
+
     @CollumComment(value = "排序")
     private Long sort;
 

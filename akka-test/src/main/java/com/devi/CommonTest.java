@@ -7,6 +7,9 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,10 +39,17 @@ public class CommonTest {
 //            System.out.println("ok");
 //        }
 
-        DateTime t=new DateTime("2018-07-01 00:00:00");
+//        DateTime t=new DateTime("2018-07-01 00:00:00");
+//
+//        DateTime dateTime = t.withHourOfDay(12).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0);
+//        System.out.println( new Timestamp(dateTime.getMillis()).toString());
 
-        DateTime dateTime = t.withHourOfDay(12).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0);
-        System.out.println( new Timestamp(dateTime.getMillis()).toString());
+
+        List<Long> goodsIdList =new ArrayList<>();
+        goodsIdList.add(null);goodsIdList.add(null);goodsIdList.add(null);goodsIdList.add(null);goodsIdList.add(null);
+        goodsIdList.removeAll(Collections.singleton(null));
+
+        System.out.println(goodsIdList);
 
     }
 

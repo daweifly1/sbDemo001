@@ -1,8 +1,5 @@
 package com.devi.tool.netease;
 
-import com.devi.tool.netease.model2.RedenvelopeScheduleVO;
-import com.devi.tool.util.FastJsonUtil;
-
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
@@ -109,9 +106,9 @@ public class GenCodeFromJson {
                 "\t\"teamLeaderEveryDay\": 11,\n" +
                 "\t\"timeType\": 1\n" +
                 "}";
-        RedenvelopeScheduleVO vo = FastJsonUtil.parse(json, RedenvelopeScheduleVO.class);
-
-        genMockFromJson("com.devi.tool.netease.model2.RedenvelopeScheduleVO", "model", vo, "");
+//        RedenvelopeScheduleVO vo = FastJsonUtil.parse(json, RedenvelopeScheduleVO.class);
+//
+//        genMockFromJson("com.devi.tool.netease.model2.RedenvelopeScheduleVO", "model", vo, "");
 
     }
 

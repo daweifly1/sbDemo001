@@ -119,7 +119,19 @@ public class GenCode {
         parseHtmlFile(temDir + "temp", "DemoMapper.java", out + "/" + clazz.getSimpleName() + "Mapper.java", BeanMapUtil.beanToMap(mapperBean));
 
         parseHtmlFile(temDir + "temp", "Model.java", out + "/" + clazz.getSimpleName() + ".java", BeanMapUtil.beanToMap(mapperBean));
+
+        parseHtmlFile(temDir + "temp", "ModelDto.java", out + "/" + clazz.getSimpleName() + "Dto.java", BeanMapUtil.beanToMap(mapperBean));
+
         parseHtmlFile(temDir + "temp", "ModelForm.java", out + "/" + clazz.getSimpleName() + "Form.java", BeanMapUtil.beanToMap(mapperBean));
+        parseHtmlFile(temDir + "temp", "ModelParam.java", out + "/" + clazz.getSimpleName() + "Param.java", BeanMapUtil.beanToMap(mapperBean));
+
+
+        parseHtmlFile(temDir + "temp", "ModelBackgroundFacade.java", out + "/" + clazz.getSimpleName() + "BackgroundFacade.java", BeanMapUtil.beanToMap(mapperBean));
+        parseHtmlFile(temDir + "temp", "ModelBackgroundFacadeImpl.java", out + "/" + clazz.getSimpleName() + "BackgroundFacadeImpl.java", BeanMapUtil.beanToMap(mapperBean));
+
+        parseHtmlFile(temDir + "temp", "ModelService.java", out + "/" + clazz.getSimpleName() + "Service.java", BeanMapUtil.beanToMap(mapperBean));
+        parseHtmlFile(temDir + "temp", "ModelServiceImpl.java", out + "/" + clazz.getSimpleName() + "ServiceImpl.java", BeanMapUtil.beanToMap(mapperBean));
+
     }
 
     private static String genColum(String str) {

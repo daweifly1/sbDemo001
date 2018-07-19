@@ -19,9 +19,13 @@ public class BabyImgConfig implements Serializable {
     @CollumComment(value = "类目名称,可以不入库")
     private String categoryName;
 
+    //状态，0保存 1发布，2编辑
+    @CollumComment(value = "状态，0保存 1发布，2编辑")
+    private Integer status;
+
     @CollumComment(value = "各个年龄段图片配置信息")
     private String config;
-    
+
     private List<BabyAgeImgItem> configList;
 
 

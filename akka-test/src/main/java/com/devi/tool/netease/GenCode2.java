@@ -17,18 +17,18 @@ public class GenCode2 {
 
 
     public static void main(String[] args) throws Exception {
-//        List<String> classNames = PackageUtil.getClassName(modelPath, false);
-//
-//        if (null != classNames && classNames.size() > 0) {
-//            for (String cn : classNames) {
-////                genCopy(cn, "vo", "data");
-//
-//                genMock(cn, "model");
-//            }
-//        }
+        List<String> classNames = PackageUtil.getClassName(modelPath, false);
 
-        Map a=getMap();
-        System.out.println(a);
+        if (null != classNames && classNames.size() > 0) {
+            for (String cn : classNames) {
+                genCopy(cn, "babyArticleConfigVO", "vo");
+
+//                genMock(cn, "model");
+            }
+        }
+
+//        Map a=getMap();
+//        System.out.println(a);
     }
 
 

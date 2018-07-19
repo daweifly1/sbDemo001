@@ -7,8 +7,6 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.joda.time.DateTime;
 import org.joda.time.PeriodType;
 
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -271,15 +269,26 @@ public class BabyContextUtil {
 //        System.out.println(p.getYears()+"--"+p.getMonths()+"--"+p.getDays());
 
 
-
-        DateTime begin = new DateTime("2018-05-31");
-        DateTime end = new DateTime("2018-07-02");
+        DateTime end = new DateTime("2018-5-31");
+        DateTime begin = new DateTime("2018-7-2");
         org.joda.time.Period p2 = new org.joda.time.Period(begin, end);
-        System.out.println(p2.getYears()+"--"+p2.getMonths()+"--"+p2.getDays());
+        System.out.println(p2.getYears() + "--" + p2.getMonths() + "--" + p2.getDays());
 
+        String effectiveDate = DateTime.now().toString("yyyyMM");
+        System.out.println(effectiveDate);
+
+        DateTime birthDate = new DateTime("2018-6-17");
+        org.joda.time.Period p3 = new org.joda.time.Period(birthDate, DateTime.now(), PeriodType.months());
+        System.out.println("2018-6-17 出生的月龄:" + p3.getMonths());
+
+        birthDate = new DateTime("2018-6-16");
+        p3 = new org.joda.time.Period(birthDate, DateTime.now(), PeriodType.months());
+        System.out.println("2018-6-16 出生的月龄:" + p3.getMonths());
+
+        birthDate = new DateTime("2018-6-18");
+         p3 = new org.joda.time.Period(birthDate, DateTime.now(), PeriodType.months());
+        System.out.println("2018-6-18 出生的月龄:" + p3.getMonths());
     }
-
-
 
 
     public static DayCompare dayComparePrecise(Date fromDate, Date toDate) {
