@@ -6,6 +6,9 @@ import lombok.ToString;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * 抓取搜索数据规则
+ */
 @Data
 @ToString
 public class BabySearchGoodsRuleVO implements Serializable {
@@ -13,10 +16,15 @@ public class BabySearchGoodsRuleVO implements Serializable {
     private Long id;
     //类目id
     private Long categoryId;
-    private String categoryName;
 
     //关键词
     private String keyWord;
+
+    //年龄区间
+    private Integer ageRange;
+
+    //排序
+    private Long sort;
 
     //细分的类目id集合
     private List<Long> subCateList;

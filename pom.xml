@@ -22,6 +22,7 @@
         <module>mqServer</module>
         <module>mqClient</module>
         <module>akka-test</module>
+        <module>kafka-test</module>
     </modules>
 
     <properties>
