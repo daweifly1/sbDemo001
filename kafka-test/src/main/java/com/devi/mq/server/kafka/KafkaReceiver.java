@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class KafkaReceiver {
-    @KafkaListener(topics = {"zhisheng"})
+    @KafkaListener(topics = {"zhisheng1"})
     public void listen(ConsumerRecord<?, ?> record) {
 
         Optional<?> kafkaMessage = Optional.fromNullable(record.value());
@@ -28,7 +28,7 @@ public class KafkaReceiver {
     }
 
 
-    @KafkaListener(topics = {"zhisheng"})
+    @KafkaListener(topics = {"zhisheng2"})
     public void listen2(ConsumerRecord<?, ?> record) {
 
         Optional<?> kafkaMessage = Optional.fromNullable(record.value());

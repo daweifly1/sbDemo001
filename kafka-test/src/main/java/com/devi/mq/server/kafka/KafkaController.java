@@ -27,7 +27,20 @@ public class KafkaController {
     public Map<String, Object> get(@RequestParam("content") String content) {
         Map<String, Object> resultDO = new HashMap<>();
         try {
-            producer.send();
+            producer.send(content, "zhisheng1");
+            resultDO.put("success", true);
+        } catch (Exception e) {
+            resultDO.put("success", false);
+            resultDO.put("message", e.getMessage());
+        }
+        return resultDO;
+    }
+
+    @RequestMapping(value = "/send2", method = RequestMethod.GET)
+    public Map<String, Object> get2(@RequestParam("content") String content) {
+        Map<String, Object> resultDO = new HashMap<>();
+        try {
+            producer.send(content, "zhisheng2");
             resultDO.put("success", true);
         } catch (Exception e) {
             resultDO.put("success", false);

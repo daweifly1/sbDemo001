@@ -1,4 +1,4 @@
-package com.devi.tool.netease.model2;
+package com.devi.oo;
 
 import lombok.Data;
 import lombok.ToString;
@@ -17,12 +17,11 @@ public class BabySearchGoodsRuleVO implements Serializable {
     //类目id
     private Long categoryId;
 
-    //关键词
-    private String keyWord;
-
     //年龄区间
     private Integer ageRange;
 
+    //关键词
+    private String keyWord;
     //排序
     private Long sort;
 

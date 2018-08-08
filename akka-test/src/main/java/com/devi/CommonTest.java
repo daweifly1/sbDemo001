@@ -2,6 +2,7 @@ package com.devi;
 
 import com.devi.tool.util.DESCoder;
 import org.joda.time.DateTime;
+import org.joda.time.PeriodType;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -43,13 +44,31 @@ public class CommonTest {
 //
 //        DateTime dateTime = t.withHourOfDay(12).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0);
 //        System.out.println( new Timestamp(dateTime.getMillis()).toString());
+        DateTime birth=new DateTime("2017-8-09");
+        DateTime nowDate=DateTime.now();
 
+        System.out.println(birth.getMonthOfYear() +"===="+ nowDate.getMonthOfYear());
 
-        List<Long> goodsIdList =new ArrayList<>();
-        goodsIdList.add(null);goodsIdList.add(null);goodsIdList.add(null);goodsIdList.add(null);goodsIdList.add(null);
-        goodsIdList.removeAll(Collections.singleton(null));
+        org.joda.time.Period p3 = new org.joda.time.Period(birth, nowDate, PeriodType.days());
+        System.out.println(p3.getDays());
 
-        System.out.println(goodsIdList);
+        if (birth.getMonthOfYear() != nowDate.getMonthOfYear()) {
+            System.out.println("宝宝非本月出生不能领取");
+        }
+
+        if (p3.getDays() < 0 || p3.getDays() > 30) {
+            System.out.println("出生礼包宝宝出生30天内可以领取");
+        }
+
+        if (p3.getDays() < 100 || p3.getDays() > 130) {
+            System.out.println("百日礼包宝宝出生100-130天内可以领取");
+        }
+//
+//        List<Long> goodsIdList =new ArrayList<>();
+//        goodsIdList.add(null);goodsIdList.add(null);goodsIdList.add(null);goodsIdList.add(null);goodsIdList.add(null);
+//        goodsIdList.removeAll(Collections.singleton(null));
+//
+//        System.out.println(goodsIdList);
 
     }
 

@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-import java.util.UUID;
-
 /**
  * Created by hzchendawei on 2018/7/24.
  */
@@ -22,12 +20,12 @@ public class KafkaSender {
     private Gson gson = new GsonBuilder().create();
 
     //发送消息方法
-    public void send() {
+    public void send(String content, String topic) {
         Message message = new Message();
         message.setId(System.currentTimeMillis());
-        message.setMsg(UUID.randomUUID().toString());
+        message.setMsg(content);
         message.setSendTime(System.currentTimeMillis());
         log.info("+++++++++++++++++++++  message = {}", gson.toJson(message));
-        kafkaTemplate.send("zhisheng", gson.toJson(message));
+        kafkaTemplate.send(topic, gson.toJson(message));
     }
 }
