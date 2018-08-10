@@ -1,16 +1,10 @@
 package com.devi;
 
 import com.devi.tool.util.DESCoder;
-import org.joda.time.DateTime;
-import org.joda.time.PeriodType;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -44,25 +38,71 @@ public class CommonTest {
 //
 //        DateTime dateTime = t.withHourOfDay(12).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0);
 //        System.out.println( new Timestamp(dateTime.getMillis()).toString());
-        DateTime birth=new DateTime("2017-8-09");
-        DateTime nowDate=DateTime.now();
+//        DateTime birthDate = new DateTime("2018-8-08");
+//
+//        StringBuilder ageDesc = new StringBuilder();
+//        DateTime now = DateTime.now();
+//        if (birthDate.isBeforeNow()) {
+//            org.joda.time.Period p1 = new org.joda.time.Period(birthDate, now, PeriodType.yearMonthDay());
+//            ageDesc.append("今天");
+//            //今天出生
+//            boolean birth = true;
+//            if (p1.getYears() > 0) {
+//                ageDesc.append(p1.getYears()).append("岁");
+//                birth = false;
+//            }
+//            if (p1.getMonths() > 0) {
+//                ageDesc.append(p1.getMonths()).append("月");
+//                birth = false;
+//            }
+//            if (p1.getDays() > 0) {
+//                ageDesc.append(p1.getDays()).append("天");
+//                birth = false;
+//            }
+//            if (birth) {
+//                ageDesc.delete(0, ageDesc.length());
+//                ageDesc.append("今天是宝宝出生的日子，恭喜你哦~");
+//            } else {
+//                ageDesc.append("了哦~");
+//            }
+//        } else {
+//            org.joda.time.Period p2 = new org.joda.time.Period(now, birthDate, PeriodType.days());
+//            ageDesc.append("距离宝宝出生还有").append(p2.getDays() + 1).append("天哦~");
+//        }
+//        System.out.println(ageDesc);
 
-        System.out.println(birth.getMonthOfYear() +"===="+ nowDate.getMonthOfYear());
+//        BabyPlanUrlVO babyPlanUrlVO = new BabyPlanUrlVO();
+//        babyPlanUrlVO.setMainUrl("https://m-element.kaola.com/baby/getGrowPrivilege.html");
+//        babyPlanUrlVO.setEdit0Url("https://m-element.kaola.com/baby/editBabyInfo.html?edit=edit0");
+//        babyPlanUrlVO.setEdit1Url("https://m-element.kaola.com/baby/editBabyInfo.html?edit=edit1");
+//        System.out.println(FastJsonUtil.toJSONString(babyPlanUrlVO));
 
-        org.joda.time.Period p3 = new org.joda.time.Period(birth, nowDate, PeriodType.days());
-        System.out.println(p3.getDays());
+        String str1 = "a";
+        String str2 = "b";
+        String str3 = str1 + str2;
+        System.out.println("===========test5============");
+        System.out.println(str3 == "ab"); //false
 
-        if (birth.getMonthOfYear() != nowDate.getMonthOfYear()) {
-            System.out.println("宝宝非本月出生不能领取");
-        }
+        str3 = "a" + "b";
+        System.out.println("===========test5============");
+        System.out.println(str3 == "ab"); //false
+//
+//        System.out.println(birth.getMonthOfYear() +"===="+ nowDate.getMonthOfYear());
+//
+//        org.joda.time.Period p3 = new org.joda.time.Period(birth, nowDate, PeriodType.days());
+//        System.out.println(p3.getDays());
 
-        if (p3.getDays() < 0 || p3.getDays() > 30) {
-            System.out.println("出生礼包宝宝出生30天内可以领取");
-        }
-
-        if (p3.getDays() < 100 || p3.getDays() > 130) {
-            System.out.println("百日礼包宝宝出生100-130天内可以领取");
-        }
+//        if (birth.getMonthOfYear() != nowDate.getMonthOfYear()) {
+//            System.out.println("宝宝非本月出生不能领取");
+//        }
+//
+//        if (p3.getDays() < 0 || p3.getDays() > 30) {
+//            System.out.println("出生礼包宝宝出生30天内可以领取");
+//        }
+//
+//        if (p3.getDays() < 100 || p3.getDays() > 130) {
+//            System.out.println("百日礼包宝宝出生100-130天内可以领取");
+//        }
 //
 //        List<Long> goodsIdList =new ArrayList<>();
 //        goodsIdList.add(null);goodsIdList.add(null);goodsIdList.add(null);goodsIdList.add(null);goodsIdList.add(null);
