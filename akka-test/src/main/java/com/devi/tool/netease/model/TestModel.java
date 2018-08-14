@@ -8,10 +8,10 @@ import lombok.Data;
  */
 @Data
 public class TestModel {
-    @CollumComment(value = "主键")
+    @CollumComment
     private Integer id;
 
-    @CollumComment(value = "用户名称")
+    @CollumComment
     private String userName;
 
 

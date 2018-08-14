@@ -19,6 +19,11 @@ public class CommonTest {
 
     public static void main(String[] args) {
 
+        char s = 'q';
+
+        System.out.println(s+0);
+
+
 //        System.out.println(getEncyTeamId(9045L));
 //
 //        String teamId = "9045_______clBZy%2FnsToA%3D";
@@ -76,16 +81,16 @@ public class CommonTest {
 //        babyPlanUrlVO.setEdit0Url("https://m-element.kaola.com/baby/editBabyInfo.html?edit=edit0");
 //        babyPlanUrlVO.setEdit1Url("https://m-element.kaola.com/baby/editBabyInfo.html?edit=edit1");
 //        System.out.println(FastJsonUtil.toJSONString(babyPlanUrlVO));
-
-        String str1 = "a";
-        String str2 = "b";
-        String str3 = str1 + str2;
-        System.out.println("===========test5============");
-        System.out.println(str3 == "ab"); //false
-
-        str3 = "a" + "b";
-        System.out.println("===========test5============");
-        System.out.println(str3 == "ab"); //false
+//
+//        String str1 = "a";
+//        String str2 = "b";
+//        String str3 = str1 + str2;
+//        System.out.println("===========test5============");
+//        System.out.println(str3 == "ab"); //false
+//
+//        str3 = "a" + "b";
+//        System.out.println("===========test5============");
+//        System.out.println(str3 == "ab"); //false
 //
 //        System.out.println(birth.getMonthOfYear() +"===="+ nowDate.getMonthOfYear());
 //
