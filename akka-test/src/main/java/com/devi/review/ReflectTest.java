@@ -1,5 +1,9 @@
 package com.devi.review;
 
+import com.devi.tool.util.FastJsonUtil;
+import lombok.Data;
+import lombok.ToString;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -26,14 +30,38 @@ public class ReflectTest {
         //返回A类的public字段
         Field field = A.class.getField("i");
         System.out.println(field.get(A.class.newInstance()));
-        //返回A类的static 字段
-        System.out.println(field.get(null));
+
+
+        Field[] fs = A.class.getDeclaredFields();
+        System.out.println(FastJsonUtil.toJSONString(fs));
+
+        Class<?> threadClazz = Class.forName("java.lang.Math");
+        Method method = threadClazz.getMethod("abs", long.class);
+        System.out.println(method.invoke(null, -10000l));
+
+        Method ap = A.class.getDeclaredMethod("pp");
+        ap.setAccessible(true);
+        System.out.println(ap.invoke(new A()));
+
+
+        A pp = new A();
+        Field pf = A.class.getDeclaredField("pf");
+        pf.setAccessible(true);
+        pf.set(pp, "sss");
+
+        System.out.println(pp);
+
+
     }
 }
 
+@Data
+@ToString
 class A {
     public int i = 1;
     public static int b = 2;
+
+    private String pf;
 
     public A() {
         System.out.println("无参构造");
@@ -45,5 +73,10 @@ class A {
 
     public void say() {
         System.out.println("say");
+    }
+
+    private String pp() {
+        System.out.println("private 1");
+        return "hello1";
     }
 }
