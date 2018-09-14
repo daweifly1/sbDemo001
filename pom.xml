@@ -23,6 +23,7 @@
         <module>mqClient</module>
         <module>akka-test</module>
         <module>kafka-test</module>
+        <module>security</module>
     </modules>
 
     <properties>
