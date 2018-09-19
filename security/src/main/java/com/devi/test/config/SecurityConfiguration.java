@@ -1,4 +1,4 @@
-package com.devi.test;
+package com.devi.test.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

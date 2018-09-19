@@ -16,7 +16,6 @@ import java.util.Map;
  */
 
 @SpringBootApplication
-@RestController
 public class App {
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
@@ -28,20 +27,7 @@ public class App {
         return new BCryptPasswordEncoder();
     }
 
-    @GetMapping("/hi")
-    public Map<String, Object> hi() {
-        Map m = new HashMap();
-        m.put("hi", "hi");
-        return m;
-    }
 
-
-    @GetMapping("/qhi")
-    public Map<String, Object> qhi() {
-        Map m = new HashMap();
-        m.put("hi", "qhi");
-        return m;
-    }
 
 
 }
