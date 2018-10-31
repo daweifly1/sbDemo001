@@ -1,10 +1,12 @@
 package com.devi;
 
 import com.devi.tool.util.DESCoder;
+import org.joda.time.DateTime;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
+import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,9 +21,30 @@ public class CommonTest {
 
     public static void main(String[] args) {
 
-        char s = 'q';
 
-        System.out.println(s+0);
+        //补齐八位
+        String seq = String.format("%08d", 1111);
+
+        Calendar cal= Calendar.getInstance();//使用日历类
+        String year= String.valueOf(cal.get(Calendar.YEAR));//得到年
+        String month=String.valueOf(cal.get(Calendar.MONTH)+1);//得到月，因为从0开始的，所以要加1
+        String day=String.valueOf(cal.get(Calendar.DAY_OF_MONTH));//得到天
+        String pre="0";
+        if(Integer.valueOf(month)<10){
+            month=pre.concat(String.valueOf(month));
+        }
+        if(Integer.valueOf(day)<10){
+            day=pre.concat(String.valueOf(day));
+        }
+        //日期序列
+        StringBuffer dateStr=new StringBuffer(String.valueOf(year)).append(month).append(day);
+        StringBuffer documentNo=new StringBuffer("***").append(dateStr).append(seq);
+
+        StringBuilder sb = new StringBuilder("***").append(new DateTime().toString("yyyyMMdd")).append(seq);
+
+
+        System.out.println(documentNo);
+        System.out.println(sb.toString());
 
 
 //        System.out.println(getEncyTeamId(9045L));

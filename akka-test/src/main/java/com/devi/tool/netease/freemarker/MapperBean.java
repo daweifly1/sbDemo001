@@ -17,6 +17,8 @@ public class MapperBean {
     private String packageName;
 
     private String tableName;
+    private String tableComment;
+
 
     private List<ModelProperties> propertiesList;
 

@@ -4,60 +4,44 @@ import lombok.Data;
 import lombok.ToString;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.List;
+import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 @ToString
 public class BabyImgConfigDto implements Serializable {
-    private static final long serialVersionUID = -7236725092615194177L;
-
+    private String barCode;
+    private String inboundOrder;
+    private Integer inboundType = 0;
+    private Integer frozen;
+    private String oldLocationCode;
+    private Integer rowNo;
+    private String businessLineId;
     /**
-     * 内容类型
-     *
-     * {@link com.netease.kaola.community.api.enums.manager.discussion.MDiscussionType}
+     * 是否协议类型 0否1是
      */
-    private Byte type;
-
+    private Integer agreementFlag;
     /**
-     * 内容id
+     * 协议号
      */
-    private Long id;
-
-    /**
-     * 内容详情
-     */
-
-    // 标题
-    private String title;
-
-    // 描述
-    private String desc;
-
-    // 第一张图片
-    private String firstImg;
-
-    // 头像
-    private String profilePhoto;
-
-    // 昵称
-    private String nickName;
-
-    //点赞数
-    private int favorNum;
-
-    //用户openid
-    private String openid;
-
-    //长文/心得url
-    private String url;
-
-    /**
-     * #KJDS-90786 文章阅读数
-     */
-    private Long readNum;
-
-    //用户个人主页url
-    private String zoneUrl;
+    private String agreementCode;
+    private String id;
+    private String businessSingle;
+    private String businessOrder;
+    private String materialNo;
+    private String materialName;
+    private String materialType;
+    private String warehouseCode;
+    private String areaCode;
+    private String locationCode;
+    private BigDecimal amount;
+    private BigDecimal realAmount;
+    private String unit;
+    private String model;
+    private String note;
+    private Integer status = 0;
+    private String createrId;
+    private String createrName;
+    private Date createDate;
 
 }

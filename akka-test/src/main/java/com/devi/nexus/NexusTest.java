@@ -17,718 +17,1432 @@ public class NexusTest {
 
     public static void main(String[] args) {
         String s = "[{\n" +
-                "\t\"id\": \"cf606f82560ea906f77565b3a0aaa14f\",\n" +
-                "\t\"repositoryName\": \"maven-snapshots\",\n" +
-                "\t\"group\": \"bkw.fast.hage\",\n" +
-                "\t\"name\": \"changjietong\",\n" +
-                "\t\"version\": \"1.0.0-20180918.040157-1\",\n" +
-                "\t\"format\": \"maven2\"\n" +
-                "}, {\n" +
-                "\t\"id\": \"1c787a03db8209ebb9f1be42c6dcd913\",\n" +
-                "\t\"repositoryName\": \"maven-snapshots\",\n" +
-                "\t\"group\": \"bkw.fast.hage\",\n" +
-                "\t\"name\": \"changjietong\",\n" +
-                "\t\"version\": \"1.0.0-20180918.040235-2\",\n" +
-                "\t\"format\": \"maven2\"\n" +
-                "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390f9c842a7250d61224\",\n" +
+                "\t\"id\": \"1c787a03db8209ebdbd9c4ef391c95aa\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"com.bkrwin\",\n" +
                 "\t\"name\": \"ynwl-service\",\n" +
-                "\t\"version\": \"1.0.0-20180917.081832-1\",\n" +
+                "\t\"version\": \"1.0.0-20181011.181907-8\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea906c8367cb52e54a505\",\n" +
+                "\t\"id\": \"cf606f82560ea9069a03ca8020b04984\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"com.bkrwin\",\n" +
                 "\t\"name\": \"ynwl-service\",\n" +
-                "\t\"version\": \"1.0.0-20180917.082824-2\",\n" +
+                "\t\"version\": \"1.0.0-20181013.181925-9\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209eb92a7bd06f1f4d130\",\n" +
+                "\t\"id\": \"dfbef09efe1644eafd3c56a26217d747\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"com.bkrwin\",\n" +
                 "\t\"name\": \"ynwl-service\",\n" +
-                "\t\"version\": \"1.0.0-20180917.083017-3\",\n" +
+                "\t\"version\": \"1.0.0-20181014.181948-10\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea706653f45f84cbb1\",\n" +
+                "\t\"id\": \"76d7d7e4186a390fe3eb76edc6d0b262\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
-                "\t\"group\": \"com.bkw.hage\",\n" +
-                "\t\"name\": \"changjietong\",\n" +
-                "\t\"version\": \"1.0.0-20180918.041145-1\",\n" +
+                "\t\"group\": \"com.bkrwin\",\n" +
+                "\t\"name\": \"ynwl-service\",\n" +
+                "\t\"version\": \"1.0.0-20181015.181838-11\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390f7c15f6cc374790d9\",\n" +
+                "\t\"id\": \"cf606f82560ea906e2b22b0534676425\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
-                "\t\"group\": \"com.bkw.hage\",\n" +
-                "\t\"name\": \"sign.cert\",\n" +
-                "\t\"version\": \"1.0.0-20180918.031855-1\",\n" +
+                "\t\"group\": \"com.bkrwin\",\n" +
+                "\t\"name\": \"ynwl-service\",\n" +
+                "\t\"version\": \"1.0.0-20181016.181548-12\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea0346d4bba5ef789d\",\n" +
+                "\t\"id\": \"76d7d7e4186a390f0c78d7821377efa7\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"com.bkrwin\",\n" +
+                "\t\"name\": \"ynwl-service\",\n" +
+                "\t\"version\": \"1.0.0-20181018.181903-13\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209eb9cb60f44a00cf337\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"com.bkrwin\",\n" +
+                "\t\"name\": \"ynwl-service\",\n" +
+                "\t\"version\": \"1.0.0-20181019.181719-14\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea906fa60a978610e5bb8\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"com.bkrwin\",\n" +
+                "\t\"name\": \"ynwl-service\",\n" +
+                "\t\"version\": \"1.0.0-20181022.181850-15\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644ea0e29cd415ca08424\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"com.bkrwin\",\n" +
+                "\t\"name\": \"ynwl-service\",\n" +
+                "\t\"version\": \"1.0.0-20181023.181815-16\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390f0ef8c4dd2a597038\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"com.bkrwin\",\n" +
+                "\t\"name\": \"ynwl-service\",\n" +
+                "\t\"version\": \"1.0.0-20181025.181908-17\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644eadd04ab34081adb14\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"center-server\",\n" +
-                "\t\"version\": \"0.0.3-20180910.181437-21\",\n" +
+                "\t\"version\": \"0.0.3-20181011.181441-36\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390f9d321c345d2c70fd\",\n" +
+                "\t\"id\": \"cf606f82560ea906f088da5a0cba5a66\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"center-server\",\n" +
-                "\t\"version\": \"0.0.3-20180912.181440-22\",\n" +
+                "\t\"version\": \"0.0.3-20181012.181503-37\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea9062f629bfcfb044967\",\n" +
+                "\t\"id\": \"1c787a03db8209ebf15eb54e82138c1d\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"center-server\",\n" +
-                "\t\"version\": \"0.0.3-20180913.181440-23\",\n" +
+                "\t\"version\": \"0.0.3-20181013.181454-38\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209eb7d019ebd31522bd7\",\n" +
+                "\t\"id\": \"76d7d7e4186a390f4bcd5f1e713d0ee4\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"center-server\",\n" +
-                "\t\"version\": \"0.0.3-20180914.181437-24\",\n" +
+                "\t\"version\": \"0.0.3-20181014.181515-39\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea2eb664ab53a988ca\",\n" +
+                "\t\"id\": \"cf606f82560ea906799ae6d41e1a4a9a\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"center-server\",\n" +
-                "\t\"version\": \"0.0.3-20180915.181435-25\",\n" +
+                "\t\"version\": \"0.0.3-20181015.181457-40\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209eb6b56984f41ecf245\",\n" +
+                "\t\"id\": \"dfbef09efe1644eabf144634ca96c589\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"center-server\",\n" +
+                "\t\"version\": \"0.0.3-20181016.181454-41\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea9067add5bf3a8bca894\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"center-server\",\n" +
+                "\t\"version\": \"0.0.3-20181018.181443-42\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390f9490dfc100601155\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"center-server\",\n" +
+                "\t\"version\": \"0.0.3-20181019.181509-43\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209eb38ffac6b0ff64d02\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"center-server\",\n" +
+                "\t\"version\": \"0.0.3-20181022.181437-44\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390fe929c00504bff60a\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"center-server\",\n" +
+                "\t\"version\": \"0.0.3-20181023.181443-45\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea906c1ed326692118ca3\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"center-server\",\n" +
+                "\t\"version\": \"0.0.3-20181025.181437-46\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644eab2321cbaf27b06a1\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"center-server\",\n" +
+                "\t\"version\": \"0.0.3-20181029.181437-47\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209ebd94cff5bd1611d56\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-config-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180910.181358-24\",\n" +
+                "\t\"version\": \"1.0.0-20181011.181359-39\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644eab747a51c2ac13574\",\n" +
+                "\t\"id\": \"76d7d7e4186a390fcc0109cd65b98b16\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-config-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180912.181401-25\",\n" +
+                "\t\"version\": \"1.0.0-20181012.181422-40\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390fc8f718672e383c60\",\n" +
+                "\t\"id\": \"cf606f82560ea906618c9e501cb2babf\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-config-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180913.181358-26\",\n" +
+                "\t\"version\": \"1.0.0-20181013.181406-41\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea9067096ea6e7cb1aab8\",\n" +
+                "\t\"id\": \"dfbef09efe1644ea016c6125ae1e771c\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-config-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180914.181358-27\",\n" +
+                "\t\"version\": \"1.0.0-20181014.181418-42\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209eb9db4b5a33380c90f\",\n" +
+                "\t\"id\": \"76d7d7e4186a390f99cafb98de484bcd\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-config-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180915.181357-28\",\n" +
+                "\t\"version\": \"1.0.0-20181015.181358-43\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390f1e67cc22ceb88311\",\n" +
+                "\t\"id\": \"1c787a03db8209eba19fc2a3f3820784\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-config-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181016.181400-44\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390ff38799911764b760\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-config-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181018.181404-45\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644ea3abf1a7727bb6955\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-config-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181019.181420-46\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea90684c383236979f7c1\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-config-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181022.181359-47\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644ea76f9bf4626cfa33a\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-config-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181023.181404-48\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390f692a33cf57ebb2ed\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-config-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181025.181359-49\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209eb8c5f004d36c33e40\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-config-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181029.181358-50\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390f33582328e83c9f18\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-druid-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180910.181447-21\",\n" +
+                "\t\"version\": \"1.0.0-20181011.181450-36\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea906081ad074f833ca8e\",\n" +
+                "\t\"id\": \"1c787a03db8209eb2240a176fbc8b9f5\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-druid-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180912.181449-22\",\n" +
+                "\t\"version\": \"1.0.0-20181012.181512-37\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209eb494e9afa7621d3fc\",\n" +
+                "\t\"id\": \"dfbef09efe1644ea18c81f698471adf5\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-druid-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180913.181450-23\",\n" +
+                "\t\"version\": \"1.0.0-20181013.181504-38\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea719b7f294633b84b\",\n" +
+                "\t\"id\": \"cf606f82560ea906f88296ad45d779ef\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-druid-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180914.181446-24\",\n" +
+                "\t\"version\": \"1.0.0-20181014.181524-39\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390f4fd03b5eb25b36c5\",\n" +
+                "\t\"id\": \"1c787a03db8209eb8f479de0ed432592\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-druid-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180915.181445-25\",\n" +
+                "\t\"version\": \"1.0.0-20181015.181507-40\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea906000637c88e65376c\",\n" +
+                "\t\"id\": \"76d7d7e4186a390f55ff260dfa2ad532\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-druid-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181016.181503-41\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209eb60e0d2262afa9d73\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-druid-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181018.181452-42\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea906485721782829be81\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-druid-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181019.181519-43\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644eaa65a124e7119d412\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-druid-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181022.181446-44\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea9060af89fb970cf0d52\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-druid-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181023.181453-45\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209eb89480caa9da61555\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-druid-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181025.181446-46\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390fbb4109f86546db13\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-druid-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181029.181446-47\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea9067cbe3940721cda82\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-logging-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180910.181354-24\",\n" +
+                "\t\"version\": \"1.0.0-20181011.181356-39\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209eb9378ba9456618a3b\",\n" +
+                "\t\"id\": \"dfbef09efe1644ea4a93fcc10501128c\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-logging-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180912.181357-25\",\n" +
+                "\t\"version\": \"1.0.0-20181012.181418-40\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea3a8f9a64e38e029c\",\n" +
+                "\t\"id\": \"76d7d7e4186a390fefed11647600ca0e\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-logging-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180913.181354-26\",\n" +
+                "\t\"version\": \"1.0.0-20181013.181401-41\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390fd0e90b5e87f6b70a\",\n" +
+                "\t\"id\": \"1c787a03db8209eba71a3b55aeff949d\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-logging-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180914.181355-27\",\n" +
+                "\t\"version\": \"1.0.0-20181014.181415-42\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea906151e7c19eeb010a7\",\n" +
+                "\t\"id\": \"dfbef09efe1644ea58f521fadeca70d9\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-logging-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180915.181354-28\",\n" +
+                "\t\"version\": \"1.0.0-20181015.181355-43\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390f5c022c4327f56c83\",\n" +
+                "\t\"id\": \"cf606f82560ea90698cebeb4234e83f5\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-logging-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181016.181357-44\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644eac29a45e4a2264e2b\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-logging-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181018.181401-45\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209eb5e1ab98ac93832e5\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-logging-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181019.181416-46\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390fc1a66ce308ea0d81\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-logging-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181022.181355-47\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209eb18792c10cfc74097\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-logging-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181023.181401-48\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644ea81713008d45c0892\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-logging-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181025.181355-49\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea906cbd6bc41274e1c93\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast\",\n" +
+                "\t\"name\": \"fast-logging-starter\",\n" +
+                "\t\"version\": \"1.0.0-20181029.181355-50\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea9060dd7652a2ffd0816\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-spring-boot-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180910.181351-24\",\n" +
+                "\t\"version\": \"1.0.0-20181019.181413-46\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea906a69c3ec7b1602c3e\",\n" +
+                "\t\"id\": \"dfbef09efe1644eaf21789f771500f10\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-spring-boot-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180912.181354-25\",\n" +
+                "\t\"version\": \"1.0.0-20181022.181351-47\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209ebe0b579224be75e01\",\n" +
+                "\t\"id\": \"cf606f82560ea90694da60f0218b8a73\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-spring-boot-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180913.181351-26\",\n" +
+                "\t\"version\": \"1.0.0-20181023.181358-48\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644eaf72c71b7723afec4\",\n" +
+                "\t\"id\": \"1c787a03db8209eb4d9d7e33d7886d12\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-spring-boot-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180914.181352-27\",\n" +
+                "\t\"version\": \"1.0.0-20181025.181351-49\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390fd0e9018f1006e4cf\",\n" +
+                "\t\"id\": \"76d7d7e4186a390ff5ec854cf7d94b5c\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"fast-spring-boot-starter\",\n" +
-                "\t\"version\": \"1.0.0-20180915.181351-28\",\n" +
+                "\t\"version\": \"1.0.0-20181029.181352-50\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea9060edc80491acca84a\",\n" +
-                "\t\"repositoryName\": \"maven-snapshots\",\n" +
-                "\t\"group\": \"yb.ecp.fast\",\n" +
-                "\t\"name\": \"tdbc-pay\",\n" +
-                "\t\"version\": \"1.0-20180910.083125-1\",\n" +
-                "\t\"format\": \"maven2\"\n" +
-                "}, {\n" +
-                "\t\"id\": \"1c787a03db8209eb2195ef3e0d09f93e\",\n" +
-                "\t\"repositoryName\": \"maven-snapshots\",\n" +
-                "\t\"group\": \"yb.ecp.fast\",\n" +
-                "\t\"name\": \"tdbc-pay\",\n" +
-                "\t\"version\": \"1.0-20180910.083635-2\",\n" +
-                "\t\"format\": \"maven2\"\n" +
-                "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644eaae98c4b2e8464c14\",\n" +
-                "\t\"repositoryName\": \"maven-snapshots\",\n" +
-                "\t\"group\": \"yb.ecp.fast\",\n" +
-                "\t\"name\": \"tdbc-pay\",\n" +
-                "\t\"version\": \"1.0-20180910.084339-3\",\n" +
-                "\t\"format\": \"maven2\"\n" +
-                "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390fde77f677a0d59652\",\n" +
-                "\t\"repositoryName\": \"maven-snapshots\",\n" +
-                "\t\"group\": \"yb.ecp.fast\",\n" +
-                "\t\"name\": \"ufast-payment-parent\",\n" +
-                "\t\"version\": \"1.0-20180910.084714-1\",\n" +
-                "\t\"format\": \"maven2\"\n" +
-                "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea10d68e0823c52649\",\n" +
+                "\t\"id\": \"dfbef09efe1644ea06f0a9b081548db4\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"ufast-starter-parent\",\n" +
-                "\t\"version\": \"0.0.3-20180905.181308-252\",\n" +
+                "\t\"version\": \"0.0.3-20181018.181308-274\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea906b6ada4538c6890e5\",\n" +
+                "\t\"id\": \"1c787a03db8209ebf3f4753bd6c9f80b\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"ufast-starter-parent\",\n" +
-                "\t\"version\": \"0.0.3-20180910.181308-253\",\n" +
+                "\t\"version\": \"0.0.3-20181019.181308-275\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209ebee5f878330f0433a\",\n" +
+                "\t\"id\": \"76d7d7e4186a390f9e6c4b88c940bc56\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"ufast-starter-parent\",\n" +
-                "\t\"version\": \"0.0.3-20180912.181308-254\",\n" +
+                "\t\"version\": \"0.0.3-20181022.181307-276\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea6be9bfd87f7fefb3\",\n" +
+                "\t\"id\": \"1c787a03db8209ebc874fa708c16e4ba\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"ufast-starter-parent\",\n" +
-                "\t\"version\": \"0.0.3-20180913.181308-255\",\n" +
+                "\t\"version\": \"0.0.3-20181023.181308-277\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390f396b45a45fd777ef\",\n" +
+                "\t\"id\": \"dfbef09efe1644eac4cd930897f2b7e8\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"ufast-starter-parent\",\n" +
-                "\t\"version\": \"0.0.3-20180914.181308-256\",\n" +
+                "\t\"version\": \"0.0.3-20181025.181308-278\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea9062f51488bac1af272\",\n" +
+                "\t\"id\": \"cf606f82560ea90639cd823ae40203a1\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast\",\n" +
                 "\t\"name\": \"ufast-starter-parent\",\n" +
-                "\t\"version\": \"0.0.3-20180915.181308-257\",\n" +
+                "\t\"version\": \"0.0.3-20181029.181307-279\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390f7d0786ea1abb2b2a\",\n" +
+                "\t\"id\": \"76d7d7e4186a390f3214380d3ab10ee1\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"config-server\",\n" +
-                "\t\"version\": \"0.0.3-20180910.181324-24\",\n" +
+                "\t\"version\": \"0.0.3-20181011.181325-39\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea9064c910b20051332e0\",\n" +
+                "\t\"id\": \"1c787a03db8209ebaf9b11144a031373\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"config-server\",\n" +
-                "\t\"version\": \"0.0.3-20180912.181325-25\",\n" +
+                "\t\"version\": \"0.0.3-20181012.181346-40\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209eb75ac6e512f7f1182\",\n" +
+                "\t\"id\": \"dfbef09efe1644ea1a2c4c77f9b9a84d\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"config-server\",\n" +
-                "\t\"version\": \"0.0.3-20180913.181324-26\",\n" +
+                "\t\"version\": \"0.0.3-20181013.181330-41\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea3e0d63e64512cba9\",\n" +
+                "\t\"id\": \"cf606f82560ea9061384b4a68e595371\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"config-server\",\n" +
-                "\t\"version\": \"0.0.3-20180914.181325-27\",\n" +
+                "\t\"version\": \"0.0.3-20181014.181343-42\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390fc98536676a743dbe\",\n" +
+                "\t\"id\": \"1c787a03db8209eb4fe6ee3786a0095b\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"config-server\",\n" +
-                "\t\"version\": \"0.0.3-20180915.181324-28\",\n" +
+                "\t\"version\": \"0.0.3-20181015.181324-43\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644eacac3c0d13612567f\",\n" +
+                "\t\"id\": \"76d7d7e4186a390f148389ad69f8e5db\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"config-server\",\n" +
+                "\t\"version\": \"0.0.3-20181016.181324-44\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209eb2753a37574b2923b\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"config-server\",\n" +
+                "\t\"version\": \"0.0.3-20181018.181329-45\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea9066ff6bfe3fe9c92a8\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"config-server\",\n" +
+                "\t\"version\": \"0.0.3-20181019.181346-46\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644ea0aa863d9c9597191\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"config-server\",\n" +
+                "\t\"version\": \"0.0.3-20181022.181324-47\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea906104663405fa70678\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"config-server\",\n" +
+                "\t\"version\": \"0.0.3-20181023.181330-48\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209eb5dfd16ca92a3f794\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"config-server\",\n" +
+                "\t\"version\": \"0.0.3-20181025.181324-49\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390fd1a2376a105c513b\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"config-server\",\n" +
+                "\t\"version\": \"0.0.3-20181029.181325-50\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644ea734e2b4449ebe3aa\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"eureka-server\",\n" +
-                "\t\"version\": \"0.0.3-20180910.181316-24\",\n" +
+                "\t\"version\": \"0.0.3-20181011.181317-39\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390f67f018cbda9c7c85\",\n" +
+                "\t\"id\": \"cf606f82560ea90682a59cce68c04713\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"eureka-server\",\n" +
-                "\t\"version\": \"0.0.3-20180912.181317-25\",\n" +
+                "\t\"version\": \"0.0.3-20181012.181339-40\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea9061c1bcc85de755b8f\",\n" +
+                "\t\"id\": \"1c787a03db8209eb73ee05fd16998854\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"eureka-server\",\n" +
-                "\t\"version\": \"0.0.3-20180913.181317-26\",\n" +
+                "\t\"version\": \"0.0.3-20181013.181322-41\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209eb84e6e3a48ce0a403\",\n" +
+                "\t\"id\": \"76d7d7e4186a390f967edce9618413d6\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"eureka-server\",\n" +
-                "\t\"version\": \"0.0.3-20180914.181317-27\",\n" +
+                "\t\"version\": \"0.0.3-20181014.181336-42\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea879bc95492c42a5b\",\n" +
+                "\t\"id\": \"cf606f82560ea90658a91eaa5bbcd1de\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"eureka-server\",\n" +
-                "\t\"version\": \"0.0.3-20180915.181317-28\",\n" +
+                "\t\"version\": \"0.0.3-20181015.181316-43\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209ebf4883bc51f63a598\",\n" +
+                "\t\"id\": \"dfbef09efe1644eab263364a3c6893f8\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"eureka-server\",\n" +
+                "\t\"version\": \"0.0.3-20181016.181317-44\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea9061c18677cefef0e8f\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"eureka-server\",\n" +
+                "\t\"version\": \"0.0.3-20181018.181322-45\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390f7c4bae195789dcfd\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"eureka-server\",\n" +
+                "\t\"version\": \"0.0.3-20181019.181338-46\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209ebc8e1a75b0776a814\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"eureka-server\",\n" +
+                "\t\"version\": \"0.0.3-20181022.181316-47\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390fa849a00f75308fb6\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"eureka-server\",\n" +
+                "\t\"version\": \"0.0.3-20181023.181322-48\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea906185e81af5e2698c1\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"eureka-server\",\n" +
+                "\t\"version\": \"0.0.3-20181025.181317-49\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644eaf443a6dfc8b25ea8\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"eureka-server\",\n" +
+                "\t\"version\": \"0.0.3-20181029.181316-50\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209eb329027f9bbd3da1a\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gateway-oauth2\",\n" +
-                "\t\"version\": \"0.0.3-20180910.181428-21\",\n" +
+                "\t\"version\": \"0.0.3-20181011.181432-36\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea276002c8489b4856\",\n" +
+                "\t\"id\": \"76d7d7e4186a390f5e7992d469973eea\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gateway-oauth2\",\n" +
-                "\t\"version\": \"0.0.3-20180912.181431-22\",\n" +
+                "\t\"version\": \"0.0.3-20181012.181453-37\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390f630e80befbfd708d\",\n" +
+                "\t\"id\": \"cf606f82560ea906d6620c8afa73fffe\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gateway-oauth2\",\n" +
-                "\t\"version\": \"0.0.3-20180913.181431-23\",\n" +
+                "\t\"version\": \"0.0.3-20181013.181445-38\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea9065b4651b91a4eb663\",\n" +
+                "\t\"id\": \"dfbef09efe1644eaf94aa7f296b25b22\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gateway-oauth2\",\n" +
-                "\t\"version\": \"0.0.3-20180914.181427-24\",\n" +
+                "\t\"version\": \"0.0.3-20181014.181506-39\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209ebd4ff361896c16602\",\n" +
+                "\t\"id\": \"76d7d7e4186a390fa8968fea1089a29a\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gateway-oauth2\",\n" +
-                "\t\"version\": \"0.0.3-20180915.181426-25\",\n" +
+                "\t\"version\": \"0.0.3-20181015.181448-40\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea9065d3ccac9156cc02b\",\n" +
+                "\t\"id\": \"1c787a03db8209eb43de0a9896abd11a\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gateway-oauth2\",\n" +
+                "\t\"version\": \"0.0.3-20181016.181444-41\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390ff3a0aef51dc6cb23\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gateway-oauth2\",\n" +
+                "\t\"version\": \"0.0.3-20181018.181434-42\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644ea36fe635b00bed6bd\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gateway-oauth2\",\n" +
+                "\t\"version\": \"0.0.3-20181019.181500-43\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea906f9943372ff28bcbc\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gateway-oauth2\",\n" +
+                "\t\"version\": \"0.0.3-20181022.181427-44\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644eabc90cd1b159b2e46\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gateway-oauth2\",\n" +
+                "\t\"version\": \"0.0.3-20181023.181434-45\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390ff402dc5fd2493c90\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gateway-oauth2\",\n" +
+                "\t\"version\": \"0.0.3-20181025.181427-46\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209ebce0a75f61684c1b5\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gateway-oauth2\",\n" +
+                "\t\"version\": \"0.0.3-20181029.181427-47\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea906d7063cfe301743e0\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gateway-server\",\n" +
-                "\t\"version\": \"0.0.3-20180910.181332-24\",\n" +
+                "\t\"version\": \"0.0.3-20181011.181333-39\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209eb44a849b74cb21722\",\n" +
+                "\t\"id\": \"dfbef09efe1644ea83c96296e68638c7\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gateway-server\",\n" +
-                "\t\"version\": \"0.0.3-20180912.181333-25\",\n" +
+                "\t\"version\": \"0.0.3-20181012.181354-40\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ead30f192f0370a5c2\",\n" +
+                "\t\"id\": \"76d7d7e4186a390f3529d4b7358b2c5f\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gateway-server\",\n" +
-                "\t\"version\": \"0.0.3-20180913.181332-26\",\n" +
+                "\t\"version\": \"0.0.3-20181013.181338-41\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390f2015a1c4bccc52cf\",\n" +
+                "\t\"id\": \"1c787a03db8209eb1105640497b3fd43\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gateway-server\",\n" +
-                "\t\"version\": \"0.0.3-20180914.181333-27\",\n" +
+                "\t\"version\": \"0.0.3-20181014.181351-42\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea906d7836bd045634849\",\n" +
+                "\t\"id\": \"dfbef09efe1644ea56826764ab7a8aeb\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gateway-server\",\n" +
-                "\t\"version\": \"0.0.3-20180915.181332-28\",\n" +
+                "\t\"version\": \"0.0.3-20181015.181332-43\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209eb4e54ff6b5bb04a5c\",\n" +
+                "\t\"id\": \"cf606f82560ea906aba552554b3e137d\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gateway-server\",\n" +
+                "\t\"version\": \"0.0.3-20181016.181333-44\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644ea859bf337e8e2d9a9\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gateway-server\",\n" +
+                "\t\"version\": \"0.0.3-20181018.181338-45\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209ebf5669d5cccbb1586\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gateway-server\",\n" +
+                "\t\"version\": \"0.0.3-20181019.181354-46\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390f4892ca3fc7848777\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gateway-server\",\n" +
+                "\t\"version\": \"0.0.3-20181022.181332-47\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209eb5e4d8f75674655d7\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gateway-server\",\n" +
+                "\t\"version\": \"0.0.3-20181023.181338-48\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644ea9b29c7dfdd49261a\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gateway-server\",\n" +
+                "\t\"version\": \"0.0.3-20181025.181332-49\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea9061deb04a271290df6\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gateway-server\",\n" +
+                "\t\"version\": \"0.0.3-20181029.181333-50\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209eb889016af63a97b05\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gen-service\",\n" +
-                "\t\"version\": \"0.0.3-20180910.181342-24\",\n" +
+                "\t\"version\": \"0.0.3-20181011.181343-39\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea005221b9368aa415\",\n" +
+                "\t\"id\": \"76d7d7e4186a390f7dfff1bae3b92da8\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gen-service\",\n" +
-                "\t\"version\": \"0.0.3-20180912.181343-25\",\n" +
+                "\t\"version\": \"0.0.3-20181012.181404-40\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390f955aaf102547a956\",\n" +
+                "\t\"id\": \"cf606f82560ea90615c483a6f1c39551\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gen-service\",\n" +
-                "\t\"version\": \"0.0.3-20180913.181341-26\",\n" +
+                "\t\"version\": \"0.0.3-20181013.181348-41\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea906fbc205e8f2c62980\",\n" +
+                "\t\"id\": \"dfbef09efe1644ea7d55cd01ef0f0b92\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gen-service\",\n" +
-                "\t\"version\": \"0.0.3-20180914.181342-27\",\n" +
+                "\t\"version\": \"0.0.3-20181014.181401-42\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209eb4dd90e6fe9c0d20f\",\n" +
+                "\t\"id\": \"76d7d7e4186a390f78f866bde1800749\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gen-service\",\n" +
-                "\t\"version\": \"0.0.3-20180915.181342-28\",\n" +
+                "\t\"version\": \"0.0.3-20181015.181342-43\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea906148ee002cbe8097c\",\n" +
+                "\t\"id\": \"1c787a03db8209eb8861b08f1d2b0dba\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gen-service\",\n" +
+                "\t\"version\": \"0.0.3-20181016.181343-44\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390ff1c82bdb1a3a1304\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gen-service\",\n" +
+                "\t\"version\": \"0.0.3-20181018.181348-45\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644ead00b0d4b54fa7009\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gen-service\",\n" +
+                "\t\"version\": \"0.0.3-20181019.181403-46\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea9065801934289a995e7\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gen-service\",\n" +
+                "\t\"version\": \"0.0.3-20181022.181341-47\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644ea63dd0f3462999b07\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gen-service\",\n" +
+                "\t\"version\": \"0.0.3-20181023.181348-48\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390fdcbca9bf232fb605\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gen-service\",\n" +
+                "\t\"version\": \"0.0.3-20181025.181342-49\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209ebc17eb34751f001bb\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gen-service\",\n" +
+                "\t\"version\": \"0.0.3-20181029.181342-50\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209ebc493e1894e29e732\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gen-service-client\",\n" +
-                "\t\"version\": \"0.0.3-20180905.181350-250\",\n" +
+                "\t\"version\": \"0.0.3-20181010.181349-265\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea41a20401a29d84dd\",\n" +
+                "\t\"id\": \"dfbef09efe1644ea9538e9349ceb07a6\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gen-service-client\",\n" +
-                "\t\"version\": \"0.0.3-20180910.181349-251\",\n" +
+                "\t\"version\": \"0.0.3-20181011.181351-266\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390f9827ac6110cd35bb\",\n" +
+                "\t\"id\": \"cf606f82560ea906530eb9c3134e891b\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gen-service-client\",\n" +
-                "\t\"version\": \"0.0.3-20180912.181351-252\",\n" +
+                "\t\"version\": \"0.0.3-20181012.181411-267\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea9061426e5b6f7f0eb83\",\n" +
+                "\t\"id\": \"1c787a03db8209ebfe34a2669386e394\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gen-service-client\",\n" +
-                "\t\"version\": \"0.0.3-20180913.181349-253\",\n" +
+                "\t\"version\": \"0.0.3-20181013.181356-268\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209ebcdd98ae6735223aa\",\n" +
+                "\t\"id\": \"76d7d7e4186a390fa8eee1719f8ecca8\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gen-service-client\",\n" +
-                "\t\"version\": \"0.0.3-20180914.181350-254\",\n" +
+                "\t\"version\": \"0.0.3-20181014.181409-269\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644eac808c1b836581d0f\",\n" +
+                "\t\"id\": \"cf606f82560ea906a2215ae9b2b75715\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"gen-service-client\",\n" +
-                "\t\"version\": \"0.0.3-20180915.181349-255\",\n" +
+                "\t\"version\": \"0.0.3-20181015.181349-270\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390fa6c64ff9162c2550\",\n" +
+                "\t\"id\": \"dfbef09efe1644ea6a635bc250fa8107\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gen-service-client\",\n" +
+                "\t\"version\": \"0.0.3-20181016.181351-271\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea9067be8bb3299ca1d08\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gen-service-client\",\n" +
+                "\t\"version\": \"0.0.3-20181018.181356-272\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390faf2afd332792feae\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gen-service-client\",\n" +
+                "\t\"version\": \"0.0.3-20181019.181411-273\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209eb687c794f40c87c41\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gen-service-client\",\n" +
+                "\t\"version\": \"0.0.3-20181022.181349-274\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390f4ef9a94a594fbe69\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gen-service-client\",\n" +
+                "\t\"version\": \"0.0.3-20181023.181356-275\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea9067907f2443c6aebd0\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gen-service-client\",\n" +
+                "\t\"version\": \"0.0.3-20181025.181349-276\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644eac16d10f2fa2766f8\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"gen-service-client\",\n" +
+                "\t\"version\": \"0.0.3-20181029.181350-277\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea9068a32731c092df9d3\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"misc\",\n" +
-                "\t\"version\": \"0.0.3-20180905.181313-262\",\n" +
+                "\t\"version\": \"0.0.3-20181010.181313-277\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209eb05e11e3cd2b32001\",\n" +
+                "\t\"id\": \"1c787a03db8209ebfccbe2894992e967\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"misc\",\n" +
-                "\t\"version\": \"0.0.3-20180910.181313-263\",\n" +
+                "\t\"version\": \"0.0.3-20181011.181314-278\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea845b72ae4ea9be7c\",\n" +
+                "\t\"id\": \"76d7d7e4186a390f7fd887469341d3ba\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"misc\",\n" +
-                "\t\"version\": \"0.0.3-20180912.181313-264\",\n" +
+                "\t\"version\": \"0.0.3-20181012.181334-279\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390ffeb364295b3bb201\",\n" +
+                "\t\"id\": \"cf606f82560ea906a577452470cf70bb\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"misc\",\n" +
-                "\t\"version\": \"0.0.3-20180913.181313-265\",\n" +
+                "\t\"version\": \"0.0.3-20181013.181318-280\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea9064b8d56228bede5fb\",\n" +
+                "\t\"id\": \"dfbef09efe1644eaec5530d0b938fd07\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"misc\",\n" +
-                "\t\"version\": \"0.0.3-20180914.181313-266\",\n" +
+                "\t\"version\": \"0.0.3-20181014.181332-281\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209eba8063c35480053d3\",\n" +
+                "\t\"id\": \"76d7d7e4186a390f20a6e70db41af3d1\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.infra\",\n" +
                 "\t\"name\": \"misc\",\n" +
-                "\t\"version\": \"0.0.3-20180915.181313-267\",\n" +
+                "\t\"version\": \"0.0.3-20181015.181313-282\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea9060d592e58ec3d9153\",\n" +
+                "\t\"id\": \"1c787a03db8209eb0e852aa16e9c0881\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"misc\",\n" +
+                "\t\"version\": \"0.0.3-20181016.181313-283\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390f21e2840fa78ef5b2\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"misc\",\n" +
+                "\t\"version\": \"0.0.3-20181018.181318-284\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644eaf585028c27d73c56\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"misc\",\n" +
+                "\t\"version\": \"0.0.3-20181019.181334-285\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea9060e73b3c3fd685948\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"misc\",\n" +
+                "\t\"version\": \"0.0.3-20181022.181313-286\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644eacfab668896b4bc39\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"misc\",\n" +
+                "\t\"version\": \"0.0.3-20181023.181319-287\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390fac0c27816e6a49dd\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"misc\",\n" +
+                "\t\"version\": \"0.0.3-20181025.181313-288\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209ebdd346ede53fa2de0\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.infra\",\n" +
+                "\t\"name\": \"misc\",\n" +
+                "\t\"version\": \"0.0.3-20181029.181312-289\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea906da0ef2ad4959bee5\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.oauth2\",\n" +
                 "\t\"name\": \"oauth2-server\",\n" +
-                "\t\"version\": \"0.0.3-20180910.181418-21\",\n" +
+                "\t\"version\": \"0.0.3-20181011.181421-36\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209eb6022546552b24e18\",\n" +
+                "\t\"id\": \"dfbef09efe1644ea047a83584820c45d\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.oauth2\",\n" +
                 "\t\"name\": \"oauth2-server\",\n" +
-                "\t\"version\": \"0.0.3-20180912.181421-22\",\n" +
+                "\t\"version\": \"0.0.3-20181012.181443-37\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea7c4e5b2116f47fc4\",\n" +
+                "\t\"id\": \"76d7d7e4186a390fa5f30f646e6072fb\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.oauth2\",\n" +
                 "\t\"name\": \"oauth2-server\",\n" +
-                "\t\"version\": \"0.0.3-20180913.181422-23\",\n" +
+                "\t\"version\": \"0.0.3-20181013.181435-38\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390f847f43ac50ccde50\",\n" +
+                "\t\"id\": \"1c787a03db8209eb39905becfa07bf6d\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.oauth2\",\n" +
                 "\t\"name\": \"oauth2-server\",\n" +
-                "\t\"version\": \"0.0.3-20180914.181418-24\",\n" +
+                "\t\"version\": \"0.0.3-20181014.181456-39\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea9061c87deaff2937e98\",\n" +
+                "\t\"id\": \"dfbef09efe1644eada60386674cbf5c1\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.oauth2\",\n" +
                 "\t\"name\": \"oauth2-server\",\n" +
-                "\t\"version\": \"0.0.3-20180915.181416-25\",\n" +
+                "\t\"version\": \"0.0.3-20181015.181438-40\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea54beb2a2cd13f649\",\n" +
+                "\t\"id\": \"cf606f82560ea9069bdb2872d72651cf\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.oauth2\",\n" +
+                "\t\"name\": \"oauth2-server\",\n" +
+                "\t\"version\": \"0.0.3-20181016.181435-41\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644ea529bbc83698ed03c\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.oauth2\",\n" +
+                "\t\"name\": \"oauth2-server\",\n" +
+                "\t\"version\": \"0.0.3-20181018.181424-42\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209eb1d1b98ec9ece14f8\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.oauth2\",\n" +
+                "\t\"name\": \"oauth2-server\",\n" +
+                "\t\"version\": \"0.0.3-20181019.181450-43\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390f1a26d060598f0943\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.oauth2\",\n" +
+                "\t\"name\": \"oauth2-server\",\n" +
+                "\t\"version\": \"0.0.3-20181022.181418-44\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209ebdbe9ec8e1b607fdd\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.oauth2\",\n" +
+                "\t\"name\": \"oauth2-server\",\n" +
+                "\t\"version\": \"0.0.3-20181023.181425-45\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644eabec80f0fd47e3904\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.oauth2\",\n" +
+                "\t\"name\": \"oauth2-server\",\n" +
+                "\t\"version\": \"0.0.3-20181025.181417-46\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea906c46ee1c305bbc277\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.oauth2\",\n" +
+                "\t\"name\": \"oauth2-server\",\n" +
+                "\t\"version\": \"0.0.3-20181029.181418-47\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644ea2b6b5d9da449b9d8\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.user\",\n" +
                 "\t\"name\": \"auth-server\",\n" +
-                "\t\"version\": \"1.0.0-20180910.181404-25\",\n" +
+                "\t\"version\": \"1.0.0-20181011.181405-40\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390ff998a27bc6c329ba\",\n" +
+                "\t\"id\": \"cf606f82560ea906110f54d17f6c7a65\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.user\",\n" +
                 "\t\"name\": \"auth-server\",\n" +
-                "\t\"version\": \"1.0.0-20180912.181407-26\",\n" +
+                "\t\"version\": \"1.0.0-20181012.181428-41\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea906ec72c35321f6201d\",\n" +
+                "\t\"id\": \"1c787a03db8209eb78856d361fc8bee8\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.user\",\n" +
                 "\t\"name\": \"auth-server\",\n" +
-                "\t\"version\": \"1.0.0-20180913.181404-27\",\n" +
+                "\t\"version\": \"1.0.0-20181013.181412-42\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209eb7875c5c93ccc0143\",\n" +
+                "\t\"id\": \"76d7d7e4186a390f6175dd8655206fc5\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.user\",\n" +
                 "\t\"name\": \"auth-server\",\n" +
-                "\t\"version\": \"1.0.0-20180914.181404-28\",\n" +
+                "\t\"version\": \"1.0.0-20181014.181424-43\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea0fcae3c06e83f3b9\",\n" +
+                "\t\"id\": \"cf606f82560ea90671f1bd2d1ef26be1\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.user\",\n" +
                 "\t\"name\": \"auth-server\",\n" +
-                "\t\"version\": \"1.0.0-20180915.181403-29\",\n" +
+                "\t\"version\": \"1.0.0-20181015.181404-44\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea317a21d79ab71129\",\n" +
+                "\t\"id\": \"dfbef09efe1644eac15d88cf2c027600\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server\",\n" +
+                "\t\"version\": \"1.0.0-20181016.181406-45\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea906132f5cfa44eb99a0\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server\",\n" +
+                "\t\"version\": \"1.0.0-20181018.181410-46\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390f53dd0825f0280b51\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server\",\n" +
+                "\t\"version\": \"1.0.0-20181019.181427-47\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209eb871b92de78bd7d7a\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server\",\n" +
+                "\t\"version\": \"1.0.0-20181022.181405-48\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390f9230fa49c9e70371\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server\",\n" +
+                "\t\"version\": \"1.0.0-20181023.181410-49\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea906579397f4fb121398\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server\",\n" +
+                "\t\"version\": \"1.0.0-20181025.181404-50\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644eae42029e1723d3768\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server\",\n" +
+                "\t\"version\": \"1.0.0-20181029.181404-51\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390f073238fdac01b54b\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.user\",\n" +
                 "\t\"name\": \"auth-server-client\",\n" +
-                "\t\"version\": \"0.0.3-20180907.060531-292\",\n" +
+                "\t\"version\": \"0.0.3-20181010.181858-322\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390fb441f8c176c04f1e\",\n" +
+                "\t\"id\": \"76d7d7e4186a390fb83b98d41f8b0772\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.user\",\n" +
                 "\t\"name\": \"auth-server-client\",\n" +
-                "\t\"version\": \"0.0.3-20180910.181412-293\",\n" +
+                "\t\"version\": \"0.0.3-20181011.181414-323\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea906f9af3d39520848c7\",\n" +
+                "\t\"id\": \"cf606f82560ea906189ef52870580eb1\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.user\",\n" +
                 "\t\"name\": \"auth-server-client\",\n" +
-                "\t\"version\": \"0.0.3-20180911.012950-294\",\n" +
+                "\t\"version\": \"0.0.3-20181011.181759-324\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209ebc866a5ad96b524b4\",\n" +
+                "\t\"id\": \"1c787a03db8209ebc4a026c103ad1f74\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.user\",\n" +
                 "\t\"name\": \"auth-server-client\",\n" +
-                "\t\"version\": \"0.0.3-20180911.015624-295\",\n" +
+                "\t\"version\": \"0.0.3-20181012.181437-325\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea84b0ca8e5d347090\",\n" +
+                "\t\"id\": \"dfbef09efe1644ea4106c2e0fac7c830\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.user\",\n" +
                 "\t\"name\": \"auth-server-client\",\n" +
-                "\t\"version\": \"0.0.3-20180911.022052-296\",\n" +
+                "\t\"version\": \"0.0.3-20181012.181921-326\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea90666a8ef957b16616b\",\n" +
+                "\t\"id\": \"dfbef09efe1644ea3e5ee04e5360af57\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.user\",\n" +
                 "\t\"name\": \"auth-server-client\",\n" +
-                "\t\"version\": \"0.0.3-20180912.181417-297\",\n" +
+                "\t\"version\": \"0.0.3-20181013.181421-327\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209ebad5867fa456537f4\",\n" +
+                "\t\"id\": \"76d7d7e4186a390f090895a37d6ad5c2\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.user\",\n" +
                 "\t\"name\": \"auth-server-client\",\n" +
-                "\t\"version\": \"0.0.3-20180912.181637-298\",\n" +
+                "\t\"version\": \"0.0.3-20181013.181805-328\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"1c787a03db8209eb6f2a343ab9fb40b0\",\n" +
+                "\t\"id\": \"cf606f82560ea906f291cdb64f84ccc8\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.user\",\n" +
                 "\t\"name\": \"auth-server-client\",\n" +
-                "\t\"version\": \"0.0.3-20180913.181413-299\",\n" +
+                "\t\"version\": \"0.0.3-20181014.181433-329\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea530134b3d97c8a62\",\n" +
+                "\t\"id\": \"1c787a03db8209eb16d92347646b80c2\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.user\",\n" +
                 "\t\"name\": \"auth-server-client\",\n" +
-                "\t\"version\": \"0.0.3-20180913.181638-300\",\n" +
+                "\t\"version\": \"0.0.3-20181014.181834-330\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"dfbef09efe1644ea024ceea69b13b44f\",\n" +
+                "\t\"id\": \"1c787a03db8209ebee1cef9b702b4c86\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.user\",\n" +
                 "\t\"name\": \"auth-server-client\",\n" +
-                "\t\"version\": \"0.0.3-20180914.181413-301\",\n" +
+                "\t\"version\": \"0.0.3-20181015.181413-331\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390f3a756da34350aae9\",\n" +
+                "\t\"id\": \"dfbef09efe1644ea2e5697c8bd5d86c5\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.user\",\n" +
                 "\t\"name\": \"auth-server-client\",\n" +
-                "\t\"version\": \"0.0.3-20180914.181743-302\",\n" +
+                "\t\"version\": \"0.0.3-20181015.181646-332\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"76d7d7e4186a390ffdcc6151b6ba4abf\",\n" +
+                "\t\"id\": \"76d7d7e4186a390ffc74bcf5ccc5d550\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.user\",\n" +
                 "\t\"name\": \"auth-server-client\",\n" +
-                "\t\"version\": \"0.0.3-20180915.181412-303\",\n" +
+                "\t\"version\": \"0.0.3-20181016.181415-333\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
-                "\t\"id\": \"cf606f82560ea906d2b3bb6f9f8f02c9\",\n" +
+                "\t\"id\": \"1c787a03db8209ebca7c277eb71407c2\",\n" +
                 "\t\"repositoryName\": \"maven-snapshots\",\n" +
                 "\t\"group\": \"yb.ecp.fast.user\",\n" +
                 "\t\"name\": \"auth-server-client\",\n" +
-                "\t\"version\": \"0.0.3-20180915.181741-304\",\n" +
+                "\t\"version\": \"0.0.3-20181016.181751-334\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209eb962e9c73b97c93a0\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server-client\",\n" +
+                "\t\"version\": \"0.0.3-20181018.181419-335\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644ea434490e3b2027296\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server-client\",\n" +
+                "\t\"version\": \"0.0.3-20181018.181838-336\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea906a0a0839e6b36ea91\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server-client\",\n" +
+                "\t\"version\": \"0.0.3-20181019.181436-337\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644ea16d25e5fa99d53aa\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server-client\",\n" +
+                "\t\"version\": \"0.0.3-20181019.181853-338\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644ea2d00d2e2cb6fdad1\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server-client\",\n" +
+                "\t\"version\": \"0.0.3-20181022.181413-339\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390f89e72d472ecac55c\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server-client\",\n" +
+                "\t\"version\": \"0.0.3-20181022.181552-340\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea906afdab0a371fb3e85\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server-client\",\n" +
+                "\t\"version\": \"0.0.3-20181023.181420-341\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209eb4354244f42300c5d\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server-client\",\n" +
+                "\t\"version\": \"0.0.3-20181023.181806-342\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209eb2565a1b57bc9ab0d\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server-client\",\n" +
+                "\t\"version\": \"0.0.3-20181025.181413-343\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644eabf4c909fea01b92f\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server-client\",\n" +
+                "\t\"version\": \"0.0.3-20181025.181738-344\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"76d7d7e4186a390f222b854701429b7a\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server-client\",\n" +
+                "\t\"version\": \"0.0.3-20181029.181413-345\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea9063f7b09aebf930d8e\",\n" +
+                "\t\"repositoryName\": \"maven-snapshots\",\n" +
+                "\t\"group\": \"yb.ecp.fast.user\",\n" +
+                "\t\"name\": \"auth-server-client\",\n" +
+                "\t\"version\": \"0.0.3-20181029.181812-346\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}]";
         List<NexusListData> list = FastJsonUtil.parseList(s, NexusListData.class);
@@ -774,7 +1488,7 @@ public class NexusTest {
 
         Request request = new Request.Builder()
                 .url("http://192.168.2.102:8081/repository/maven-snapshots/" + d.getName())
-                .get()
+                .get().addHeader("Cookie","NXSESSIONID=f463703e-f0e2-4423-9fc0-e119044a10e9")
                 .addHeader("Cache-Control", "no-cache")
                 .addHeader("Postman-Token", "f1c647a6-31d4-4da9-b1d4-eb7571f95240")
                 .build();
