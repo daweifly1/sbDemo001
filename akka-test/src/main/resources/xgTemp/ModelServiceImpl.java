@@ -25,11 +25,11 @@ public class ${beanName}Service  extends BaseService<${beanName}VO, ${beanName}D
 
 
         @Autowired
-        private ${beanName}Mapper ${beanName}Mapper;
+        private ${beanName}Mapper ${fistLowerBeanName}Mapper;
 
         @PostConstruct
         public void init() {
-                super.addMapper(refundMapper);
+                super.addMapper(${fistLowerBeanName}Mapper);
         }
 
         protected ${beanName}Service() {
@@ -45,7 +45,9 @@ public class ${beanName}Service  extends BaseService<${beanName}VO, ${beanName}D
                 if (null == condition.getFilters()) {
                         condition.setFilters(new ${beanName}VO());
                 }
-                return super.list(condition);
+                PageCommonVO<${beanName}VO> page= super.list(condition);
+                //TODO．．．是否需要其他操作完善数据
+                return page;
         }
 
         /**
@@ -54,7 +56,7 @@ public class ${beanName}Service  extends BaseService<${beanName}VO, ${beanName}D
          * @param form
          */
         public List<${beanName}DO> queryList(${beanName}VO vo) {
-                return ${beanName}Mapper.queryList(vo);
+                return ${fistLowerBeanName}Mapper.queryList(vo);
         }
 
 
@@ -72,15 +74,85 @@ public class ${beanName}Service  extends BaseService<${beanName}VO, ${beanName}D
                 }
                 return null;
         }
-
         /**
          * 保存数据
          *
          * @param dto
          */
         @Transactional(rollbackFor = Exception.class)
+        public ErrorCode save(${beanName}VO ${fistLowerBeanName}VO, String userId, String userName, String orgId) throws Exception {
+                //TODO　是否需要前置校验逻辑
+                //初始时候数据状态
+                int saveStatus=0;
+                doSave(${fistLowerBeanName}VO, userId, userName, orgId, false, saveStatus);
+                //TODO　是否需要后置操作
+                return ErrorCode.Success;
+        }
+
+        /**
+        * 提交数据
+        *
+        * @param dto
+        */
+        @Transactional(rollbackFor = Exception.class)
+        public ErrorCode submit(${beanName}VO ${fistLowerBeanName}VO, String userId, String userName, String orgId) throws Exception {
+                //TODO　是否需要前置校验逻辑
+                //TODO 提交后的时候数据状态
+                int saveStatus=1;
+                doSave(${fistLowerBeanName}VO, userId, userName, orgId, false, saveStatus);
+                //TODO　是否需要后置操作
+                return ErrorCode.Success;
+        }
+
+        /**
+         * 根据状态，等信息保存数据
+         *
+         * @param dto
+         */
+        private void doSave(${beanName}VO ${fistLowerBeanName}VO, String userId, String userName, String orgId, boolean isSubmit, int status) throws Exception {
+                //TODO 保存是否需要校验？
+                preSaveCheck(${fistLowerBeanName}VO, isSubmit,int status);
+                ${beanName}DO ${fistLowerBeanName}DO = getDO(${beanName}VO);
+                if (StringUtils.isBlank(${fistLowerBeanName}DO.getId())) {
+                        ${fistLowerBeanName}DO.setCreateId(userId);
+                        ${fistLowerBeanName}DO.setCreateName(userName);
+                        ${fistLowerBeanName}DO.setOrgId(orgId);
+                        ${fistLowerBeanName}DO.setCreateDate(new Date());
+                        ${fistLowerBeanName}DO.setId(genId());
+                        //TODO ...其他新增时候需要赋值的记录
+                        logger.info("新增操作，${fistLowerBeanName}DO:{}",${fistLowerBeanName}DO);
+                } else {
+                        logger.info("编辑操作，${fistLowerBeanName}DO:{}", ${fistLowerBeanName}DO);
+                        //TODO 之前的记录需要处理？例如删除关联信息
+                }
+                //TODO 状态处理
+                ${fistLowerBeanName}DO.setStatus(status);
+                //TODO　关联信息处理
+                boolean isSuccess = this.merge(refundDO) > 0;
+                if (!isSuccess) {
+                        throw new Exception("保存记录失败");
+                }
+                //TODO　关联信息后置处理。。。
+        }
+        /**
+         * 保存前信息校验
+         */
+        private void preSaveCheck(${beanName}VO ${fistLowerBeanName}VO, boolean isSubmit,int status) throws Exception {
+                if (null == ${fistLowerBeanName}VO) {
+                throw new Exception(ErrorCode.IllegalArument.getDesc());
+                }
+                //TODO如果是提交操作或者某些状态下需要做校验吗？
+                //        if (isSubmit&&status？？？) {
+                //        }
+                //TODO 如果是编辑,需要做的校验 。。。
+                if (StringUtils.isNotBlank(${fistLowerBeanName}VO.getId())) {
+                }
+        }
+
+
+        @Transactional(rollbackFor = Exception.class)
         public int merge(${beanName}DO dto) {
-                return ${beanName}Mapper.merge(dto);
+                return ${fistLowerBeanName}Mapper.merge(dto);
         }
 
         /**
@@ -88,14 +160,14 @@ public class ${beanName}Service  extends BaseService<${beanName}VO, ${beanName}D
          *
          * @param ids
          */
-        @Transactional(rollbackFor = Exception.class)
+        @Transactional
         public int batchDelete(List<String> ids) {
             if (CollectionUtils.isEmpty(ids){
                 return 0;
             }
             int i=0;
             for(String id:ids){
-              i =+ ${beanName}Mapper.deleteByPrimaryKeySelective(id);
+              i =+ ${fistLowerBeanName}Mapper.deleteByPrimaryKeySelective(id);
             }
             return i;
         }

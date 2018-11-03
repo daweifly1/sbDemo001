@@ -16,6 +16,8 @@ public class MapperBean {
     private String voType;
 
     private String beanName;
+    //首字母小写
+    private String fistLowerBeanName;
     private String packageName;
 
     private String tableName;

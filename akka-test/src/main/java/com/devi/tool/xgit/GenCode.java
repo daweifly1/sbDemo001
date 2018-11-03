@@ -62,6 +62,7 @@ public class GenCode {
         mapperBean.setType(doPath+"."+clazz.getSimpleName()+"DO");
         mapperBean.setVoType(voPath+"."+clazz.getSimpleName()+"VO");
         mapperBean.setBeanName(clazz.getSimpleName());
+        mapperBean.setFistLowerBeanName(mapperBean.getBeanName().substring(0,1).toLowerCase()+mapperBean.getBeanName().substring(1));
         mapperBean.setTableName("T_WAREHOUSE" + genColum(clazz.getSimpleName()));
         List<MapperBean.ModelProperties> list = new ArrayList<>();
         for (Field f : fields) {
@@ -120,6 +121,10 @@ public class GenCode {
         parseHtmlFile(temDir + "xgTemp", "Model.java", out + "/" + clazz.getSimpleName() + "DO.java", BeanMapUtil.beanToMap(mapperBean));
         parseHtmlFile(temDir + "xgTemp", "ModelVO.java", out + "/" + clazz.getSimpleName() + "VO.java", BeanMapUtil.beanToMap(mapperBean));
         parseHtmlFile(temDir + "xgTemp", "ModelServiceImpl.java", out + "/" + clazz.getSimpleName() + "Service.java", BeanMapUtil.beanToMap(mapperBean));
+
+        parseHtmlFile(temDir + "xgTemp", "ModelController.java", out + "/" + clazz.getSimpleName() + "Controller.java", BeanMapUtil.beanToMap(mapperBean));
+
+
 
     }
 
