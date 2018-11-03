@@ -14,7 +14,7 @@
 
 
     <sql id="Base_Column_List">
-        <#list propertiesList as p><#if p_index==0>${p.column}<#elseif (p_index%13==12 && propertiesList?size>13)>,${p.column},<#elseif (p_index%13==12 && propertiesList?size==13)>${p.column}<#elseif p_index%13==0>
+        <#list propertiesList as p><#if p_index==0>${p.column}<#elseif (p_index%10==9 && propertiesList?size>10)>,${p.column},<#elseif (p_index%10==9 && propertiesList?size==10)>${p.column}<#elseif p_index%10==0>
         ${p.column}<#else >,${p.column}</#if></#list>
     </sql>
 
@@ -52,7 +52,7 @@
 
     <insert id="insert" parameterType="${type}">
         insert into ${tableName} (
-        <#list propertiesList as p><#if p_index==0>${p.column}<#elseif (p_index%13==12 && propertiesList?size>13)>,${p.column},<#elseif (p_index%13==12 && propertiesList?size==13)>${p.column}<#elseif p_index%13==0>
+        <#list propertiesList as p><#if p_index==0>${p.column}<#elseif (p_index%10==9 && propertiesList?size>10)>,${p.column},<#elseif (p_index%10==9 && propertiesList?size==10)>${p.column}<#elseif p_index%10==0>
         ${p.column}<#else >,${p.column}</#if></#list>
         )
         values (
@@ -75,7 +75,7 @@
         </set>
         WHEN NOT MATCHED THEN
         insert  (
-        <#list propertiesList as p><#if p_index==0>${p.column}<#elseif (p_index%13==12 && propertiesList?size>13)>,${p.column},<#elseif (p_index%13==12 && propertiesList?size==13)>${p.column}<#elseif p_index%13==0>
+        <#list propertiesList as p><#if p_index==0>${p.column}<#elseif (p_index%10==9 && propertiesList?size>10)>,${p.column},<#elseif (p_index%10==9 && propertiesList?size==10)>${p.column}<#elseif p_index%10==0>
         ${p.column}<#else >,${p.column}</#if></#list>
         )
         values (
