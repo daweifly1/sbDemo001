@@ -15,6 +15,7 @@ public class ${beanName}DO  implements Serializable{
         <#elseif p.jdbcType=="INTEGER">private Integer ${p.property};
         <#elseif p.jdbcType=="TIMESTAMP">private Timestamp ${p.property};
         <#elseif p.jdbcType=="VARCHAR">private String ${p.property};
+        <#elseif p.jdbcType=="DECIMAL">private BigDecimal ${p.property};
         <#else>  private Object ${p.property};
         </#if>
     </#list>

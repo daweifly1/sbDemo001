@@ -14,7 +14,8 @@
 
 
     <sql id="Base_Column_List">
-    <#list propertiesList as p><#if p.column== "ID">ID<#else>,${p.column}</#if></#list>
+        <#list propertiesList as p><#if p_index==0>${p.column}<#elseif (p_index%13==12 && propertiesList?size>13)>,${p.column},<#elseif (p_index%13==12 && propertiesList?size==13)>${p.column}<#elseif p_index%13==0>
+        ${p.column}<#else >,${p.column}</#if></#list>
     </sql>
 
     <sql id="cond">
@@ -24,70 +25,74 @@
             </if>
 <#list propertiesList as p><#if p.column== "ID"><#else>
             <if test="${p.property} != null">
-               and  ${p.column} =${r'#{'}${p.property},jdbcType=${p.jdbcType}}
+                and  ${p.column} =${r'#{'}${p.property},jdbcType=${p.jdbcType}}
             </if>
 </#if></#list>
         </where>
     </sql>
 
-    <select id="list" parameterType="${type}VO" resultMap="BaseResultMap">
+    <select id="list" parameterType="${voType}" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from `${tableName}`
+        from ${tableName}
         <include refid="cond"/>
     </select>
 
-    <select id="queryList" parameterType="${type}VO" resultMap="BaseResultMap">
+    <select id="queryList" parameterType="${voType}" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from `${tableName}`
+        from ${tableName}
         <include refid="cond"/>
     </select>
 
 
     <delete id="deleteByPrimaryKeySelective" parameterType="java.lang.String">
-        delete from `${tableName}` where id = ${r'#{id,jdbcType=VARCHAR}'}
+        delete from ${tableName} where ID = ${r'#{id,jdbcType=VARCHAR}'}
     </delete>
 
     <insert id="insert" parameterType="${type}">
-        insert into `${tableName}` (id<#list propertiesList as p><#if p.column== "id"><#else>,${p.column}</#if></#list>
+        insert into ${tableName} (
+        <#list propertiesList as p><#if p_index==0>${p.column}<#elseif (p_index%13==12 && propertiesList?size>13)>,${p.column},<#elseif (p_index%13==12 && propertiesList?size==13)>${p.column}<#elseif p_index%13==0>
+        ${p.column}<#else >,${p.column}</#if></#list>
         )
-        values (${r'#{item.id,jdbcType=VARCHAR}'},<#list propertiesList as p><#if p.column== "id"><#else>,${r'#{'}${p.property},jdbcType=${p.jdbcType}${r'}'}</#if></#list>)
+        values (
+         <#list propertiesList as p><#if p_index==0>${r'#{'}${p.property},jdbcType=${p.jdbcType}${r'}'}<#elseif (p_index%5==4 && propertiesList?size>5)>,${r'#{'}${p.property},jdbcType=${p.jdbcType}${r'}'},<#elseif (p_index%5==4 && propertiesList?size==5)>${r'#{'}${p.property},jdbcType=${p.jdbcType}${r'}'}<#elseif p_index%5==0>
+         ${r'#{'}${p.property},jdbcType=${p.jdbcType}${r'}'}<#else >,${r'#{'}${p.property},jdbcType=${p.jdbcType}${r'}'}</#if></#list>
     </insert>
 
-
-
-
-    <update id="updateByPrimaryKeySelective" parameterType="${type}">
-        update `${tableName}`
+    <update id="merge" parameterType="${type}">
+        merge into ${tableName} t1
+        using (select ${r'#{id,jdbcType=VARCHAR}'} as ID from dual)tab_
+        ON (t1.ID=tab_.ID)
+        WHEN MATCHED THEN
+        update
         <set>
-        <#list propertiesList as p><#if p.column== "id"><#else>
+        <#list propertiesList as p><#if p.column== "ID"><#else>
             <if test="${p.property} != null">
-            ${p.column} =${r'#{'}${p.property},jdbcType=${p.jdbcType}},
+                ${p.column} =${r'#{'}${p.property},jdbcType=${p.jdbcType}},
             </if>
         </#if></#list>
         </set>
-        where ID =  ${r'#{id}'}
+        WHEN NOT MATCHED THEN
+        insert  (
+        <#list propertiesList as p><#if p_index==0>${p.column}<#elseif (p_index%13==12 && propertiesList?size>13)>,${p.column},<#elseif (p_index%13==12 && propertiesList?size==13)>${p.column}<#elseif p_index%13==0>
+        ${p.column}<#else >,${p.column}</#if></#list>
+        )
+        values (
+        <#list propertiesList as p><#if p_index==0>${r'#{'}${p.property},jdbcType=${p.jdbcType}${r'}'}<#elseif (p_index%5==4 && propertiesList?size>5)>,${r'#{'}${p.property},jdbcType=${p.jdbcType}${r'}'},<#elseif (p_index%5==4 && propertiesList?size==5)>${r'#{'}${p.property},jdbcType=${p.jdbcType}${r'}'}<#elseif p_index%5==0>
+        ${r'#{'}${p.property},jdbcType=${p.jdbcType}${r'}'}<#else >,${r'#{'}${p.property},jdbcType=${p.jdbcType}${r'}'}</#if></#list>
+        )
     </update>
 
-
-    <!--建表SQL-->
-    CREATE TABLE `${tableName}` (
-    `ID` VARCHAR2(20) NOT null,
-    <#list propertiesList as p>
-        <#if p.column== "ID">
-        <#elseif  p.column== "CREATE_AUTHOR1">
-        <#else>
-            `${p.column}`  <#if p.jdbcType=="VARCHAR" > VARCHAR2(${p.length}) <#elseif p.jdbcType=="INTEGER">
-            NUMBER(10) <#elseif p.jdbcType=="BIGINT">NUMBER(20) <#elseif p.jdbcType=="TIMESTAMP">
-            DATE</#if> <#if p.nullAble>NULL <#else> NOT NULL</#if>,
-        </#if>
-    </#list>
-    constraint PK_T_WAREHOUSE_INVOICE primary key (ID)
-    );
-
-    comment on table `${tableName}` is '${tableComment}';
-<#list propertiesList as p>
-    comment on column ${p.column} is  '${p.comment}';
-</#list>
+    <update id="updateByPrimaryKeySelective" parameterType="${type}">
+        update ${tableName}
+        <set>
+        <#list propertiesList as p><#if p.column== "ID"><#else>
+            <if test="${p.property} != null">
+                ${p.column} =${r'#{'}${p.property},jdbcType=${p.jdbcType}},
+            </if>
+        </#if></#list>
+        </set>
+        where ID =  ${r'#{id,jdbcType=VARCHAR}'}
+    </update>
 </mapper>

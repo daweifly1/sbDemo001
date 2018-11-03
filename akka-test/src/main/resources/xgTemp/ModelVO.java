@@ -3,6 +3,8 @@ import lombok.Data;
 import lombok.ToString;
 import java.io.Serializable;
 
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * ${tableComment} VO类
  */
@@ -16,6 +18,7 @@ public class ${beanName}VO  implements Serializable{
         <#elseif p.jdbcType=="INTEGER">private Integer ${p.property};
         <#elseif p.jdbcType=="TIMESTAMP">private Timestamp ${p.property};
         <#elseif p.jdbcType=="VARCHAR">private String ${p.property};
+        <#elseif p.jdbcType=="DECIMAL">private BigDecimal ${p.property};
         <#else>  private Object ${p.property};
         </#if>
     </#list>

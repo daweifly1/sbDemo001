@@ -28,7 +28,7 @@ import java.util.Map;
  */
 public class GenCode {
 
-    private static String mapperPackagePrefix = "com.netease.kaola.generic.element.dao.mapper.ddb";
+    private static String mapperPackagePrefix = "com.bkwin.jt.dao.mapper.refund";
 
     private static String modelPath = "com.devi.tool.xgit.model";
 
@@ -38,12 +38,12 @@ public class GenCode {
 
         if (null != classNames && classNames.size() > 0) {
             for (String cn : classNames) {
-                genDao(cn);
+                genDao(cn,"com.bkwin.jt.dao.entity.refund","com.bkwin.jt.service.vo.refund");
             }
         }
     }
 
-    private static void genDao(String cn) throws ClassNotFoundException {
+    private static void genDao(String cn,String doPath,String voPath) throws ClassNotFoundException {
         //根据类名获得其对应的Class对象 写上你想要的类名就是了 注意是全名 如果有包的话要加上 比如java.Lang.String
         Class clazz = Class.forName(cn);
 
@@ -55,8 +55,12 @@ public class GenCode {
 
         // 获取类上的注解
         TableComment tableAnno = (TableComment) clazz.getAnnotation(TableComment.class);
+        if (null == tableAnno) {
+            return;
+        }
         mapperBean.setTableComment(tableAnno.value());
-        mapperBean.setType(cn);
+        mapperBean.setType(doPath+"."+clazz.getSimpleName()+"DO");
+        mapperBean.setVoType(voPath+"."+clazz.getSimpleName()+"VO");
         mapperBean.setBeanName(clazz.getSimpleName());
         mapperBean.setTableName("T_WAREHOUSE" + genColum(clazz.getSimpleName()));
         List<MapperBean.ModelProperties> list = new ArrayList<>();
@@ -85,7 +89,7 @@ public class GenCode {
                 p.setJdbcType("INTEGER");
                 p.setLength(2);
             } else if (f.getType().getName().contains("Date")) {
-                p.setJdbcType("DATE");
+                p.setJdbcType("TIMESTAMP");
                 p.setLength(6);
             } else if (f.getType().getName().contains("Timestamp")) {
                 p.setJdbcType("TIMESTAMP");
@@ -109,6 +113,8 @@ public class GenCode {
         if (!outF.exists()) {
             outF.mkdir();
         }
+
+        parseHtmlFile(temDir + "xgTemp", "create_Table.ftl", out + "/"+mapperBean.getTableName()+".sql", BeanMapUtil.beanToMap(mapperBean));
         parseHtmlFile(temDir + "xgTemp", "DemoMapper.ftl", out + "/" + clazz.getSimpleName() + "Mapper.xml", BeanMapUtil.beanToMap(mapperBean));
         parseHtmlFile(temDir + "xgTemp", "DemoMapper.java", out + "/" + clazz.getSimpleName() + "Mapper.java", BeanMapUtil.beanToMap(mapperBean));
         parseHtmlFile(temDir + "xgTemp", "Model.java", out + "/" + clazz.getSimpleName() + "DO.java", BeanMapUtil.beanToMap(mapperBean));

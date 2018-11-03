@@ -13,6 +13,8 @@ import java.util.List;
 public class MapperBean {
     private String namespace;
     private String type;
+    private String voType;
+
     private String beanName;
     private String packageName;
 

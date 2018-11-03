@@ -21,9 +21,9 @@ public class GenCode2 {
 
         if (null != classNames && classNames.size() > 0) {
             for (String cn : classNames) {
-                genCopy(cn, "recordDO", "detailVO");
+//                genCopy(cn, "recordDO", "detailVO");
 
-//                genMock(cn, "model");
+                genMock(cn, "model");
             }
         }
 
