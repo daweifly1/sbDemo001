@@ -20,9 +20,9 @@ public class Refund implements Serializable {
     private String id;
     @ApiModelProperty(value = "退货单号,TH开头")
     private String refundCode;
-    @ApiModelProperty(value = "合同号")
+    @ApiModelProperty(value = "合同号", required = true)
     private String contractNo;
-    @ApiModelProperty(value = "是否条码管理,1是，0否")
+    @ApiModelProperty(value = "是否条码管理,1是，0否", required = true)
     private Integer barcodeFlag;
     @ApiModelProperty(value = "原因")
     private String reason;

@@ -1,22 +1,12 @@
-package com.devi.tool.xgit;
+package com.devi.tool.netease;
 
-import com.devi.tool.netease.PackageUtil;
 import com.devi.tool.netease.freemarker.MapperBean;
 import com.devi.tool.util.BeanMapUtil;
-import com.devi.tool.xgit.annotation.TableComment;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
-import io.swagger.annotations.ApiModelProperty;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +16,11 @@ import java.util.Map;
  * 代码生成工具类
  * Created by hzchendawei on 2018/3/15.
  */
-public class GenCode {
+public class JTGenCode {
 
-    private static String mapperPackagePrefix = "com.bkwin.jt.dao.mapper.refund";
+    private static String mapperPackagePrefix = "com.bkwin.jt.dao.mapper";
 
-    private static String modelPath = "com.devi.tool.xgit.model";
+    private static String modelPath = "com.bkwin.jt.dao.entity";
 
 
     public static void main(String[] args) throws Exception {
@@ -38,12 +28,12 @@ public class GenCode {
 
         if (null != classNames && classNames.size() > 0) {
             for (String cn : classNames) {
-                genDao(cn, "com.bkwin.jt.dao.entity.refund", "com.bkwin.jt.service.vo.refund");
+                genDao(cn);
             }
         }
     }
 
-    private static void genDao(String cn, String doPath, String voPath) throws ClassNotFoundException {
+    private static void genDao(String cn) throws ClassNotFoundException {
         //根据类名获得其对应的Class对象 写上你想要的类名就是了 注意是全名 如果有包的话要加上 比如java.Lang.String
         Class clazz = Class.forName(cn);
 
@@ -52,18 +42,9 @@ public class GenCode {
 
         MapperBean mapperBean = new MapperBean();
         mapperBean.setNamespace(mapperPackagePrefix + "." + clazz.getSimpleName() + "Mapper");
-
-        // 获取类上的注解
-        TableComment tableAnno = (TableComment) clazz.getAnnotation(TableComment.class);
-        if (null == tableAnno) {
-            return;
-        }
-        mapperBean.setTableComment(tableAnno.value());
-        mapperBean.setType(doPath + "." + clazz.getSimpleName() + "DO");
-        mapperBean.setVoType(voPath + "." + clazz.getSimpleName() + "VO");
+        mapperBean.setType(cn);
         mapperBean.setBeanName(clazz.getSimpleName());
-        mapperBean.setFistLowerBeanName(mapperBean.getBeanName().substring(0, 1).toLowerCase() + mapperBean.getBeanName().substring(1));
-        mapperBean.setTableName("T_WAREHOUSE" + genColum(clazz.getSimpleName()));
+        mapperBean.setTableName("mt" + genColum(clazz.getSimpleName()));
         List<MapperBean.ModelProperties> list = new ArrayList<>();
         for (Field f : fields) {
             //打印每个属性的类型名字
@@ -72,64 +53,60 @@ public class GenCode {
             MapperBean.ModelProperties p = new MapperBean.ModelProperties();
 
             // 获取类上的注解
-            ApiModelProperty annotation = f.getAnnotation(ApiModelProperty.class);
+            CollumComment annotation = f.getAnnotation(CollumComment.class);
             if (annotation == null) {
                 continue;
             }
             // 输出注解上的属性
             String comment = annotation.value();
             p.setComment(comment);
-
-            p.setRequired(annotation.required());
-            p.setNullAble(!annotation.required());
+            p.setLength(annotation.length());
+            p.setNullAble(annotation.nullAble());
             p.setColumn(genColum(f.getName()));
             p.setProperty(f.getName());
             if (f.getType().getName().contains("String")) {
-                p.setLength(255);
                 p.setJdbcType("VARCHAR");
             } else if (f.getType().getName().contains("Integer")) {
                 p.setJdbcType("INTEGER");
-                p.setLength(2);
             } else if (f.getType().getName().contains("Date")) {
                 p.setJdbcType("TIMESTAMP");
-                p.setLength(6);
             } else if (f.getType().getName().contains("Timestamp")) {
                 p.setJdbcType("TIMESTAMP");
-                p.setLength(6);
             } else if (f.getType().getName().contains("Long")) {
                 p.setJdbcType("BIGINT");
-                p.setLength(20);
-            } else if (f.getType().getName().contains("BigDecimal")) {
-                p.setJdbcType("DECIMAL");
-                p.setLength(50);
             }
-
             list.add(p);
         }
         mapperBean.setPropertiesList(list);
         mapperBean.setPackageName(mapperPackagePrefix);
 
-        String temDir = GenCode.class.getResource("/").getPath();
+        String temDir = JTGenCode.class.getResource("/").getPath();
         String out = temDir + "out";
         File outF = new File(out);
         if (!outF.exists()) {
             outF.mkdir();
         }
+        parseHtmlFile(temDir + "temp", "DemoMapper.ftl", out + "/" + clazz.getSimpleName() + "Mapper.xml", BeanMapUtil.beanToMap(mapperBean));
+        parseHtmlFile(temDir + "temp", "DemoMapper.java", out + "/" + clazz.getSimpleName() + "Mapper.java", BeanMapUtil.beanToMap(mapperBean));
 
-        parseHtmlFile(temDir + "xgTemp", "create_Table.ftl", out + "/" + mapperBean.getTableName() + ".sql", BeanMapUtil.beanToMap(mapperBean));
-        parseHtmlFile(temDir + "xgTemp", "DemoMapper.ftl", out + "/" + clazz.getSimpleName() + "Mapper.xml", BeanMapUtil.beanToMap(mapperBean));
-        parseHtmlFile(temDir + "xgTemp", "DemoMapper.java", out + "/" + clazz.getSimpleName() + "Mapper.java", BeanMapUtil.beanToMap(mapperBean));
-        parseHtmlFile(temDir + "xgTemp", "Model.java", out + "/" + clazz.getSimpleName() + "DO.java", BeanMapUtil.beanToMap(mapperBean));
-        parseHtmlFile(temDir + "xgTemp", "ModelVO.java", out + "/" + clazz.getSimpleName() + "VO.java", BeanMapUtil.beanToMap(mapperBean));
-        parseHtmlFile(temDir + "xgTemp", "ModelServiceImpl.java", out + "/" + clazz.getSimpleName() + "Service.java", BeanMapUtil.beanToMap(mapperBean));
+        parseHtmlFile(temDir + "temp", "Model.java", out + "/" + clazz.getSimpleName() + ".java", BeanMapUtil.beanToMap(mapperBean));
 
-        parseHtmlFile(temDir + "xgTemp", "ModelController.java", out + "/" + clazz.getSimpleName() + "Controller.java", BeanMapUtil.beanToMap(mapperBean));
+        parseHtmlFile(temDir + "temp", "ModelDto.java", out + "/" + clazz.getSimpleName() + "Dto.java", BeanMapUtil.beanToMap(mapperBean));
 
+        parseHtmlFile(temDir + "temp", "ModelForm.java", out + "/" + clazz.getSimpleName() + "Form.java", BeanMapUtil.beanToMap(mapperBean));
+        parseHtmlFile(temDir + "temp", "ModelParam.java", out + "/" + clazz.getSimpleName() + "Param.java", BeanMapUtil.beanToMap(mapperBean));
+
+
+        parseHtmlFile(temDir + "temp", "ModelBackgroundFacade.java", out + "/" + clazz.getSimpleName() + "BackgroundFacade.java", BeanMapUtil.beanToMap(mapperBean));
+        parseHtmlFile(temDir + "temp", "ModelBackgroundFacadeImpl.java", out + "/" + clazz.getSimpleName() + "BackgroundFacadeImpl.java", BeanMapUtil.beanToMap(mapperBean));
+
+        parseHtmlFile(temDir + "temp", "ModelService.java", out + "/" + clazz.getSimpleName() + "Service.java", BeanMapUtil.beanToMap(mapperBean));
+        parseHtmlFile(temDir + "temp", "ModelServiceImpl.java", out + "/" + clazz.getSimpleName() + "ServiceImpl.java", BeanMapUtil.beanToMap(mapperBean));
 
     }
 
     private static String genColum(String str) {
-        return str.replaceAll("[A-Z]", "_$0").toUpperCase();
+        return str.replaceAll("[A-Z]", "_$0").toLowerCase();
     }
 
 

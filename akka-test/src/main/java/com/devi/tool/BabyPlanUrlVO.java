@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * 宝贝计划页面的url
@@ -19,4 +20,6 @@ public class BabyPlanUrlVO implements Serializable {
 
     //添加编辑第2个宝贝地址
     private String edit1Url;
+
+    private BigDecimal n;
 }

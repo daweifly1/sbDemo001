@@ -13,16 +13,10 @@ import java.util.List;
 public class MapperBean {
     private String namespace;
     private String type;
-    private String voType;
-
     private String beanName;
-    //首字母小写
-    private String fistLowerBeanName;
     private String packageName;
 
     private String tableName;
-    private String tableComment;
-
 
     private List<ModelProperties> propertiesList;
 
@@ -40,7 +34,5 @@ public class MapperBean {
         private Integer length;
 
         private boolean nullAble;
-
-        boolean required;
     }
 }

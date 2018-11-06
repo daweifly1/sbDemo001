@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class ${beanName}DO  implements Serializable{
     private static final long serialVersionUID = -1L;
 <#list propertiesList as p>
-    //${p.comment}<#if p.jdbcType=="BIGINT">
+    //${p.comment}<#if p.required>,数据库必填字段</#if><#if p.jdbcType=="BIGINT">
     private Long ${p.property};<#elseif p.jdbcType=="INTEGER">
     private Integer ${p.property};<#elseif p.jdbcType=="TIMESTAMP">
     private Timestamp ${p.property};<#elseif p.jdbcType=="VARCHAR">
