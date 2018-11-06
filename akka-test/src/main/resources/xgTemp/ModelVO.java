@@ -16,7 +16,7 @@ public class ${beanName}VO  implements Serializable{
     @ApiModelProperty(value = "${p.comment}"<#if p.required>, required = true</#if>  )<#if p.jdbcType=="BIGINT">
     private Long ${p.property};<#elseif p.jdbcType=="INTEGER">
     private Integer ${p.property};<#elseif p.jdbcType=="TIMESTAMP">
-    private Timestamp ${p.property};<#elseif p.jdbcType=="VARCHAR">
+    private Date ${p.property};<#elseif p.jdbcType=="VARCHAR">
     private String ${p.property};<#elseif p.jdbcType=="DECIMAL">
     private BigDecimal ${p.property};<#else>
     private Object ${p.property};</#if>
