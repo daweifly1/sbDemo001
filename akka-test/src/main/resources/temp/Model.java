@@ -8,11 +8,13 @@ import java.io.Serializable;
 public class ${beanName}  implements Serializable{
     <#list propertiesList as p>
         <#if p.column== "id">private Long id;
-        <#elseif p.jdbcType=="BIGINT">private Long ${p.property};
-        <#elseif p.jdbcType=="INTEGER">private Integer ${p.property};
-        <#elseif p.jdbcType=="TIMESTAMP">private Timestamp ${p.property};
-        <#elseif p.jdbcType=="VARCHAR">private String ${p.property};
-        <#else>  private Object ${p.property};
+        <#elseif p.javaType=="BIGINT">private Long ${p.property};
+        <#elseif p.javaType=="INTEGER">private Integer ${p.property};
+        <#elseif p.javaType=="Short">private Short ${p.property};
+        <#elseif p.javaType=="DECIMAL">private Integer ${p.property};
+        <#elseif p.javaType=="Date">private Date ${p.property};
+        <#elseif p.javaType=="String">private String ${p.property};
+        <#else>  private ${p.javaType} ${p.property};
         </#if>
     </#list>
 }

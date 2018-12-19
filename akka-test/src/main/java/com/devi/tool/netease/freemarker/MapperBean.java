@@ -23,6 +23,8 @@ public class MapperBean {
     private String tableName;
     private String tableComment;
 
+    private String tableTsName;
+
 
     private List<ModelProperties> propertiesList;
 
@@ -34,6 +36,8 @@ public class MapperBean {
         private String property;
 
         private String jdbcType;
+
+        private String javaType;
 
         private String comment;
 

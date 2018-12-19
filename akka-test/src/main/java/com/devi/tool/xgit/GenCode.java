@@ -63,6 +63,9 @@ public class GenCode {
         mapperBean.setVoType(voPath + "." + clazz.getSimpleName() + "VO");
         mapperBean.setBeanName(clazz.getSimpleName());
         mapperBean.setFistLowerBeanName(mapperBean.getBeanName().substring(0, 1).toLowerCase() + mapperBean.getBeanName().substring(1));
+
+        mapperBean.setTableTsName(genTsName(mapperBean.getBeanName()));
+
         mapperBean.setTableName("T_WAREHOUSE" + genColum(clazz.getSimpleName()));
         List<MapperBean.ModelProperties> list = new ArrayList<>();
         for (Field f : fields) {
@@ -87,21 +90,33 @@ public class GenCode {
             if (f.getType().getName().contains("String")) {
                 p.setLength(255);
                 p.setJdbcType("VARCHAR");
-            } else if (f.getType().getName().contains("Integer")) {
-                p.setJdbcType("INTEGER");
+                p.setJavaType("String");
+            } else if (f.getType().getName().contains("Integer") || f.getType().getName().contains("int")) {
+                p.setJdbcType("DECIMAL");
+                p.setJavaType("Integer");
                 p.setLength(2);
+            } else if (f.getType().getName().contains("Short")||f.getType().getName().contains("short")) {
+                p.setJdbcType("DECIMAL");
+                p.setJavaType("Short");
+                p.setLength(6);
             } else if (f.getType().getName().contains("Date")) {
-                p.setJdbcType("TIMESTAMP");
+                p.setJdbcType("Date");
+                p.setJavaType("Date");
                 p.setLength(6);
             } else if (f.getType().getName().contains("Timestamp")) {
                 p.setJdbcType("TIMESTAMP");
+                p.setJavaType("Date");
                 p.setLength(6);
             } else if (f.getType().getName().contains("Long")) {
-                p.setJdbcType("BIGINT");
+                p.setJdbcType("DECIMAL");
+                p.setJavaType("Long");
                 p.setLength(20);
             } else if (f.getType().getName().contains("BigDecimal")) {
                 p.setJdbcType("DECIMAL");
+                p.setJavaType("BigDecimal");
                 p.setLength(50);
+            }else{
+                p.setJavaType(f.getType().getName());
             }
 
             list.add(p);
@@ -125,7 +140,23 @@ public class GenCode {
 
         parseHtmlFile(temDir + "xgTemp", "ModelController.java", out + "/" + clazz.getSimpleName() + "Controller.java", BeanMapUtil.beanToMap(mapperBean));
 
+        parseHtmlFile(temDir + "xgTemp", "ModelWeb.js", out + "/" + genTsName(clazz.getSimpleName()) + ".service.ts", BeanMapUtil.beanToMap(mapperBean));
 
+    }
+
+    private static String genTsName(String str) {
+        int i = 0;
+        StringBuilder sb = new StringBuilder();
+        while (i < str.length()) {
+            char chr = str.charAt(i);
+            if (i > 0 && Character.isUpperCase(chr)) {
+                sb.append("-").append(chr);
+            } else {
+                sb.append(chr);
+            }
+            i++;
+        }
+        return sb.toString().toLowerCase();
     }
 
     private static String genColum(String str) {

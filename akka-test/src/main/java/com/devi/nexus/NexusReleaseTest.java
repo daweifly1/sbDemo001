@@ -19,6 +19,20 @@ public class NexusReleaseTest {
 
         //先根据接口找到列表
         String s = "[{\n" +
+                "\t\"id\": \"76d7d7e4186a390fc032dd1079cd8995\",\n" +
+                "\t\"repositoryName\": \"maven-releases\",\n" +
+                "\t\"group\": \"bkrwin.archetype\",\n" +
+                "\t\"name\": \"starter-project-archetype\",\n" +
+                "\t\"version\": \"1.0.1-RELEASE\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"cf606f82560ea9068d11db1e750f7ed3\",\n" +
+                "\t\"repositoryName\": \"maven-releases\",\n" +
+                "\t\"group\": \"bkrwin.archetype\",\n" +
+                "\t\"name\": \"starter-service-archetype\",\n" +
+                "\t\"version\": \"1.0.1-RELEASE\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
                 "\t\"id\": \"76d7d7e4186a390f639c754d980b6088\",\n" +
                 "\t\"repositoryName\": \"maven-releases\",\n" +
                 "\t\"group\": \"com.alipay\",\n" +
@@ -31,6 +45,20 @@ public class NexusReleaseTest {
                 "\t\"group\": \"com.bkh\",\n" +
                 "\t\"name\": \"ufast-gen-code\",\n" +
                 "\t\"version\": \"1.1.0\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"dfbef09efe1644ea637fbf8c9658e1bd\",\n" +
+                "\t\"repositoryName\": \"maven-releases\",\n" +
+                "\t\"group\": \"com.bkrwin.ufast.archetype\",\n" +
+                "\t\"name\": \"starter-project-archetype\",\n" +
+                "\t\"version\": \"1.0.1-RELEASE\",\n" +
+                "\t\"format\": \"maven2\"\n" +
+                "}, {\n" +
+                "\t\"id\": \"1c787a03db8209ebc80880a63b0b948c\",\n" +
+                "\t\"repositoryName\": \"maven-releases\",\n" +
+                "\t\"group\": \"com.bkrwin.ufast.archetype\",\n" +
+                "\t\"name\": \"starter-service-archetype\",\n" +
+                "\t\"version\": \"1.0.1-RELEASE\",\n" +
                 "\t\"format\": \"maven2\"\n" +
                 "}, {\n" +
                 "\t\"id\": \"cf606f82560ea906129555e744090d6a\",\n" +

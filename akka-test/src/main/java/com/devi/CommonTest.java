@@ -45,7 +45,9 @@ public class CommonTest {
 
         System.out.println(documentNo);
         System.out.println(sb.toString());
+        System.out.println(new DateTime().toString("yyyyMMddHHmmss"));
 
+        System.out.println(new DateTime().plusHours(-8).toString("yyyyMMddHHmmss"));
 
 //        System.out.println(getEncyTeamId(9045L));
 //

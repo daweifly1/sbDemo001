@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 
 /**
@@ -13,15 +14,15 @@ import java.math.BigDecimal;
 @Data
 @ToString
 public class RefundOutDetailVO {
-    @ApiModelProperty(value = "主键")
-    private String id;
+    @ApiModelProperty(value = "合同编号,收发货单有")
+    private String purchaseNo;
 
-    @ApiModelProperty(value = "物料编码")
-    private String materialNo;
+    @ApiModelProperty(value = "合同类型（1采购订单，2年度协议），收发货单有")
+    private Integer contractType;
 
-    /**
-     * 出库数量
-     */
-    @ApiModelProperty(value = "退货数量")
-    private BigDecimal amountOut;
+    @ApiModelProperty(value = "供应商编码，,收发货单有")
+    private String supplierNo;
+
+    @ApiModelProperty(value = "供应商名称，收发货单有")
+    private String supplierName;
 }

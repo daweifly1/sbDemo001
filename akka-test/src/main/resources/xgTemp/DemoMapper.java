@@ -11,7 +11,7 @@ import ${voType}
  * ${tableComment} Mapper
  */
 @Mapper
-public interface ${beanName}Mapper  extends BaseMapper<RefundVO, RefundDO> {
+public interface ${beanName}Mapper  extends BaseMapper<${beanName}VO, ${beanName}DO> {
 
     PageCommonVO list(SearchCommonVO<${beanName}VO> condition);
 
