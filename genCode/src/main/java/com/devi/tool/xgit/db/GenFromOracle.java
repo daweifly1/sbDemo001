@@ -1,4 +1,4 @@
-package com.devi.tool.xgit.other;
+package com.devi.tool.xgit.db;
 
 import com.devi.tool.netease.freemarker.MapperBean;
 import com.devi.tool.util.BeanMapUtil;
