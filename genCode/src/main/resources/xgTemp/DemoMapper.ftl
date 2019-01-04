@@ -93,6 +93,25 @@
         ${r'#{'}${p.property},jdbcType=${p.jdbcType}${r'}'}<#else >,${r'#{'}${p.property},jdbcType=${p.jdbcType}${r'}'}</#if></#list>
         )
     </update>
+    <!--todo 待验证-->
+    <update id="mergeMsql" parameterType="${type}">
+        insert  (
+        <#list propertiesList as p><#if p_index==0>${p.column}<#elseif (p_index%10==9 && propertiesList?size>10)>,${p.column},<#elseif (p_index%10==9 && propertiesList?size==10)>${p.column}<#elseif p_index%10==0>
+            ${p.column}<#else >,${p.column}</#if></#list>
+        )
+        values (
+        <#list propertiesList as p><#if p_index==0>${r'#{'}${p.property},jdbcType=${p.jdbcType}${r'}'}<#elseif (p_index%5==4 && propertiesList?size>5)>,${r'#{'}${p.property},jdbcType=${p.jdbcType}${r'}'},<#elseif (p_index%5==4 && propertiesList?size==5)>${r'#{'}${p.property},jdbcType=${p.jdbcType}${r'}'}<#elseif p_index%5==0>
+            ${r'#{'}${p.property},jdbcType=${p.jdbcType}${r'}'}<#else >,${r'#{'}${p.property},jdbcType=${p.jdbcType}${r'}'}</#if></#list>
+        )
+        ON duplicate KEY UPDATE
+        <set>
+        <#list propertiesList as p><#if p.column== "ID"><#else>
+            <if test="${p.property} != null">
+                ${p.column} =${r'#{'}${p.property},jdbcType=${p.jdbcType}},
+            </if>
+        </#if></#list>
+        </set>
+    </update>
 
     <update id="updateByPrimaryKeySelective" parameterType="${type}">
         update ${tableName}

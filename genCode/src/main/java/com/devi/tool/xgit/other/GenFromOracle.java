@@ -14,33 +14,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 根据美化后的sql建表已经生成bean
+ * 根据美化后的sql建表已经生成bean,不考虑部分mysql不支持的sql
  */
-public class GenFromSql {
+public class GenFromOracle {
     private static String mapperPackagePrefix = "xxx";
 
 
     public static void main(String[] args) {
-        genMysql();
+        genOracle();
     }
 
-    private static void genMysql() {
+    private static void genOracle() {
         Connection connection = null;
         try {
-            String[] tables = {"ius_profile"};
+            String[] tables = {"IUS_PROFILE"};
 
             /*mysql url的连接字符串*/
-            String url = "jdbc:mysql://127.0.0.1:3306/scm_test?useUnicode=true&characterEncoding=UTF-8";
+            String url = "jdbc:oracle:thin:@scmdb.jt.com:1521:orcl";
             //账号
-            String user = "root";
+            String user = "scm";
             //密码
-            String password = "";
-            connection = getMysqlConnection(url, user, password);
+            String password = "scm";
+            connection = getOracleConnection(url, user, password);
             if (null != connection) {
                 for (String table : tables) {
                     MapperBean mapperBean = genCodeByTable(connection, table, "com.bkwin.jt.dao.entity.consumption", "com.bkwin.jt.service.vo.consumption");
                     if (null != mapperBean) {
-                        String temDir = com.devi.tool.xgit.GenCode.class.getResource("/").getPath();
+                        String temDir = GenCode.class.getResource("/").getPath();
 
 
                         String out = temDir + "out";
@@ -91,16 +91,14 @@ public class GenFromSql {
     private static MapperBean genCodeByTable(Connection connection, String table, String doPath, String voPath) throws Exception {
         MapperBean mapperBean = null;
         Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery("SHOW CREATE TABLE " + table);
+        ResultSet rs = stmt.executeQuery("select * from user_tab_comments where table_name='" + table + "'");
         String beanName = getBeanNameFromTable(table, true);
         if (rs != null && rs.next()) {
-            String createDDL = rs.getString(2);
-            String comment = parse(createDDL);
-
+            String comment = rs.getString("COMMENTS");
             mapperBean = new MapperBean();
 
             mapperBean.setNamespace("com.bkwin.jt.dao.mapper." + mapperPackagePrefix + "." + beanName + "Mapper");
-            mapperBean.setTableComment(comment);
+            mapperBean.setTableComment(null == comment ? "//待完善" : comment);
         }
         if (null == mapperBean) {
             System.out.println("error");
@@ -116,19 +114,24 @@ public class GenFromSql {
         mapperBean.setTableName(table);
         List<MapperBean.ModelProperties> list = new ArrayList<>();
 
-        rs = stmt.executeQuery("show full columns from " + table);
+        rs = stmt.executeQuery("select t.DATA_SCALE, t.DATA_PRECISION, t.COLUMN_NAME \"Field\",t.DATA_LENGTH,t.DATA_TYPE \"Type\",c.COMMENTS \"Comment\" from user_tab_columns t join USER_COL_COMMENTS c on c.COLUMN_NAME=t.COLUMN_NAME and c.Table_Name=t.Table_Name where t.Table_Name='" + table + "'");
         while (rs.next()) {
             MapperBean.ModelProperties p = new MapperBean.ModelProperties();
-            p.setComment(rs.getString("Comment"));
+            String comment = rs.getString("Comment");
+            p.setComment(null == comment ? "" : comment);
 
             p.setRequired(false);
             p.setNullAble(true);
             p.setColumn(rs.getString("Field"));
             p.setProperty(getBeanNameFromTable(rs.getString("Field"), false));
 
-            p.setLength(255);
+            p.setLength(rs.getInt("DATA_LENGTH"));
             p.setJdbcType(getJDBCType(rs.getString("Type")));
             p.setJavaType(sqlType2JavaType(rs.getString("Type")));
+            int data_scale = rs.getInt("DATA_SCALE");
+            if (p.getJdbcType().equals("Integer") && p.getLength() > 10 && data_scale > 0) {
+                p.setJavaType("BigDecimal");
+            }
             list.add(p);
         }
 
@@ -147,11 +150,11 @@ public class GenFromSql {
     }
 
 
-    private static Connection getMysqlConnection(String url, String user, String password) {
+    private static Connection getOracleConnection(String url, String user, String password) {
         Connection connection = null;
         PreparedStatement UserQuery;
         //mysql jdbc的java包驱动字符串
-        String driverClassName = "com.mysql.jdbc.Driver";
+        String driverClassName = "oracle.jdbc.OracleDriver";
         try {//驱动注册
             Class.forName(driverClassName);
             if (connection == null || connection.isClosed()) {
@@ -227,6 +230,8 @@ public class GenFromSql {
                 || sqlType.toLowerCase().contains("real") || sqlType.toLowerCase().contains("money")
                 || sqlType.toLowerCase().contains("smallmoney")) {
             return "double";
+        } else if (sqlType.toLowerCase().contains("number")) {
+            return "Integer";
         } else if (sqlType.toLowerCase().contains("varchar") || sqlType.toLowerCase().contains("char")
                 || sqlType.toLowerCase().contains("nvarchar") || sqlType.toLowerCase().contains("nchar")
                 || sqlType.toLowerCase().contains("text")) {
@@ -259,6 +264,8 @@ public class GenFromSql {
                 || sqlType.toLowerCase().contains("real") || sqlType.toLowerCase().contains("money")
                 || sqlType.toLowerCase().contains("smallmoney")) {
             return "DECIMAL";
+        } else if (sqlType.toLowerCase().contains("number")) {
+            return "DECIMAL";
         } else if (sqlType.toLowerCase().contains("varchar") || sqlType.toLowerCase().contains("char")
                 || sqlType.toLowerCase().contains("nvarchar") || sqlType.toLowerCase().contains("nchar")
                 || sqlType.toLowerCase().contains("text")) {
@@ -270,6 +277,7 @@ public class GenFromSql {
         } else if (sqlType.toLowerCase().contains("timestamp")) {
             return "TIMESTAMP";
         }
+        System.out.println("cannot find ===========" + sqlType);
         return null;
     }
 
