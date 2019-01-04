@@ -17,7 +17,7 @@ import java.util.List;
  * 根据美化后的sql建表已经生成bean,不考虑部分mysql不支持的sql
  */
 public class GenFromOracle {
-    private static String mapperPackagePrefix = "xxx";
+    private static String mapperPackagePrefix = "commmm";
 
 
     public static void main(String[] args) {
@@ -27,7 +27,7 @@ public class GenFromOracle {
     private static void genOracle() {
         Connection connection = null;
         try {
-            String[] tables = {"IUS_PROFILE"};
+            String[] tables = {"T_CONSUMPTION_OUT_PUT"};
 
             /*mysql url的连接字符串*/
             String url = "jdbc:oracle:thin:@scmdb.jt.com:1521:orcl";
