@@ -85,7 +85,7 @@ public class GenCode {
 
     }
 
-    private static void mkDir(String... path) {
+    public static void mkDir(String... path) {
         for (String d : path) {
             File f = new File(d);
             if (!f.exists()) {
@@ -94,7 +94,7 @@ public class GenCode {
         }
     }
 
-    private static void mkdirOutPath(String temDir, String outParent) {
+    public static void mkdirOutPath(String temDir, String outParent) {
         File outF = new File(outParent);
         if (!outF.exists()) {
             outF.mkdir();

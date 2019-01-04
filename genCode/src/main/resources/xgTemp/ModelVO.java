@@ -14,7 +14,7 @@ import java.util.Date;
 public class ${beanName}VO  implements Serializable{
     private static final long serialVersionUID = -1L;
 <#list propertiesList as p>
-    @ApiModelProperty(value = "${p.comment}"<#if p.required>, required = true</#if>  )
+    @ApiModelProperty(value = "${p.comment}"<#if p.required>, required = true</#if>)
     private ${p.javaType} ${p.property};
 </#list>
 }
