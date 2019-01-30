@@ -50,22 +50,12 @@ public class GuavaLocalCacheAdvice {
 //        String key = genKey(pjp, localCache);
         try {
             Method method = getMethod(pjp);
-            String key = localCache.group() + parseKey(localCache.preFix(), localCache.keyExt(), method, pjp.getArgs());
+            String key = parseKey(localCache.preFix(), localCache.keyExt(), method, pjp.getArgs());
             LoadingCache<String, Object> cache = getCacheFromCacheMap(key, pjp, localCache);
-            HitInfo hh = calcMap.get(key);
-            if (null == hh) {
-                hh = new HitInfo();
-                calcMap.put(key, hh);
-            }
-            hh.TotalPlusOne();
             Object o = cache.get(key);
             if (o == nullObject) {
-                hh.MisPlusOne();
                 return null;
-            } else {
-                hh.HitPlusOne();
             }
-            logger.info("{}:命中情况：{}", key, hh);
             return o;
         } catch (Exception e) {
             logger.warn("cacheExcute error .", e);
@@ -73,9 +63,20 @@ public class GuavaLocalCacheAdvice {
         return null;
     }
 
-    private LoadingCache<String, Object> getCacheFromCacheMap(final String fkey, final ProceedingJoinPoint pjp, final GuavaLocalCache localCache) {
+    private LoadingCache<String, Object> getCacheFromCacheMap(String ffkey, final ProceedingJoinPoint pjp, final GuavaLocalCache localCache) {
+        final String gname = localCache.group();
+        final String fkey = gname + "_" + ffkey;
         LoadingCache<String, Object> cache = cacheMap.get(fkey);
+
+        HitInfo hh = calcMap.get(fkey);
+        if (null == hh) {
+            hh = new HitInfo();
+            calcMap.put(fkey, hh);
+        }
+        hh.TotalPlusOne();
         if (null != cache) {
+            hh.HitPlusOne();
+            logHitInfo(fkey, hh);
             return cache;
         }
         cache = CacheBuilder.newBuilder()
@@ -85,17 +86,20 @@ public class GuavaLocalCacheAdvice {
                 .build(new CacheLoader<String, Object>() {
                     @Override
                     public Object load(String key) {
+                        long t = System.currentTimeMillis();
                         try {
-                            long t = System.currentTimeMillis();
-                            logger.info("begin local cach,key {}", key);
+                            HitInfo hh2 = calcMap.get(fkey);
+                            hh2.MisPlusOne();
+                            logHitInfo(fkey, hh2);
                             Object o = pjp.proceed();
-                            logger.info("end local cach,key {} ,time:{}", key, System.currentTimeMillis() - t);
                             if (localCache.nullAble() && null == o) {
                                 return nullObject;
                             }
                             return o;
                         } catch (Throwable throwable) {
                             logger.warn("getCacheFromCacheMap error .{}", throwable.getMessage());
+                        } finally {
+                            logger.info("query localCache by key {} ,time:{}", key, System.currentTimeMillis() - t);
                         }
                         return null;
                     }
@@ -107,6 +111,29 @@ public class GuavaLocalCacheAdvice {
                 });
         cacheMap.put(fkey, cache);
         return cache;
+    }
+
+    public void clearCache(String gname) {
+        if (cacheMap.isEmpty()) {
+            return;
+        }
+        for (String key : cacheMap.keySet()) {
+            if (key.startsWith(gname)) {
+                cacheMap.put(key, null);
+            }
+        }
+    }
+
+    public void clearAllCache() {
+        cacheMap.clear();
+    }
+
+    private void logHitInfo(String fkey, HitInfo hh) {
+        try {
+            logger.info("{}:命中情况：{}", fkey, hh);
+        } catch (Exception e) {
+            logger.error("logHitInfo error", e);
+        }
     }
 
 
@@ -200,6 +227,7 @@ public class GuavaLocalCacheAdvice {
         }
 
         public void MisPlusOne() {
+            this.hitCount--;
             this.missCount++;
         }
 
@@ -224,8 +252,8 @@ public class GuavaLocalCacheAdvice {
         @Override
         public String toString() {
             BigDecimal radio = BigDecimal.ZERO;
-            if (totalCount > 0) {
-                radio = new BigDecimal(hitCount).divide(new BigDecimal(totalCount));
+            if (totalCount > 0 && hitCount > 0) {
+                radio = new BigDecimal(hitCount).divide(new BigDecimal(totalCount), 5, 5);
             }
             return "HitInfo{" +
                     "hitCount=" + hitCount +
