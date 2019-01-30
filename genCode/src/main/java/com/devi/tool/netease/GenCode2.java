@@ -21,7 +21,7 @@ public class GenCode2 {
 
         if (null != classNames && classNames.size() > 0) {
             for (String cn : classNames) {
-                genCopy(cn, "warehouseInboundAddVO.getHeaderInfo()", "warehouseInvoiceDO");
+                genCopy(cn, "purchasePlanDetailsVO", "detailVO");
 
 //                genMock(cn, "model");
             }

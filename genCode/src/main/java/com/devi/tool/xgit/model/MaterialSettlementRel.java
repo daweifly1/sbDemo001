@@ -1,4 +1,4 @@
-package com.devi.tool.xgit.temp;
+package com.devi.tool.xgit.model;
 
 import com.devi.tool.xgit.annotation.TableComment;
 import io.swagger.annotations.ApiModelProperty;

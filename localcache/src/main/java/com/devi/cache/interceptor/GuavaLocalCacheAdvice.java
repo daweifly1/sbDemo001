@@ -19,6 +19,7 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
@@ -36,6 +37,8 @@ public class GuavaLocalCacheAdvice {
 
     private Object nullObject = new Object();
 
+    Map<String, HitInfo> calcMap = new ConcurrentHashMap<>(100);
+
     Map<String, LoadingCache<String, Object>> cacheMap = new ConcurrentHashMap<>();
 
     @Pointcut("@annotation(com.devi.cache.interceptor.GuavaLocalCache)")
@@ -47,13 +50,22 @@ public class GuavaLocalCacheAdvice {
 //        String key = genKey(pjp, localCache);
         try {
             Method method = getMethod(pjp);
-            final String key = parseKey(localCache.preFix(), localCache.keyExt(), method, pjp.getArgs());
-
-            LoadingCache<String, Object> cache = getCacheFromCacheMap(localCache, pjp);
+            String key = localCache.group() + parseKey(localCache.preFix(), localCache.keyExt(), method, pjp.getArgs());
+            LoadingCache<String, Object> cache = getCacheFromCacheMap(key, pjp, localCache);
+            HitInfo hh = calcMap.get(key);
+            if (null == hh) {
+                hh = new HitInfo();
+                calcMap.put(key, hh);
+            }
+            hh.TotalPlusOne();
             Object o = cache.get(key);
             if (o == nullObject) {
+                hh.MisPlusOne();
                 return null;
+            } else {
+                hh.HitPlusOne();
             }
+            logger.info("{}:命中情况：{}", key, hh);
             return o;
         } catch (Exception e) {
             logger.warn("cacheExcute error .", e);
@@ -61,9 +73,8 @@ public class GuavaLocalCacheAdvice {
         return null;
     }
 
-    private LoadingCache<String, Object> getCacheFromCacheMap(final GuavaLocalCache localCache, final ProceedingJoinPoint pjp) {
-        String group = localCache.group();
-        LoadingCache<String, Object> cache = cacheMap.get(group);
+    private LoadingCache<String, Object> getCacheFromCacheMap(final String fkey, final ProceedingJoinPoint pjp, final GuavaLocalCache localCache) {
+        LoadingCache<String, Object> cache = cacheMap.get(fkey);
         if (null != cache) {
             return cache;
         }
@@ -75,7 +86,10 @@ public class GuavaLocalCacheAdvice {
                     @Override
                     public Object load(String key) {
                         try {
+                            long t = System.currentTimeMillis();
+                            logger.info("begin local cach,key {}", key);
                             Object o = pjp.proceed();
+                            logger.info("end local cach,key {} ,time:{}", key, System.currentTimeMillis() - t);
                             if (localCache.nullAble() && null == o) {
                                 return nullObject;
                             }
@@ -91,7 +105,7 @@ public class GuavaLocalCacheAdvice {
                         return super.reload(key, oldValue);
                     }
                 });
-        cacheMap.put(group, cache);
+        cacheMap.put(fkey, cache);
         return cache;
     }
 
@@ -117,14 +131,18 @@ public class GuavaLocalCacheAdvice {
             //获取被拦截方法参数名列表(使用Spring支持类库)
             LocalVariableTableParameterNameDiscoverer u = new LocalVariableTableParameterNameDiscoverer();
             String[] paraNameArr = u.getParameterNames(method);
-            //SPEL上下文
-            StandardEvaluationContext context = new StandardEvaluationContext();
-            //把方法参数放入SPEL上下文中
-            for (int i = 0; i < paraNameArr.length; i++) {
-                context.setVariable(paraNameArr[i], args[i]);
+            if (null != paraNameArr && paraNameArr.length > 0) {
+                //SPEL上下文
+                StandardEvaluationContext context = new StandardEvaluationContext();
+                //把方法参数放入SPEL上下文中
+                for (int i = 0; i < paraNameArr.length; i++) {
+                    context.setVariable(paraNameArr[i], args[i]);
+                }
+                //使用SPEL进行key的解析
+                return sb.append(parser.parseExpression(keyExt).getValue(context, String.class)).toString();
+            } else {
+                return sb.toString();
             }
-            //使用SPEL进行key的解析
-            return sb.append(parser.parseExpression(keyExt).getValue(context, String.class)).toString();
         } catch (Exception e) {
             logger.warn("[RedisCacheableAopSupport] parseKey error", e);
         }
@@ -171,5 +189,51 @@ public class GuavaLocalCacheAdvice {
         return sb.toString();
     }
 
+
+    class HitInfo {
+        volatile int hitCount;
+        volatile int totalCount;
+        volatile int missCount;
+
+        public void HitPlusOne() {
+            this.hitCount++;
+        }
+
+        public void MisPlusOne() {
+            this.missCount++;
+        }
+
+        public void TotalPlusOne() {
+            this.totalCount++;
+        }
+
+        public int getHitCount() {
+            return this.hitCount;
+        }
+
+        public int getTotalCount() {
+            return this.totalCount;
+        }
+
+
+        public int getMissCount() {
+            return this.missCount;
+        }
+
+
+        @Override
+        public String toString() {
+            BigDecimal radio = BigDecimal.ZERO;
+            if (totalCount > 0) {
+                radio = new BigDecimal(hitCount).divide(new BigDecimal(totalCount));
+            }
+            return "HitInfo{" +
+                    "hitCount=" + hitCount +
+                    ", totalCount=" + totalCount +
+                    ", missCount=" + missCount +
+                    ",命中率：" + radio +
+                    '}';
+        }
+    }
 
 }
