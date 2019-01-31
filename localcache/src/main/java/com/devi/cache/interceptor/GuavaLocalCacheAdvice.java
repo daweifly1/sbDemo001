@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
@@ -37,7 +38,10 @@ public class GuavaLocalCacheAdvice {
 
     private Object nullObject = new Object();
 
-    Map<String, HitInfo> calcMap = new ConcurrentHashMap<>(100);
+    //统计命中率最多保留数量，可以考虑配置
+    private Integer MAX_STATICS = 10000;
+
+    Map<String, HitInfo> calcMap = new HashMap<>(MAX_STATICS);
 
     Map<String, LoadingCache<String, Object>> cacheMap = new ConcurrentHashMap<>();
 
@@ -67,16 +71,8 @@ public class GuavaLocalCacheAdvice {
         final String gname = localCache.group();
         final String fkey = gname + "_" + ffkey;
         LoadingCache<String, Object> cache = cacheMap.get(fkey);
-
-        HitInfo hh = calcMap.get(fkey);
-        if (null == hh) {
-            hh = new HitInfo();
-            calcMap.put(fkey, hh);
-        }
-        hh.TotalPlusOne();
+        totalCount(fkey);
         if (null != cache) {
-            hh.HitPlusOne();
-            logHitInfo(fkey, hh);
             return cache;
         }
         cache = CacheBuilder.newBuilder()
@@ -88,9 +84,8 @@ public class GuavaLocalCacheAdvice {
                     public Object load(String key) {
                         long t = System.currentTimeMillis();
                         try {
-                            HitInfo hh2 = calcMap.get(fkey);
-                            hh2.MisPlusOne();
-                            logHitInfo(fkey, hh2);
+                            //未命中统计
+                            missCount(fkey);
                             Object o = pjp.proceed();
                             if (localCache.nullAble() && null == o) {
                                 return nullObject;
@@ -111,6 +106,47 @@ public class GuavaLocalCacheAdvice {
                 });
         cacheMap.put(fkey, cache);
         return cache;
+    }
+
+    private void totalCount(String fkey) {
+        if (MAX_STATICS < 0) {
+            return;
+        }
+        synchronized (fkey) {
+            try {
+                HitInfo hh = calcMap.get(fkey);
+                if (null == hh) {
+                    hh = new HitInfo();
+                    if (cacheMap.size() >= MAX_STATICS) {
+                        //若统计命中率的的key过大清空重新统计
+                        cacheMap.clear();
+                    }
+                    calcMap.put(fkey, hh);
+                }
+                hh.TotalPlusOne();
+                logHitInfo(fkey, hh);
+            } catch (Exception e) {
+                logger.error("fkey:{}", fkey, e);
+            }
+        }
+    }
+
+    private void missCount(String fkey) {
+        if (MAX_STATICS < 0) {
+            return;
+        }
+        synchronized (fkey) {
+            try {
+                HitInfo hh2 = calcMap.get(fkey);
+                if (null == hh2) {
+                    hh2 = new HitInfo();
+                }
+                hh2.MisPlusOne();
+                logHitInfo(fkey, hh2);
+            } catch (Exception e) {
+                logger.error("fkey:{}", fkey, e);
+            }
+        }
     }
 
     public void clearCache(String gname) {
@@ -218,25 +254,15 @@ public class GuavaLocalCacheAdvice {
 
 
     class HitInfo {
-        volatile int hitCount;
         volatile int totalCount;
         volatile int missCount;
 
-        public void HitPlusOne() {
-            this.hitCount++;
-        }
-
         public void MisPlusOne() {
-            this.hitCount--;
             this.missCount++;
         }
 
         public void TotalPlusOne() {
             this.totalCount++;
-        }
-
-        public int getHitCount() {
-            return this.hitCount;
         }
 
         public int getTotalCount() {
@@ -252,14 +278,15 @@ public class GuavaLocalCacheAdvice {
         @Override
         public String toString() {
             BigDecimal radio = BigDecimal.ZERO;
-            if (totalCount > 0 && hitCount > 0) {
-                radio = new BigDecimal(hitCount).divide(new BigDecimal(totalCount), 5, 5);
+            if (totalCount > 0) {
+                radio = (new BigDecimal(totalCount).subtract(new BigDecimal(missCount))).divide(new BigDecimal(totalCount), 5, 5);
             }
             return "HitInfo{" +
-                    "hitCount=" + hitCount +
-                    ", totalCount=" + totalCount +
+                    "totalCount=" + totalCount +
                     ", missCount=" + missCount +
                     ",命中率：" + radio +
+                    ",TotalMemory:" + Runtime.getRuntime().totalMemory() / (1024 * 1024) + "M" +
+                    ",FreeMemory:" + Runtime.getRuntime().freeMemory() / (1024 * 1024) + "M" +
                     '}';
         }
     }
