@@ -58,10 +58,17 @@ public class StarterServiceApplicationTests {
 
 
         List<Task> tasks = taskService.createTaskQuery().processInstanceId(pi.getId()).list();
+
+
+
         for (Task task : tasks) {
             System.out.println("当前流程节点：" + task.getName());
+
             Execution exe = runtimeService.createExecutionQuery()
                     .executionId(task.getExecutionId()).singleResult();
+
+
+
             System.out.println("msg：" + runtimeService.getVariable(exe.getId(), "msg"));
         }
 

@@ -7,7 +7,7 @@ import lombok.ToString;
 
 import java.util.Date;
 
-@TableComment(value = "单号承包结算关系表")
+@EntityComment(value = "单号承包结算关系表")
 @Data
 @ToString
 public class MaterialSettlementRel {
