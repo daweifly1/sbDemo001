@@ -24,8 +24,8 @@
         <!--<module>akka-test</module>-->
         <!--<module>kafka-test</module>-->
         <!--<module>security</module>-->
-        <module>jpa-test</module>
-        <module>hibernate-test</module>
+        <!--<module>hibernate-test</module>-->
+        <module>netty-test</module>
     </modules>
 
     <properties>
