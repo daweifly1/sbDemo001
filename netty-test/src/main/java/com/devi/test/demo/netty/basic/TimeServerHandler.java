@@ -17,15 +17,15 @@ package com.devi.test.demo.netty.basic;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
 /**
  * @author lilinfeng
  * @version 1.0
  * @date 2014年2月14日
  */
-public class TimeServerHandler extends ChannelHandlerAdapter {
+public class TimeServerHandler extends ChannelInboundHandlerAdapter {
 
     public void channelRead(ChannelHandlerContext ctx, Object msg)
             throws Exception {
@@ -34,13 +34,26 @@ public class TimeServerHandler extends ChannelHandlerAdapter {
         buf.readBytes(req);
         String body = new String(req, "UTF-8");
         System.out.println("The time server receive order : " + body);
-        String currentTime = "QUERY TIME ORDER".equalsIgnoreCase(body) ? new java.util.Date(
-                System.currentTimeMillis()).toString() : "BAD ORDER";
+
+        String currentTime = "QUERY TIME ORDER".equalsIgnoreCase(body) ? new java.util.Date(System.currentTimeMillis()).toString() : "BAD ORDER";
+
+        int MAX = 1000;
+        String s = "W";
+        for (int i = 0; i < MAX; i++) {
+            s = s + "--";
+        }
+        currentTime = s + currentTime;
+        for (int i = 0; i < MAX; i++) {
+            currentTime = currentTime + "--";
+        }
+        currentTime = currentTime + "W";
+
         ByteBuf resp = Unpooled.copiedBuffer(currentTime.getBytes());
         ctx.write(resp);
     }
 
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("server channelReadComplete");
         ctx.flush();
     }
 
