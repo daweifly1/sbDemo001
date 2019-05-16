@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.UUID;
 
@@ -43,10 +44,14 @@ public class CacheService {
             boolean r = lock(key, uuid, 200);
             System.out.println("r:" + r);
 
-
             boolean release = releaseLock(key, uuid);
-
             System.out.println("release:" + release);
+
+            for (int i = 0; i < 100; i++) {
+                Object o = limiter("wwww", 10, 3);
+                System.out.println(i + "  :   " + o);
+                Thread.sleep(1000);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -60,12 +65,17 @@ public class CacheService {
         if (null == key) {
             return false;
         }
+        Jedis jedis = null;
         try {
-            Jedis jedis = jedisPool.getResource();
+            jedis = jedisPool.getResource();
             String res = jedis.set(key, lockValue, "NX", "EX", expire);
             return res != null && res.equals("OK");
         } catch (Exception e) {
             return false;
+        } finally {
+            if (null != jedis) {
+                jedis.close();
+            }
         }
     }
 
@@ -97,13 +107,52 @@ public class CacheService {
         if (key == null || lockValue == null) {
             return false;
         }
+        Jedis jedis = null;
         try {
-            Jedis jedis = jedisPool.getResource();
+            jedis = jedisPool.getResource();
             Object res = jedis.eval(luaScript, Collections.singletonList(key), Collections.singletonList(lockValue));
-            jedis.close();
             return res != null && res.equals(lockReleaseOK);
         } catch (Exception e) {
             return false;
+        } finally {
+            if (null != jedis) {
+                jedis.close();
+            }
         }
     }
+
+
+    /**
+     * 每perTime秒最多访问times次
+     *
+     * @param ip
+     * @param perTime
+     * @param times
+     * @return
+     */
+    public static boolean limiter(String ip, int perTime, int times) {
+        Jedis jedis = null;
+        try {
+            String lua = "local num = redis.call('incr', KEYS[1])\n" +
+                    "if tonumber(num) == 1 then\n" +
+                    "\tredis.call('expire', KEYS[1], ARGV[1])\n" +
+                    "\treturn 1\n" +
+                    "elseif tonumber(num) > tonumber(ARGV[2]) then\n" +
+                    "\treturn 0\n" +
+                    "else \n" +
+                    "\treturn 1\n" +
+                    "end\n";
+            jedis = jedisPool.getResource();
+            Object result = jedis.evalsha(jedis.scriptLoad(lua), Arrays.asList(ip), Arrays.asList(perTime + "", times + ""));
+            if (null != result && "1".equals(result.toString())) {
+                return true;
+            }
+            return false;
+        } finally {
+            if (null != jedis) {
+                jedis.close();
+            }
+        }
+    }
+
 }
