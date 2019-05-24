@@ -25,7 +25,7 @@
         <!--<module>kafka-test</module>-->
         <!--<module>security</module>-->
         <!--<module>hibernate-test</module>-->
-        <module>netty-test</module>
+        <!--<module>netty-test</module>-->
     </modules>
 
     <properties>

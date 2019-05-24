@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devi.test.mapper.OrderMapper">
+    <resultMap id="BaseResultMap" type="com.devi.test.beans.entity.OrderDO">
+            <id column="id" property="id" jdbcType="BIGINT"/>
+            <result column="order_no" property="orderNo" jdbcType="VARCHAR"/>
+            <result column="buyer_id" property="buyerId" jdbcType="BIGINT"/>
+            <result column="mall_id" property="mallId" jdbcType="BIGINT"/>
+            <result column="shop_id" property="shopId" jdbcType="BIGINT"/>
+            <result column="trade_status" property="tradeStatus" jdbcType="INTEGER"/>
+            <result column="pay_status" property="payStatus" jdbcType="INTEGER"/>
+            <result column="best_time" property="bestTime" jdbcType="TIMESTAMP"/>
+            <result column="order_total_price" property="orderTotalPrice" jdbcType="DECIMAL"/>
+            <result column="credit_price" property="creditPrice" jdbcType="DECIMAL"/>
+            <result column="pay_price" property="payPrice" jdbcType="DECIMAL"/>
+            <result column="pay_time" property="payTime" jdbcType="TIMESTAMP"/>
+            <result column="out_trade_no" property="outTradeNo" jdbcType="VARCHAR"/>
+            <result column="remark" property="remark" jdbcType="VARCHAR"/>
+            <result column="delivery_status" property="deliveryStatus" jdbcType="INTEGER"/>
+            <result column="delivery_time" property="deliveryTime" jdbcType="TIMESTAMP"/>
+            <result column="delivery_no" property="deliveryNo" jdbcType="VARCHAR"/>
+            <result column="db_create_time" property="dbCreateTime" jdbcType="TIMESTAMP"/>
+            <result column="db_update_author" property="dbUpdateAuthor" jdbcType="VARCHAR"/>
+            <result column="db_update_time" property="dbUpdateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        id,order_no,buyer_id,mall_id,shop_id,trade_status,pay_status,best_time,order_total_price,credit_price,
+        pay_price,pay_time,out_trade_no,remark,delivery_status,delivery_time,delivery_no,db_create_time,db_update_author,db_update_time
+    </sql>
+
+    <sql id="cond">
+        <where>
+            <if test="id != null">
+                and  id =#{id,jdbcType=BIGINT}
+            </if>
+            <if test="orderNo != null and orderNo != ''">
+                and  order_no =#{orderNo,jdbcType=VARCHAR}
+            </if>
+            <if test="buyerId != null">
+                and  buyer_id =#{buyerId,jdbcType=BIGINT}
+            </if>
+            <if test="mallId != null">
+                and  mall_id =#{mallId,jdbcType=BIGINT}
+            </if>
+            <if test="shopId != null">
+                and  shop_id =#{shopId,jdbcType=BIGINT}
+            </if>
+            <if test="tradeStatus != null">
+                and  trade_status =#{tradeStatus,jdbcType=INTEGER}
+            </if>
+            <if test="payStatus != null">
+                and  pay_status =#{payStatus,jdbcType=INTEGER}
+            </if>
+            <if test="bestTime != null">
+                and  best_time =#{bestTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="orderTotalPrice != null">
+                and  order_total_price =#{orderTotalPrice,jdbcType=DECIMAL}
+            </if>
+            <if test="creditPrice != null">
+                and  credit_price =#{creditPrice,jdbcType=DECIMAL}
+            </if>
+            <if test="payPrice != null">
+                and  pay_price =#{payPrice,jdbcType=DECIMAL}
+            </if>
+            <if test="payTime != null">
+                and  pay_time =#{payTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="outTradeNo != null and outTradeNo != ''">
+                and  out_trade_no =#{outTradeNo,jdbcType=VARCHAR}
+            </if>
+            <if test="remark != null and remark != ''">
+                and  remark =#{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="deliveryStatus != null">
+                and  delivery_status =#{deliveryStatus,jdbcType=INTEGER}
+            </if>
+            <if test="deliveryTime != null">
+                and  delivery_time =#{deliveryTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="deliveryNo != null and deliveryNo != ''">
+                and  delivery_no =#{deliveryNo,jdbcType=VARCHAR}
+            </if>
+            <if test="dbCreateTime != null">
+                and  db_create_time =#{dbCreateTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="dbUpdateAuthor != null and dbUpdateAuthor != ''">
+                and  db_update_author =#{dbUpdateAuthor,jdbcType=VARCHAR}
+            </if>
+            <if test="dbUpdateTime != null">
+                and  db_update_time =#{dbUpdateTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </sql>
+
+    <select id="queryList" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_order
+        <include refid="cond"/>
+    </select>
+
+    <select id="queryListByIds" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_order
+        where ID in
+        <foreach collection="ids" item="id" open="(" separator=","  close=")">
+         #{id,jdbcType=VARCHAR}
+        </foreach>
+    </select>
+
+
+
+    <delete id="deleteByPrimaryKeySelective" parameterType="java.lang.Long">
+        delete from t_order where id = #{id}
+    </delete>
+
+    <delete id="batchDeleteByIds" parameterType="java.util.List">
+        delete from t_order where id in (
+        <foreach collection="ids" item="id" index="index" separator=",">
+            #{id}
+        </foreach>
+       )
+    </delete>
+
+    <insert id="insert" parameterType="com.devi.test.beans.entity.OrderDO"  useGeneratedKeys="true" keyProperty="id">
+        insert into t_order (
+        id,order_no,buyer_id,mall_id,shop_id,trade_status,pay_status,best_time,order_total_price,credit_price,
+        pay_price,pay_time,out_trade_no,remark,delivery_status,delivery_time,delivery_no,db_create_time,db_update_author,db_update_time
+        )
+        values (
+         #{id,jdbcType=BIGINT},#{orderNo,jdbcType=VARCHAR},#{buyerId,jdbcType=BIGINT},#{mallId,jdbcType=BIGINT},#{shopId,jdbcType=BIGINT},
+         #{tradeStatus,jdbcType=INTEGER},#{payStatus,jdbcType=INTEGER},#{bestTime,jdbcType=TIMESTAMP},#{orderTotalPrice,jdbcType=DECIMAL},#{creditPrice,jdbcType=DECIMAL},
+         #{payPrice,jdbcType=DECIMAL},#{payTime,jdbcType=TIMESTAMP},#{outTradeNo,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},#{deliveryStatus,jdbcType=INTEGER},
+         #{deliveryTime,jdbcType=TIMESTAMP},#{deliveryNo,jdbcType=VARCHAR},#{dbCreateTime,jdbcType=TIMESTAMP},#{dbUpdateAuthor,jdbcType=VARCHAR},#{dbUpdateTime,jdbcType=TIMESTAMP}
+        )
+    </insert>
+
+    <insert id="batchInsert" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
+        insert into `t_order` (
+        id,order_no,buyer_id,mall_id,shop_id,trade_status,pay_status,best_time,order_total_price,credit_price,pay_price,pay_time,out_trade_no,remark,delivery_status,delivery_time,delivery_no,db_create_time,db_update_author,db_update_time
+        )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.id,jdbcType=BIGINT},#{item.orderNo,jdbcType=VARCHAR},#{item.buyerId,jdbcType=BIGINT},#{item.mallId,jdbcType=BIGINT},#{item.shopId,jdbcType=BIGINT},
+                #{item.tradeStatus,jdbcType=INTEGER},#{item.payStatus,jdbcType=INTEGER},#{item.bestTime,jdbcType=TIMESTAMP},#{item.orderTotalPrice,jdbcType=DECIMAL},#{item.creditPrice,jdbcType=DECIMAL},
+                #{item.payPrice,jdbcType=DECIMAL},#{item.payTime,jdbcType=TIMESTAMP},#{item.outTradeNo,jdbcType=VARCHAR},#{item.remark,jdbcType=VARCHAR},#{item.deliveryStatus,jdbcType=INTEGER},
+                #{item.deliveryTime,jdbcType=TIMESTAMP},#{item.deliveryNo,jdbcType=VARCHAR},#{item.dbCreateTime,jdbcType=TIMESTAMP},#{item.dbUpdateAuthor,jdbcType=VARCHAR},#{item.dbUpdateTime,jdbcType=TIMESTAMP}
+            )
+        </foreach>
+    </insert>
+
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.devi.test.beans.entity.OrderDO">
+        update t_order
+        <set>
+
+            <if test="orderNo != null">
+                order_no =#{orderNo,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerId != null">
+                buyer_id =#{buyerId,jdbcType=BIGINT},
+            </if>
+            <if test="mallId != null">
+                mall_id =#{mallId,jdbcType=BIGINT},
+            </if>
+            <if test="shopId != null">
+                shop_id =#{shopId,jdbcType=BIGINT},
+            </if>
+            <if test="tradeStatus != null">
+                trade_status =#{tradeStatus,jdbcType=INTEGER},
+            </if>
+            <if test="payStatus != null">
+                pay_status =#{payStatus,jdbcType=INTEGER},
+            </if>
+            <if test="bestTime != null">
+                best_time =#{bestTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="orderTotalPrice != null">
+                order_total_price =#{orderTotalPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="creditPrice != null">
+                credit_price =#{creditPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="payPrice != null">
+                pay_price =#{payPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="payTime != null">
+                pay_time =#{payTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="outTradeNo != null">
+                out_trade_no =#{outTradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null">
+                remark =#{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="deliveryStatus != null">
+                delivery_status =#{deliveryStatus,jdbcType=INTEGER},
+            </if>
+            <if test="deliveryTime != null">
+                delivery_time =#{deliveryTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deliveryNo != null">
+                delivery_no =#{deliveryNo,jdbcType=VARCHAR},
+            </if>
+            <if test="dbCreateTime != null">
+                db_create_time =#{dbCreateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dbUpdateAuthor != null">
+                db_update_author =#{dbUpdateAuthor,jdbcType=VARCHAR},
+            </if>
+            <if test="dbUpdateTime != null">
+                db_update_time =#{dbUpdateTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ID =  #{id,jdbcType=VARCHAR}
+    </update>
+</mapper>

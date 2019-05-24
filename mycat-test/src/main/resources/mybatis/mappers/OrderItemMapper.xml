@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devi.test.mapper.OrderItemMapper">
+    <resultMap id="BaseResultMap" type="com.devi.test.beans.entity.OrderItemDO">
+            <id column="id" property="id" jdbcType="BIGINT"/>
+            <result column="order_id" property="orderId" jdbcType="BIGINT"/>
+            <result column="goods_id" property="goodsId" jdbcType="BIGINT"/>
+            <result column="sku_id" property="skuId" jdbcType="BIGINT"/>
+            <result column="goods_name" property="goodsName" jdbcType="VARCHAR"/>
+            <result column="goods_head_image" property="goodsHeadImage" jdbcType="VARCHAR"/>
+            <result column="goods_attr" property="goodsAttr" jdbcType="VARCHAR"/>
+            <result column="content" property="content" jdbcType="VARCHAR"/>
+            <result column="line_price" property="linePrice" jdbcType="DECIMAL"/>
+            <result column="goods_price" property="goodsPrice" jdbcType="DECIMAL"/>
+            <result column="total_num" property="totalNum" jdbcType="INTEGER"/>
+            <result column="total_price" property="totalPrice" jdbcType="DECIMAL"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        id,order_id,goods_id,sku_id,goods_name,goods_head_image,goods_attr,content,line_price,goods_price,
+        total_num,total_price
+    </sql>
+
+    <sql id="cond">
+        <where>
+            <if test="id != null">
+                and  id =#{id,jdbcType=BIGINT}
+            </if>
+            <if test="orderId != null">
+                and  order_id =#{orderId,jdbcType=BIGINT}
+            </if>
+            <if test="goodsId != null">
+                and  goods_id =#{goodsId,jdbcType=BIGINT}
+            </if>
+            <if test="skuId != null">
+                and  sku_id =#{skuId,jdbcType=BIGINT}
+            </if>
+            <if test="goodsName != null and goodsName != ''">
+                and  goods_name =#{goodsName,jdbcType=VARCHAR}
+            </if>
+            <if test="goodsHeadImage != null and goodsHeadImage != ''">
+                and  goods_head_image =#{goodsHeadImage,jdbcType=VARCHAR}
+            </if>
+            <if test="goodsAttr != null and goodsAttr != ''">
+                and  goods_attr =#{goodsAttr,jdbcType=VARCHAR}
+            </if>
+            <if test="content != null and content != ''">
+                and  content =#{content,jdbcType=VARCHAR}
+            </if>
+            <if test="linePrice != null">
+                and  line_price =#{linePrice,jdbcType=DECIMAL}
+            </if>
+            <if test="goodsPrice != null">
+                and  goods_price =#{goodsPrice,jdbcType=DECIMAL}
+            </if>
+            <if test="totalNum != null">
+                and  total_num =#{totalNum,jdbcType=INTEGER}
+            </if>
+            <if test="totalPrice != null">
+                and  total_price =#{totalPrice,jdbcType=DECIMAL}
+            </if>
+        </where>
+    </sql>
+
+
+    <select id="queryList" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_order_item
+        <include refid="cond"/>
+    </select>
+
+    <select id="queryListByIds" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_order_item
+        where ID in
+        <foreach collection="ids" item="id" open="(" separator=","  close=")">
+         #{id,jdbcType=VARCHAR}
+        </foreach>
+    </select>
+
+    <delete id="deleteByPrimaryKeySelective" parameterType="java.lang.Long">
+        delete from t_order_item where id = #{id}
+    </delete>
+
+    <delete id="batchDeleteByIds" parameterType="java.util.List">
+        delete from t_order_item where id in (
+        <foreach collection="ids" item="id" index="index" separator=",">
+            #{id}
+        </foreach>
+       )
+    </delete>
+
+    <insert id="insert" parameterType="com.devi.test.beans.entity.OrderItemDO"  useGeneratedKeys="true" keyProperty="id">
+        insert into t_order_item (
+        id,order_id,goods_id,sku_id,goods_name,goods_head_image,goods_attr,content,line_price,goods_price,
+        total_num,total_price
+        )
+        values (
+         #{id,jdbcType=BIGINT},#{orderId,jdbcType=BIGINT},#{goodsId,jdbcType=BIGINT},#{skuId,jdbcType=BIGINT},#{goodsName,jdbcType=VARCHAR},
+         #{goodsHeadImage,jdbcType=VARCHAR},#{goodsAttr,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{linePrice,jdbcType=DECIMAL},#{goodsPrice,jdbcType=DECIMAL},
+         #{totalNum,jdbcType=INTEGER},#{totalPrice,jdbcType=DECIMAL}
+        )
+    </insert>
+
+    <insert id="batchInsert" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
+        insert into `t_order_item` (
+        id,order_id,goods_id,sku_id,goods_name,goods_head_image,goods_attr,content,line_price,goods_price,total_num,total_price
+        )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.id,jdbcType=BIGINT},#{item.orderId,jdbcType=BIGINT},#{item.goodsId,jdbcType=BIGINT},#{item.skuId,jdbcType=BIGINT},#{item.goodsName,jdbcType=VARCHAR},
+                #{item.goodsHeadImage,jdbcType=VARCHAR},#{item.goodsAttr,jdbcType=VARCHAR},#{item.content,jdbcType=VARCHAR},#{item.linePrice,jdbcType=DECIMAL},#{item.goodsPrice,jdbcType=DECIMAL},
+                #{item.totalNum,jdbcType=INTEGER},#{item.totalPrice,jdbcType=DECIMAL}
+            )
+        </foreach>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.devi.test.beans.entity.OrderItemDO">
+        update t_order_item
+        <set>
+            <if test="orderId != null">
+                order_id =#{orderId,jdbcType=BIGINT},
+            </if>
+            <if test="goodsId != null">
+                goods_id =#{goodsId,jdbcType=BIGINT},
+            </if>
+            <if test="skuId != null">
+                sku_id =#{skuId,jdbcType=BIGINT},
+            </if>
+            <if test="goodsName != null">
+                goods_name =#{goodsName,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsHeadImage != null">
+                goods_head_image =#{goodsHeadImage,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsAttr != null">
+                goods_attr =#{goodsAttr,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                content =#{content,jdbcType=VARCHAR},
+            </if>
+            <if test="linePrice != null">
+                line_price =#{linePrice,jdbcType=DECIMAL},
+            </if>
+            <if test="goodsPrice != null">
+                goods_price =#{goodsPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="totalNum != null">
+                total_num =#{totalNum,jdbcType=INTEGER},
+            </if>
+            <if test="totalPrice != null">
+                total_price =#{totalPrice,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where id =  #{id,jdbcType=VARCHAR}
+    </update>
+</mapper>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.devi.test.mapper.OrderAddressMapper">
+    <resultMap id="BaseResultMap" type="com.devi.test.beans.entity.OrderAddressDO">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="order_id" property="orderId" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="province" property="province" jdbcType="VARCHAR"/>
+        <result column="province_id" property="provinceId" jdbcType="BIGINT"/>
+        <result column="city" property="city" jdbcType="VARCHAR"/>
+        <result column="city_id" property="cityId" jdbcType="BIGINT"/>
+        <result column="region" property="region" jdbcType="VARCHAR"/>
+        <result column="region_id" property="regionId" jdbcType="BIGINT"/>
+        <result column="detail" property="detail" jdbcType="VARCHAR"/>
+        <result column="memo" property="memo" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        id,order_id,name,phone,province,province_id,city,city_id,region,region_id,
+        detail,memo
+    </sql>
+
+    <sql id="cond">
+        <where>
+            <if test="id != null">
+                and id =#{id,jdbcType=BIGINT}
+            </if>
+            <if test="orderId != null">
+                and order_id =#{orderId,jdbcType=BIGINT}
+            </if>
+            <if test="name != null and name != ''">
+                and name =#{name,jdbcType=VARCHAR}
+            </if>
+            <if test="phone != null and phone != ''">
+                and phone =#{phone,jdbcType=VARCHAR}
+            </if>
+            <if test="province != null and province != ''">
+                and province =#{province,jdbcType=VARCHAR}
+            </if>
+            <if test="provinceId != null">
+                and province_id =#{provinceId,jdbcType=BIGINT}
+            </if>
+            <if test="city != null and city != ''">
+                and city =#{city,jdbcType=VARCHAR}
+            </if>
+            <if test="cityId != null">
+                and city_id =#{cityId,jdbcType=BIGINT}
+            </if>
+            <if test="region != null and region != ''">
+                and region =#{region,jdbcType=VARCHAR}
+            </if>
+            <if test="regionId != null">
+                and region_id =#{regionId,jdbcType=BIGINT}
+            </if>
+            <if test="detail != null and detail != ''">
+                and detail =#{detail,jdbcType=VARCHAR}
+            </if>
+            <if test="memo != null and memo != ''">
+                and memo =#{memo,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </sql>
+
+    <select id="queryList" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_order_address
+        <include refid="cond"/>
+    </select>
+
+    <select id="queryListByIds" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_order_address
+        where id in
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+
+
+    <delete id="deleteByPrimaryKeySelective" parameterType="java.lang.Long">
+        delete from t_order_address where id = #{id}
+    </delete>
+
+    <delete id="batchDeleteByIds" parameterType="java.util.List">
+        delete from t_order_address where id in (
+        <foreach collection="ids" item="id" index="index" separator=",">
+            #{id}
+        </foreach>
+        )
+    </delete>
+
+    <insert id="insert" parameterType="com.devi.test.beans.entity.OrderAddressDO" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into t_order_address (
+        id,order_id,name,phone,province,province_id,city,city_id,region,region_id,
+        detail,memo
+        )
+        values (
+         #{id,jdbcType=BIGINT},#{orderId,jdbcType=BIGINT},#{name,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{province,jdbcType=VARCHAR},
+         #{provinceId,jdbcType=BIGINT},#{city,jdbcType=VARCHAR},#{cityId,jdbcType=BIGINT},#{region,jdbcType=VARCHAR},#{regionId,jdbcType=BIGINT},
+         #{detail,jdbcType=VARCHAR},#{memo,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <insert id="batchInsert" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
+        insert into `t_order_address` (
+        id,order_id,name,phone,province,province_id,city,city_id,region,region_id,detail,memo
+        )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.id,jdbcType=BIGINT},#{item.orderId,jdbcType=BIGINT},#{item.name,jdbcType=VARCHAR},#{item.phone,jdbcType=VARCHAR},#{item.province,jdbcType=VARCHAR},
+            #{item.provinceId,jdbcType=BIGINT},#{item.city,jdbcType=VARCHAR},#{item.cityId,jdbcType=BIGINT},#{item.region,jdbcType=VARCHAR},#{item.regionId,jdbcType=BIGINT},
+            #{item.detail,jdbcType=VARCHAR},#{item.memo,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.devi.test.beans.entity.OrderAddressDO">
+        update t_order_address
+        <set>
+            <if test="id != null">
+                id =#{id,jdbcType=BIGINT},
+            </if>
+            <if test="orderId != null">
+                order_id =#{orderId,jdbcType=BIGINT},
+            </if>
+            <if test="name != null">
+                name =#{name,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone =#{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="province != null">
+                province =#{province,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceId != null">
+                province_id =#{provinceId,jdbcType=BIGINT},
+            </if>
+            <if test="city != null">
+                city =#{city,jdbcType=VARCHAR},
+            </if>
+            <if test="cityId != null">
+                city_id =#{cityId,jdbcType=BIGINT},
+            </if>
+            <if test="region != null">
+                region =#{region,jdbcType=VARCHAR},
+            </if>
+            <if test="regionId != null">
+                region_id =#{regionId,jdbcType=BIGINT},
+            </if>
+            <if test="detail != null">
+                detail =#{detail,jdbcType=VARCHAR},
+            </if>
+            <if test="memo != null">
+                memo =#{memo,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+</mapper>
